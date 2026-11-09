@@ -74,13 +74,54 @@ export function chunkText(text: string, opts?: ChunkOptions): string[] {
       continue;
     }
     const prev = chunks[chunks.length - 1] ?? "";
-    const tail = prev.length > overlapChars ? prev.slice(-overlapChars) : prev;
+    const tail = cauda(prev, overlapChars);
     const chunk = `${tail}\n${seg}`.trim();
     chunks.push(chunk);
   }
 
   // Step 4: deduplicate and filter empties
-  return chunks.filter((c) => c.length > 0);
+  return chunks.map(semMetadeDeCaractere).filter((c) => c.length > 0);
+}
+
+/**
+ * Os últimos `n` caracteres de `texto` sem partir um par substituto (emoji e
+ * afins ocupam DUAS unidades UTF-16).
+ *
+ * `slice(-n)` conta unidades, não caracteres: quando o corte caía entre as
+ * duas metades de um emoji, o trecho seguinte começava com meia letra (um
+ * "low surrogate" sozinho, ex.: U+DC9B). O PostgREST manda isso escapado no
+ * JSON e o Postgres recusa o lote INTEIRO com `invalid input syntax for type
+ * json` — medido em 09/11/2026: um emoji no trecho 156 derrubou os trechos
+ * 100–199 de um documento de 211, em todas as tentativas.
+ *
+ * Recua uma unidade (leva o emoji inteiro) em vez de avançar: a sobreposição
+ * existe para dar contexto, e cortar o emoji fora seria perder parte dele.
+ */
+function cauda(texto: string, n: number): string {
+  if (texto.length <= n) return texto;
+  let inicio = texto.length - n;
+  if (inicio > 0 && ehMetadeBaixa(texto.charCodeAt(inicio)) && ehMetadeAlta(texto.charCodeAt(inicio - 1))) {
+    inicio -= 1;
+  }
+  return texto.slice(inicio);
+}
+
+function ehMetadeAlta(codigo: number): boolean {
+  return codigo >= 0xd800 && codigo <= 0xdbff;
+}
+
+function ehMetadeBaixa(codigo: number): boolean {
+  return codigo >= 0xdc00 && codigo <= 0xdfff;
+}
+
+/**
+ * Rede de segurança: troca qualquer metade solta por U+FFFD. O material do
+ * cliente pode já chegar assim (cópia de PDF, exportação quebrada), e um
+ * caractere ruim não pode custar cem trechos. `toWellFormed` é nativo do
+ * Node 20+ (o engine do projeto é >=22).
+ */
+function semMetadeDeCaractere(texto: string): string {
+  return texto.toWellFormed();
 }
 
 /**
