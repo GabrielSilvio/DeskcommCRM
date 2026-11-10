@@ -139,7 +139,7 @@ export default async function AiUsagePage({ searchParams }: PageProps) {
       </header>
       {avisos.length > 0 && (
         <Card
-          className="border-amber-500/40 bg-amber-500/5 p-4"
+          className="border-warning/40 bg-warning-bg p-4"
           data-testid="aviso-contexto-caro"
         >
           <p className="text-sm font-medium">{traduzir("Agente com contexto caro", idioma)}</p>

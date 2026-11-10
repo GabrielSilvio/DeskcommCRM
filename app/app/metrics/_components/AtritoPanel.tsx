@@ -49,7 +49,7 @@ function ParCard({ par }: { par: Par }) {
       <CardContent className="flex flex-col gap-4 sm:flex-row">
         {/* Eficiência — o que o sistema é empurrado a maximizar. */}
         <div className="sm:w-48 sm:shrink-0">
-          <p className="text-2xl font-semibold tabular-nums">{formatarMedida(par.eficiencia)}</p>
+          <p className="font-display text-2xl font-bold tabular-nums">{formatarMedida(par.eficiencia)}</p>
           <p className="mt-1 text-sm text-muted-foreground">{t(par.eficiencia.rotulo)}</p>
           {par.eficiencia.nota ? (
             <p className="mt-1 text-xs text-muted-foreground">{t(par.eficiencia.nota)}</p>

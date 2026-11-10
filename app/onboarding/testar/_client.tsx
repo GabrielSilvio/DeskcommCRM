@@ -96,7 +96,7 @@ export function TestarClient({ nome, agenteId, versaoId }: Props) {
   return (
     <div className="space-y-4">
       {semAgente && (
-        <div className="rounded-lg border bg-background p-6" role="status">
+        <div className="rounded-xl border border-border bg-surface p-6" role="status">
           <p className="text-sm font-medium">{t("Você ainda não montou seu funcionário.")}</p>
           <p className="mt-1 text-sm text-muted-foreground">
             {t(
@@ -107,7 +107,7 @@ export function TestarClient({ nome, agenteId, versaoId }: Props) {
       )}
 
       {rascunho && (
-        <div className="rounded-lg border bg-background p-6" role="status">
+        <div className="rounded-xl border border-border bg-surface p-6" role="status">
           <p className="text-sm font-medium">
             {funcionario} {t("está como")} <strong>{t("rascunho")}</strong> — {t("ainda não foi para o ar.")}
           </p>
@@ -120,7 +120,7 @@ export function TestarClient({ nome, agenteId, versaoId }: Props) {
       )}
 
       {!semAgente && !rascunho && (
-        <div className="space-y-4 rounded-lg border bg-background p-6">
+        <div className="space-y-4 rounded-xl border border-border bg-surface p-6">
           <div className="space-y-2">
             <Label htmlFor="mensagem">{t("Escreva como se fosse um cliente")}</Label>
             <Textarea
@@ -143,7 +143,7 @@ export function TestarClient({ nome, agenteId, versaoId }: Props) {
           </div>
 
           {desfecho?.tipo === "resposta" && (
-            <div className="space-y-2 rounded-md border bg-muted/40 p-4">
+            <div className="space-y-2 rounded-md border bg-bg p-4">
               <p className="text-xs uppercase tracking-wider text-muted-foreground">
                 {funcionario} {t("respondeu")}
               </p>
@@ -157,7 +157,7 @@ export function TestarClient({ nome, agenteId, versaoId }: Props) {
           {desfecho?.tipo === "erro" && (
             <div
               role="alert"
-              className="space-y-2 rounded-md border border-amber-300/60 bg-amber-50 p-4 dark:border-amber-500/30 dark:bg-amber-950/20"
+              className="space-y-2 rounded-lg border border-warning/40 bg-warning-bg text-warning-fg p-4"
             >
               <p className="text-sm font-medium">
                 {t(

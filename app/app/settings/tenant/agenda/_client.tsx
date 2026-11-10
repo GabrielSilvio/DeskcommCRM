@@ -210,7 +210,7 @@ function LembreteDoCompromisso({
           checked={ligado}
           data-testid={`editar-lembrete-${tipo.id}`}
           onChange={(e) => setLigado(e.target.checked)}
-          className="size-4 shrink-0 rounded-sm border-border accent-accent"
+          className="size-4 shrink-0 rounded-[5px] border-border accent-accent"
         />
         {t("Avisar o cliente antes do compromisso, pelo WhatsApp")}
       </label>

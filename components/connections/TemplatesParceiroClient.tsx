@@ -53,10 +53,10 @@ interface TemplateParceiro {
 }
 
 const COR_DO_ESTADO: Record<string, string> = {
-  APPROVED: "text-emerald-700 dark:text-emerald-400",
-  PENDING: "text-amber-700 dark:text-amber-400",
+  APPROVED: "text-success-fg",
+  PENDING: "text-warning-fg",
   REJECTED: "text-destructive",
-  PAUSED: "text-amber-700 dark:text-amber-400",
+  PAUSED: "text-warning-fg",
   DISABLED: "text-muted-foreground",
 };
 

@@ -25,10 +25,10 @@ export default async function WelcomePage() {
   return (
     <div className="space-y-6">
       <header>
-        <h2 className="text-2xl font-semibold tracking-tight">
+        <h2 className="font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.03em]">
           {traduzir("Boas-vindas ao", idioma)} {marca.nome}
         </h2>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-text-muted">
           {traduzir("Vamos montar quem vai atender seus clientes — e onde ele vai trabalhar.", idioma)}
         </p>
       </header>

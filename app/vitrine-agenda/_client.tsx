@@ -40,7 +40,7 @@ function Secao({
   return (
     <section id={id} data-testid={`secao-${id}`} className="space-y-3">
       <div>
-        <h2 className="text-base font-semibold tracking-tight">{titulo}</h2>
+        <h2 className="font-display text-lg font-bold tracking-tight">{titulo}</h2>
         <p className="mt-0.5 max-w-2xl text-sm text-text-muted">{descricao}</p>
       </div>
       {children}
@@ -63,7 +63,7 @@ export function VitrineDaAgenda() {
     <div className="mx-auto max-w-6xl space-y-10 p-6">
       <header className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
         <div className="min-w-0">
-          <h1 className="text-2xl font-semibold tracking-tight">Kit visual da Agenda</h1>
+          <h1 className="font-display text-2xl font-bold tracking-tight">Kit visual da Agenda</h1>
           <p className="text-sm text-muted-foreground">
             Componentes puros, alimentados por dados de mentira. Sem banco, sem rota — o desenho
             decidido antes de haver o que exibir.

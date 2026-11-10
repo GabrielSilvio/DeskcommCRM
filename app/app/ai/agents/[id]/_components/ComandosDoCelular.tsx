@@ -56,7 +56,7 @@ export function ComandosDoCelular({ agentId, inicial, disabled, aoSalvar }: Prop
   return (
     <Card className="space-y-3 p-4">
       <div>
-        <h3 className="text-sm font-medium">{t("Comandos pelo celular")}</h3>
+        <h3 className="font-display text-sm font-semibold">{t("Comandos pelo celular")}</h3>
         <p className="text-xs text-muted-foreground">
           {t(
             "Ligado, QUALQUER mensagem enviada pelo WhatsApp do celular pausa a IA nesta conversa até alguém mandar #on — a pausa não vence sozinha. #off pausa sem precisar responder o cliente. Desligado, #on e #off são texto comum, e responder pelo celular pausa a IA só por um tempo.",

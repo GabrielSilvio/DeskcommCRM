@@ -328,7 +328,7 @@ export function MergeDialog({ open, onOpenChange }: Props) {
                 className="space-y-3 border-t border-border pt-4"
               >
                 <div>
-                  <h3 className="text-sm font-semibold">{t("Parecidos — confira")}</h3>
+                  <h3 className="font-display text-sm font-semibold">{t("Parecidos — confira")}</h3>
                   <p className="text-xs text-muted-foreground">
                     {t(
                       "Fichas com nome parecido. Confira os dados lado a lado antes de juntar: pode ser só uma empresa com nome semelhante.",

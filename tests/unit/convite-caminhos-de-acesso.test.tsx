@@ -46,7 +46,7 @@ describe("convite acompanha os dois caminhos", () => {
     const doc = new DOMParser().parseFromString(html, "text/html");
     const links = doc.querySelectorAll("a");
     expect(links[0]?.textContent).toBe("Criar minha conta");
-    expect(links[0]?.className).toContain("bg-primary");
+    expect(links[0]?.className).toContain("bg-accent");
     expect(links[0]?.getAttribute("href")).toBe(`/signup?invite=${encodeURIComponent(token)}`);
     expect(links[1]?.textContent).toBe("Já tenho conta? Entrar");
     expect(links[1]?.getAttribute("href")).toBe(`/login?next=${encodeURIComponent(destino)}`);

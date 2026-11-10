@@ -62,7 +62,7 @@ export default async function NotificationsPage() {
         <Link
           href="/app/settings/aplicativo"
           data-testid="link-app-no-celular"
-          className="inline-flex min-h-11 items-center text-sm font-medium text-accent underline-offset-4 hover:underline"
+          className="inline-flex min-h-11 items-center text-sm font-medium text-accent-text underline-offset-4 hover:underline"
         >
           {t("Receber no celular: instalar o app")}
         </Link>
@@ -74,7 +74,7 @@ export default async function NotificationsPage() {
       ) : (
         <Card
           data-testid="push-status-faltando-chaves"
-          className="border-amber-500/40 bg-amber-50/40 p-4 text-sm dark:bg-amber-900/10"
+          className="border-warning/40 bg-warning-bg p-4 text-sm"
         >
           <p className="font-medium">
             {t("Nesta instalação, os avisos só aparecem com o site aberto.")}

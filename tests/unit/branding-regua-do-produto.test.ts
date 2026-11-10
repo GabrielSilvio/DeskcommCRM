@@ -33,9 +33,10 @@ describe("régua congelada em módulo", () => {
     // Um `extrairRegua` que devolvesse a estrutura vazia passaria no teste
     // acima contra um módulo igualmente vazio, e a derivação inteira mediria
     // nada. Os números vêm do mesmo commit que `branding-contraste.test.ts`.
+    // 7 papéis: os 6 de sempre + `--color-accent-text` (texto azul sobre fundo claro).
     expect(REGUA_DO_PRODUTO.rampaDoProduto).toHaveLength(11);
-    expect(REGUA_DO_PRODUTO.claro.papeis).toHaveLength(6);
-    expect(REGUA_DO_PRODUTO.escuro.papeis).toHaveLength(6);
+    expect(REGUA_DO_PRODUTO.claro.papeis).toHaveLength(7);
+    expect(REGUA_DO_PRODUTO.escuro.papeis).toHaveLength(7);
     expect(REGUA_DO_PRODUTO.claro.base).toHaveLength(3);
     expect(REGUA_DO_PRODUTO.escuro.semanticas).toHaveLength(4);
   });

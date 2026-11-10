@@ -26,7 +26,7 @@ export function AjustesDeEstilo() {
 
   return (
     <Card className="space-y-2 p-4" data-testid="ajustes-de-estilo">
-      <h3 className="text-sm font-medium">{t("Estilo de resposta")}</h3>
+      <h3 className="font-display text-sm font-semibold">{t("Estilo de resposta")}</h3>
       <p className="text-xs text-muted-foreground">{t("Antes de cada mensagem sair")}</p>
       <div className="flex items-center gap-3">
         <Switch

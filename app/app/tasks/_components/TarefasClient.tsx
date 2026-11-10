@@ -183,13 +183,13 @@ export function TarefasClient({
               390px nenhum dos dois cabe, e no celular fica a lista. Os três
               modos entram e saem juntos porque a régua é a MESMA `md` — um
               botão visível sem a visão correspondente prenderia a tela. */}
-          <div className="hidden items-center gap-0.5 rounded-md border bg-muted p-0.5 md:flex">
+          <div className="hidden items-center gap-0.5 rounded-full border bg-muted p-0.5 md:flex">
             <button
               type="button"
               onClick={() => setModo("lista")}
               aria-pressed={modo === "lista"}
               className={cn(
-                "flex min-h-11 items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors lg:min-h-0",
+                "flex min-h-11 items-center gap-1.5 rounded-full px-2.5 py-1.5 font-display text-xs font-semibold transition-colors lg:min-h-0",
                 modo === "lista"
                   ? "bg-background text-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground",
@@ -203,7 +203,7 @@ export function TarefasClient({
               onClick={() => setModo("calendario")}
               aria-pressed={modo === "calendario"}
               className={cn(
-                "flex min-h-11 items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors lg:min-h-0",
+                "flex min-h-11 items-center gap-1.5 rounded-full px-2.5 py-1.5 font-display text-xs font-semibold transition-colors lg:min-h-0",
                 modo === "calendario"
                   ? "bg-background text-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground",
@@ -218,7 +218,7 @@ export function TarefasClient({
               aria-pressed={modo === "quadro"}
               data-testid="tarefas-modo-quadro"
               className={cn(
-                "flex min-h-11 items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors lg:min-h-0",
+                "flex min-h-11 items-center gap-1.5 rounded-full px-2.5 py-1.5 font-display text-xs font-semibold transition-colors lg:min-h-0",
                 modo === "quadro"
                   ? "bg-background text-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground",

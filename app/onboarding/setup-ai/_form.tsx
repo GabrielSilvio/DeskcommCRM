@@ -111,7 +111,7 @@ export function SetupAiForm({ capacidades, conferencias }: Props) {
         });
       }}
     >
-      <div className="space-y-5 rounded-lg border bg-background p-6">
+      <div className="space-y-5 rounded-xl border border-border bg-surface p-6">
         <div className="space-y-2">
           <Label htmlFor="name">{t("Como ele vai se chamar")}</Label>
           <Input
@@ -135,8 +135,10 @@ export function SetupAiForm({ capacidades, conferencias }: Props) {
               <label
                 key={j.id}
                 className={cn(
-                  "flex cursor-pointer items-start gap-3 rounded-md border p-3 transition-colors",
-                  jeito === j.id ? "border-primary bg-primary/5" : "hover:bg-muted/40",
+                  "flex cursor-pointer items-start gap-3 rounded-xl border-2 p-4 transition-all duration-base ease-out motion-reduce:transition-none",
+                  jeito === j.id
+                    ? "border-accent bg-accent-soft"
+                    : "border-border bg-surface hover:-translate-y-0.5 hover:border-accent hover:shadow-md motion-reduce:hover:translate-y-0",
                 )}
               >
                 <input
@@ -186,16 +188,16 @@ export function SetupAiForm({ capacidades, conferencias }: Props) {
         exatamente essa.
       */}
       <div className="grid gap-3 sm:grid-cols-2">
-        <section className="rounded-lg border bg-background p-4">
-          <h3 className="text-sm font-medium">{t("Ele já vem sabendo")}</h3>
+        <section className="rounded-xl border border-border bg-surface p-4">
+          <h3 className="font-display text-base font-bold">{t("Ele já vem sabendo")}</h3>
           <ul className="mt-2 space-y-1 text-xs text-muted-foreground">
             {capacidades.map((c) => (
               <li key={c}>· {c}</li>
             ))}
           </ul>
         </section>
-        <section className="rounded-lg border bg-background p-4">
-          <h3 className="text-sm font-medium">{t("E nunca vai fazer")}</h3>
+        <section className="rounded-xl border border-border bg-surface p-4">
+          <h3 className="font-display text-base font-bold">{t("E nunca vai fazer")}</h3>
           <ul className="mt-2 space-y-1 text-xs text-muted-foreground">
             {conferencias.map((c) => (
               <li key={c}>· {c}</li>
@@ -210,7 +212,7 @@ export function SetupAiForm({ capacidades, conferencias }: Props) {
       {regrasNaoSalvas && (
         <div
           role="alert"
-          className="space-y-2 rounded-md border border-amber-300/60 bg-amber-50 p-4 dark:border-amber-500/30 dark:bg-amber-950/20"
+          className="space-y-2 rounded-lg border border-warning/40 bg-warning-bg text-warning-fg p-4"
         >
           <p className="text-sm font-medium">
             {t("O atendente foi criado, mas as")} <strong>{t("regras da casa")}</strong>{" "}
@@ -226,7 +228,7 @@ export function SetupAiForm({ capacidades, conferencias }: Props) {
       {causa === "chave" && (
         <div
           role="alert"
-          className="space-y-3 rounded-md border border-amber-300/60 bg-amber-50 p-4 dark:border-amber-500/30 dark:bg-amber-950/20"
+          className="space-y-3 rounded-lg border border-warning/40 bg-warning-bg text-warning-fg p-4"
         >
           <p className="text-sm font-medium">
             {t("Seu atendente foi criado, mas ficou como")} <strong>{t("rascunho")}</strong>{" "}
@@ -273,7 +275,7 @@ export function SetupAiForm({ capacidades, conferencias }: Props) {
       {causa === "modelo" && (
         <div
           role="alert"
-          className="space-y-3 rounded-md border border-amber-300/60 bg-amber-50 p-4 dark:border-amber-500/30 dark:bg-amber-950/20"
+          className="space-y-3 rounded-lg border border-warning/40 bg-warning-bg text-warning-fg p-4"
         >
           <p className="text-sm font-medium">
             {t("Seu atendente foi criado, mas ficou como")} <strong>{t("rascunho")}</strong>{" "}
@@ -318,7 +320,7 @@ export function SetupAiForm({ capacidades, conferencias }: Props) {
       {naoPublicado && (
         <div
           role="alert"
-          className="space-y-3 rounded-md border border-amber-300/60 bg-amber-50 p-4 dark:border-amber-500/30 dark:bg-amber-950/20"
+          className="space-y-3 rounded-lg border border-warning/40 bg-warning-bg text-warning-fg p-4"
         >
           <p className="text-sm font-medium">
             {t("Seu agente foi criado, mas ficou como")} <strong>{t("rascunho")}</strong>:{" "}

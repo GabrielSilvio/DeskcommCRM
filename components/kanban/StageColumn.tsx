@@ -236,15 +236,15 @@ export function StageColumn({
                 <NomeDaEtapaNoQuadro key={stage.name} nome={stage.name} onConfirmar={onRenomear} />
               </h2>
             ) : (
-              <h2 className="flex-1 truncate text-sm font-semibold text-text">{stage.name}</h2>
+              <h2 className="flex-1 truncate font-display text-sm font-semibold text-text">{stage.name}</h2>
             )}
-            <span className="rounded-full bg-surface px-2 py-0.5 text-[11px] font-medium text-text-muted tabular-nums">
+            <span className="rounded-full bg-surface px-2 py-0.5 text-[11px] font-semibold text-text-muted tabular-nums">
               {selecionadosAqui > 0 ? `${selecionadosAqui}/${leads.length}` : leads.length}
             </span>
           </div>
 
           {temTotal && (
-            <div className="border-b border-border px-3 py-1.5 text-[11px] text-text-muted tabular-nums">
+            <div className="border-b border-border px-3 py-1.5 font-display text-[11px] text-text-muted tabular-nums">
               {formatSomaPorMoeda(totais, formatValorDoNegocio, { primeira })}
               {ponderados !== null && (
                 <span className="ml-2">
@@ -354,7 +354,7 @@ function NomeDaEtapaNoQuadro({
           e.currentTarget.blur();
         }
       }}
-      className="min-w-0 flex-1 truncate rounded-sm bg-transparent px-1 py-0.5 text-sm font-semibold text-text outline-hidden hover:bg-surface focus:bg-surface"
+      className="min-w-0 flex-1 truncate rounded-sm bg-transparent px-1 py-0.5 font-display text-sm font-semibold text-text outline-hidden hover:bg-surface focus:bg-surface"
     />
   );
 }

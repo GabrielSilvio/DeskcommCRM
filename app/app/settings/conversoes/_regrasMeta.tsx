@@ -130,7 +130,7 @@ export function RegrasDeConversaoMeta({
     <Card className="flex flex-col gap-4 p-6" data-testid="regras-meta-por-etapa">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="max-w-2xl">
-          <h3 className="font-medium">{t("O que cada etapa do funil informa à Meta")}</h3>
+          <h3 className="font-display font-medium">{t("O que cada etapa do funil informa à Meta")}</h3>
           <p className="mt-1 text-sm text-muted-foreground">
             {t(
               "Além da venda, a Meta pode saber de quem recebeu orçamento ou agendou. Cada etapa ligada envia o seu evento uma vez por negócio, quando ele entra ali, e o anúncio aprende antes de a venda fechar.",
@@ -173,7 +173,7 @@ export function RegrasDeConversaoMeta({
                   <Label htmlFor={`evento-meta-${e.id}`}>{t("Evento enviado à Meta")}</Label>
                   <select
                     id={`evento-meta-${e.id}`}
-                    className="rounded-md border bg-background p-2 text-sm"
+                    className="rounded-md border border-border-strong bg-surface p-2 text-sm"
                     value={r.metaEvent}
                     onChange={(ev) => mudar(e.id, { metaEvent: ev.target.value as EventoDaMeta })}
                   >
@@ -184,7 +184,7 @@ export function RegrasDeConversaoMeta({
                     ))}
                   </select>
                   {r.metaEvent === "LeadSubmitted" && (
-                    <p className="text-xs text-amber-700 dark:text-amber-300">
+                    <p className="text-xs text-warning-fg">
                       {t(
                         "Leads de anúncio Click-to-WhatsApp elegíveis já informam o nascimento. Esta regra informa separadamente a entrada nesta etapa.",
                       )}
@@ -204,7 +204,7 @@ export function RegrasDeConversaoMeta({
                 <p
                   role="alert"
                   data-testid={`aviso-evento-fora-do-canal-${e.id}`}
-                  className="mt-2 rounded-md border border-amber-500/40 bg-amber-500/10 p-3 text-sm"
+                  className="mt-2 rounded-lg border border-warning/40 bg-warning-bg p-3 text-sm"
                 >
                   {t(
                     "Este evento não sai pelo canal da conversa. Para esta etapa, escolha um destes",

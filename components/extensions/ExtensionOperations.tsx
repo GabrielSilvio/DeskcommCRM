@@ -103,7 +103,7 @@ export function ExtensionOperations({
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
-                    <h3 className="text-sm font-semibold">{operationTitle(operation, t)}</h3>
+                    <h3 className="font-display text-sm font-semibold">{operationTitle(operation, t)}</h3>
                     <Badge variant={status.variant}>{t(status.label)}</Badge>
                   </div>
                   <p className="mt-1 text-xs break-all text-muted-foreground">

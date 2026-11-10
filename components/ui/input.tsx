@@ -17,7 +17,7 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
           //
           // `min-h` em vez de trocar o `h-10`: o campo que o chamador
           // dimensionou à mão continua com a medida dele.
-          "flex h-10 min-h-11 w-full rounded-sm border border-border bg-bg px-4 py-2 lg:min-h-0",
+          "flex h-10 min-h-11 w-full rounded-md border border-border-strong bg-surface px-4 py-2 lg:min-h-0",
           // `text-base md:text-sm` — e isto é conserto de COMPORTAMENTO, não de
           // tipografia.
           //
@@ -35,9 +35,9 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
           //
           // De `md` para cima volta aos 14px: ali não há zoom de foco, e a
           // densidade do formulário no laptop foi desenhada nesse tamanho.
-          "text-base text-text placeholder:text-text-muted md:text-sm",
+          "text-base text-text placeholder:text-text-subtle md:text-sm",
           "transition-[border-color,box-shadow] duration-fast ease-out",
-          "hover:border-border-strong",
+          "hover:border-accent-300",
           "focus-visible:border-accent-500 focus-visible:ring-2 focus-visible:ring-accent-soft focus-visible:outline-hidden",
           "file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-text",
           "disabled:cursor-not-allowed disabled:opacity-55",

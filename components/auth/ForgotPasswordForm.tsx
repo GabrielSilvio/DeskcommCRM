@@ -56,7 +56,7 @@ export function ForgotPasswordForm() {
   if (sent) {
     return (
       <div
-        className="space-y-2 rounded-md border bg-muted/40 px-4 py-6 text-center"
+        className="space-y-2 rounded-md border bg-bg px-4 py-6 text-center"
         role="status"
       >
         <p className="text-sm font-medium">{t("Verifique seu e-mail")}</p>
@@ -85,14 +85,14 @@ export function ForgotPasswordForm() {
       </div>
       {serverError && (
         <div
-          className="rounded-md border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm text-destructive"
+          className="rounded-md border border-error/30 bg-error-bg px-4 py-3 text-sm text-error-fg"
           role="alert"
         >
           {serverError}
         </div>
       )}
       {semResposta && <AvisoSemResposta />}
-      <Button type="submit" className="w-full" disabled={isPending}>
+      <Button type="submit" size="lg" className="h-12 w-full text-base" disabled={isPending}>
         {isPending ? t("Enviando...") : t("Enviar link de redefinição")}
       </Button>
     </form>

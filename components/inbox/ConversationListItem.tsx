@@ -104,9 +104,13 @@ interface Props {
  * podem ser mantidas em arquivos diferentes.
  */
 const COR_DO_COMANDO: Record<string, string> = {
-  humano: "bg-blue-500",
+  humano: "bg-accent",
+  // Roxo cravado de propósito: os tokens de estado só têm azul-claro (`info`)
+  // para oferecer, e ao lado do azul de ação a bolinha do automático ficava
+  // indistinguível da do humano — justo o par que esta bolinha existe para
+  // separar. O roxo é o que o produto já usava e lê bem nos dois temas.
   automatico: "bg-purple-500",
-  aguardando: "bg-amber-500",
+  aguardando: "bg-warning",
   ninguem: "bg-muted-foreground/60",
   encerrada: "bg-muted-foreground/30",
 };
@@ -293,7 +297,7 @@ export function ConversationListItem({
           data-testid={`selecao-em-lote-${conversation.id}`}
           onClick={() => onAlternarSelecao(conversation.id)}
           className={cn(
-            "mt-3 ml-2 flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border transition-colors",
+            "mt-3 ml-2 flex h-4 w-4 shrink-0 items-center justify-center rounded-[5px] border transition-colors",
             "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-accent",
             selecionado
               ? "border-accent bg-accent text-accent-foreground"
@@ -360,7 +364,7 @@ export function ConversationListItem({
         {naFila && (
           <div className="mb-1 flex items-center gap-1.5">
             <span
-              className="inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-accent-soft px-1 text-[10px] font-medium tabular-nums text-accent"
+              className="inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-accent-soft px-1 text-[10px] font-semibold tabular-nums text-accent-text"
               aria-label={`${t("Posição")} ${queuePosition} ${t("na fila")}`}
             >
               {queuePosition}º
@@ -374,8 +378,7 @@ export function ConversationListItem({
           <span className="flex min-w-0 items-center gap-1.5">
             <span
               className={cn(
-                "truncate text-sm",
-                unread > 0 ? "font-semibold text-text" : "font-medium text-text",
+                "truncate font-display text-sm font-semibold text-text",
                 c?.is_anonymized && "font-normal italic text-text-muted",
               )}
             >
@@ -422,7 +425,7 @@ export function ConversationListItem({
             {truncated}
           </p>
           {unread > 0 && (
-            <span className="inline-flex h-[18px] min-w-[18px] shrink-0 items-center justify-center rounded-full bg-accent px-1.5 text-[10px] font-semibold tabular-nums text-accent-foreground">
+            <span className="inline-flex h-[18px] min-w-[18px] shrink-0 items-center justify-center rounded-full bg-accent px-1.5 font-display text-[10px] font-semibold tabular-nums text-accent-foreground">
               {unread}
             </span>
           )}
@@ -438,7 +441,7 @@ export function ConversationListItem({
               <Badge
                 variant="outline"
                 data-testid="selo-exemplo-ia"
-                className="h-4 gap-1 px-1.5 text-[10px] font-normal text-accent"
+                className="h-4 gap-1 px-1.5 text-[10px] font-normal text-accent-text"
               >
                 <Sparkle size={10} weight="fill" aria-hidden />
                 {t("Exemplo para a IA")}
@@ -507,7 +510,7 @@ export function ConversationListItem({
           title={rotuloExemplo}
           onClick={() => onAlternarExemplo(conversation.id, !exemploMarcado)}
           className={cn(
-            "mr-1 mt-2.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-sm transition-colors",
+            "mr-1 mt-2.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full transition-colors",
             "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-accent",
             exemploMarcado
               ? "text-accent hover:bg-accent-soft"

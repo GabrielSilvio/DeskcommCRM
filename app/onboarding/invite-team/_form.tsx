@@ -69,7 +69,7 @@ export function InviteTeamForm() {
   };
 
   return (
-    <div className="space-y-4 rounded-lg border bg-background p-6">
+    <div className="space-y-4 rounded-xl border border-border bg-surface p-6">
       <div className="space-y-2">
         <Label htmlFor="emails">{t("E-mail de quem vai trabalhar com ele")}</Label>
         <Textarea
@@ -103,7 +103,7 @@ export function InviteTeamForm() {
       </div>
 
       {undelivered.length > 0 && (
-        <div className="space-y-3 rounded-md border border-amber-300/60 bg-amber-50 p-4 dark:border-amber-500/30 dark:bg-amber-950/20">
+        <div className="space-y-3 rounded-lg border border-warning/40 bg-warning-bg text-warning-fg p-4">
           <p className="text-sm font-medium">
             {t(
               "Esta instalação não envia e-mail. Os convites estão prontos — copie o link de cada pessoa e mande por onde você já fala com ela:",

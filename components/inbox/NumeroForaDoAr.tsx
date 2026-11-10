@@ -40,9 +40,9 @@ export function NumeroForaDoAr({
     <div
       role="status"
       data-testid="numero-fora-do-ar"
-      className="flex flex-wrap items-center justify-between gap-2 border-t bg-destructive/5 px-4 py-2 text-sm"
+      className="flex flex-wrap items-center justify-between gap-2 border-t bg-error-bg px-4 py-2 text-sm"
     >
-      <span className="text-destructive">{t("O número desta conversa não está conectado.")}</span>
+      <span className="font-semibold text-error-fg">{t("O número desta conversa não está conectado.")}</span>
       <Button size="sm" variant="outline" onClick={() => setAberto(true)}>
         {t("Responder por outro número")}
       </Button>

@@ -31,17 +31,17 @@ export default async function LegalLayout({ children }: { children: React.ReactN
 
   return (
     <IdiomaProvider locale={idioma}>
-      <div className="min-h-screen bg-muted/40">
-        <header className="border-b bg-background">
-          <div className="mx-auto flex w-full max-w-3xl items-center justify-between gap-4 px-6 py-4">
-            <p className="text-xs uppercase tracking-wider text-muted-foreground">{marca.nome}</p>
-            <Link href="/login" className="text-sm underline underline-offset-2">
+      <div className="min-h-screen bg-bg">
+        <header>
+          <div className="mx-auto flex w-full max-w-3xl items-center justify-between gap-4 px-4 py-5 sm:px-6">
+            <p className="font-display text-lg font-extrabold tracking-[-0.02em]">{marca.nome}</p>
+            <Link href="/login" className="inline-flex h-11 items-center rounded-full border border-border-strong bg-surface px-5 font-display text-sm font-semibold shadow-press-soft transition-all duration-base ease-spring hover:-translate-y-0.5 motion-reduce:transition-none">
               {traduzir("Voltar", idioma)}
             </Link>
           </div>
         </header>
-        <main className="mx-auto w-full max-w-3xl px-6 py-10">
-          <article className="space-y-6 rounded-lg border bg-background p-8 text-sm leading-relaxed">
+        <main className="mx-auto w-full max-w-3xl px-4 pb-12 pt-2 sm:px-6">
+          <article className="space-y-6 rounded-xl bg-surface p-6 text-sm leading-relaxed shadow-md sm:rounded-2xl sm:p-10">
             {children}
           </article>
         </main>

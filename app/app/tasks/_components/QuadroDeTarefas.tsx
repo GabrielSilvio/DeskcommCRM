@@ -200,7 +200,7 @@ export function QuadroDeTarefas({
       {cargaAtingiuOLimite(tarefas) && (
         <p
           role="status"
-          className="rounded-lg border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-xs text-amber-800 dark:text-amber-300"
+          className="rounded-lg border border-warning bg-warning-bg px-3 py-2 text-xs text-warning-fg"
         >
           {t("Só as primeiras tarefas aparecem aqui — use os filtros para ver as demais.")}
           <span className="ml-2 text-muted-foreground tabular-nums">
@@ -250,7 +250,7 @@ export function QuadroDeTarefas({
                             {...arraste.dragHandleProps}
                             data-testid={`tarefa-no-quadro-${tarefa.id}`}
                             className={cn(
-                              "rounded-lg border bg-card p-2.5 shadow-sm transition-shadow",
+                              "rounded-lg border bg-surface p-2.5 transition-shadow hover:shadow-md",
                               estado.isDragging && "shadow-md ring-2 ring-primary/40",
                               estaEncerrada(tarefa) && "opacity-70",
                             )}

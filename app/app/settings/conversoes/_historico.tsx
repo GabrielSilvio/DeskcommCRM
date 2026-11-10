@@ -41,10 +41,10 @@ const ROTULO_DA_SITUACAO: Record<Situacao, string> = {
 };
 
 const ESTILO_DA_SITUACAO: Record<Exclude<Situacao, "todas">, string> = {
-  entregue: "border-emerald-500/40 bg-emerald-500/10",
+  entregue: "border-success/40 bg-success-bg",
   falha: "border-destructive/40 bg-destructive/10",
-  aguardando: "border-sky-500/40 bg-sky-500/10",
-  nao_enviado: "border-amber-500/40 bg-amber-500/10",
+  aguardando: "border-info/40 bg-info-bg",
+  nao_enviado: "border-warning/40 bg-warning-bg",
 };
 
 const ROTULO_CURTO: Record<Exclude<Situacao, "todas">, string> = {
@@ -102,7 +102,7 @@ export function HistoricoDeEnvios({
           <select
             name="periodo"
             defaultValue={filtros.periodo}
-            className="rounded-md border bg-background p-2 text-sm"
+            className="rounded-md border border-border-strong bg-surface p-2 text-sm"
           >
             {PERIODOS.map((p) => (
               <option key={p} value={p}>
@@ -116,7 +116,7 @@ export function HistoricoDeEnvios({
           <select
             name="situacao"
             defaultValue={filtros.situacao}
-            className="rounded-md border bg-background p-2 text-sm"
+            className="rounded-md border border-border-strong bg-surface p-2 text-sm"
           >
             {(Object.keys(ROTULO_DA_SITUACAO) as Situacao[]).map((s) => (
               <option key={s} value={s}>
@@ -130,7 +130,7 @@ export function HistoricoDeEnvios({
           <select
             name="evento"
             defaultValue={filtros.evento}
-            className="rounded-md border bg-background p-2 text-sm"
+            className="rounded-md border border-border-strong bg-surface p-2 text-sm"
           >
             <option value="">{t("Todos os eventos")}</option>
             {eventos.map((e) => (
@@ -145,7 +145,7 @@ export function HistoricoDeEnvios({
           <select
             name="plataforma"
             defaultValue={filtros.plataforma}
-            className="rounded-md border bg-background p-2 text-sm"
+            className="rounded-md border border-border-strong bg-surface p-2 text-sm"
           >
             <option value="">{t("Todas")}</option>
             <option value="google_ads">Google Ads</option>
@@ -158,7 +158,7 @@ export function HistoricoDeEnvios({
             name="busca"
             defaultValue={filtros.busca}
             placeholder={t("Nome do negócio")}
-            className="rounded-md border bg-background p-2 text-sm"
+            className="rounded-md border border-border-strong bg-surface p-2 text-sm"
           />
         </label>
         <button

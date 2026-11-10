@@ -75,9 +75,9 @@ export default async function SignupPage({
 
   if (soPorConvite) {
     return (
-      <div className="space-y-6 text-center">
-        <div className="space-y-1.5">
-          <h1 className="text-2xl font-semibold tracking-tight">
+      <div className="space-y-6">
+        <div className="space-y-2">
+          <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.03em]">
             {t("Cadastro apenas por convite")}
           </h1>
           <p className="text-sm text-muted-foreground">
@@ -90,7 +90,7 @@ export default async function SignupPage({
                 )}
           </p>
         </div>
-        <Button asChild className="w-full">
+        <Button asChild size="lg" className="w-full">
           <Link href="/login">{t("Entrar")}</Link>
         </Button>
       </div>
@@ -99,9 +99,9 @@ export default async function SignupPage({
 
   return (
     <div className="space-y-6">
-      <div className="space-y-1.5 text-center">
-        <h1 className="text-2xl font-semibold tracking-tight">{t("Criar conta")}</h1>
-        <p className="text-sm text-muted-foreground">
+      <div className="space-y-2">
+        <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.03em]">{t("Criar conta")}</h1>
+        <p className="text-base text-text-muted">
           {convite
             ? t("Crie sua senha para entrar na empresa que te convidou")
             : `${t("Comece a usar o")} ${marca.nome} ${t("em minutos")}`}
@@ -116,7 +116,7 @@ export default async function SignupPage({
       {conviteExpirado && (
         <p
           role="alert"
-          className="rounded-md border border-amber-300/60 bg-amber-50 px-4 py-3 text-sm dark:border-amber-500/30 dark:bg-amber-950/20"
+          className="rounded-lg border border-warning/40 bg-warning-bg text-warning-fg px-4 py-3 text-sm"
         >
           {t(
             "Esse convite expirou ou não é mais válido. Peça um novo a quem te convidou — criar uma conta agora abriria uma empresa nova, e não é isso que você quer.",

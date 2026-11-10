@@ -139,7 +139,7 @@ export function CatalogoFinanceiro({
   return (
     <div className="space-y-4" data-testid="catalogo-financeiro">
       {/* ─── contas ─────────────────────────────────────────────────── */}
-      <section className="space-y-3 rounded-xl border p-4">
+      <section className="space-y-3 rounded-xl border bg-surface p-4">
         <h2 className="font-semibold">{t("Contas")}</h2>
         <p className="text-sm text-text-muted">
           {t(
@@ -207,7 +207,7 @@ export function CatalogoFinanceiro({
       </section>
 
       {/* ─── formas de pagamento ────────────────────────────────────── */}
-      <section className="space-y-3 rounded-xl border p-4">
+      <section className="space-y-3 rounded-xl border bg-surface p-4">
         <h2 className="font-semibold">{t("Formas de pagamento")}</h2>
         <p className="text-sm text-text-muted">
           {t(
@@ -292,7 +292,7 @@ export function CatalogoFinanceiro({
       </section>
 
       {/* ─── plano de contas ────────────────────────────────────────── */}
-      <section className="space-y-3 rounded-xl border p-4">
+      <section className="space-y-3 rounded-xl border bg-surface p-4">
         <h2 className="font-semibold">{t("Plano de contas")}</h2>
         <p className="text-sm text-text-muted">
           {t("Como cada lançamento é classificado. Entrada e saída são coisas diferentes.")}

@@ -16,15 +16,15 @@ interface KPICardProps {
 
 function KPICard({ label, value, subtitle, Icon, accent, danger }: KPICardProps) {
   const iconColor = danger
-    ? "text-red-500"
+    ? "text-error"
     : accent
-      ? "text-amber-500"
+      ? "text-warning"
       : "text-muted-foreground";
 
   const valueColor = danger
-    ? "text-red-600"
+    ? "text-error-fg"
     : accent
-      ? "text-amber-600"
+      ? "text-warning-fg"
       : "text-foreground";
 
   return (
@@ -35,7 +35,7 @@ function KPICard({ label, value, subtitle, Icon, accent, danger }: KPICardProps)
             <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
               {label}
             </p>
-            <p className={`text-3xl font-bold tabular-nums ${valueColor}`}>{value}</p>
+            <p className={`font-display text-3xl font-bold tabular-nums ${valueColor}`}>{value}</p>
             <p className="text-xs text-muted-foreground">{subtitle}</p>
           </div>
           <Icon className={`h-5 w-5 mt-0.5 shrink-0 ${iconColor}`} />

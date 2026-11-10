@@ -17,14 +17,14 @@ export function SearchTrigger() {
   return (
     <>
       <Button
-        variant="outline"
+        variant="ghost"
         size="sm"
-        className="gap-2 text-muted-foreground"
+        className="w-full max-w-md justify-start gap-2 rounded-full bg-surface-elevated text-text-muted hover:bg-surface-elevated hover:text-text"
         onClick={() => setOpen(true)}
       >
         <MagnifyingGlass size={14} aria-hidden />
         <span className="max-md:sr-only">{t("Buscar...")}</span>
-        <kbd className="ml-2 hidden md:inline rounded-md border bg-muted px-1.5 py-0.5 text-[10px]">⌘K</kbd>
+        <kbd className="ml-auto hidden rounded-[6px] border border-border bg-surface px-1.5 py-0.5 text-[10px] md:inline">⌘K</kbd>
       </Button>
       <CommandPalette open={open} onOpenChange={setOpen} />
     </>

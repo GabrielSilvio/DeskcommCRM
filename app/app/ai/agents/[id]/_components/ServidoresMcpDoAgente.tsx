@@ -236,7 +236,7 @@ export function ServidoresMcpDoAgente({ agentId, toolIds, onChangeToolIds, disab
     <Card className="space-y-3 p-4" data-testid="servidores-mcp-do-agente">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
-          <h3 className="text-sm font-medium">{t("Servidores MCP do agente")}</h3>
+          <h3 className="font-display text-sm font-semibold">{t("Servidores MCP do agente")}</h3>
           <p className="text-xs text-muted-foreground">
             {t("Sistemas externos que este agente consulta. No modo OAuth, cada cliente autoriza o acesso à própria conta pelo link que o agente envia na conversa.")}
           </p>
@@ -442,7 +442,7 @@ export function ServidoresMcpDoAgente({ agentId, toolIds, onChangeToolIds, disab
                 <p className="text-xs text-muted-foreground">{t("0 = o acesso é revogado assim que a conversa é encerrada.")}</p>
               </div>
 
-              <div className="space-y-1 rounded-md border border-amber-500/40 bg-amber-500/10 p-3">
+              <div className="space-y-1 rounded-md border border-warning/40 bg-warning-bg p-3">
                 <div className="flex items-center gap-2">
                   <Switch
                     id="mcp-escrita-delegada"
@@ -452,7 +452,7 @@ export function ServidoresMcpDoAgente({ agentId, toolIds, onChangeToolIds, disab
                   />
                   <Label htmlFor="mcp-escrita-delegada">{t("Permitir ações (escrita) durante a conversa")}</Label>
                 </div>
-                <p className="text-xs text-amber-700 dark:text-amber-400">
+                <p className="text-xs text-warning-fg">
                   {t("Ligado, as ferramentas que você marcar como Escrita podem agir na conta do cliente (ligar um aparelho, alterar um pedido) durante a conversa, com o acesso que ele mesmo autorizou. O agente pode errar: ligue só para ações que o cliente pediria a um atendente, e confira a auditoria.")}
                 </p>
               </div>

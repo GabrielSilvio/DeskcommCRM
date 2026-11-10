@@ -20,6 +20,10 @@ const TooltipContent = React.forwardRef<
       ref={ref}
       sideOffset={sideOffset}
       className={cn(
+        // Cores: `bg-tint-ink` com `text-bg`. O tint-ink é azul-marinho no claro e
+        // quase branco no escuro, e o fundo da página faz o papel inverso: o texto
+        // contrasta nos dois temas sem token novo.
+        //
         // A LARGURA MÁXIMA MORA AQUI, na classe base — não em quem usa o tooltip.
         //
         // O Radix desenha o balão com `minWidth: max-content` (react-popper) e nada
@@ -33,7 +37,7 @@ const TooltipContent = React.forwardRef<
         // tooltip, inclusive os que nascem de dado — e `break-words` é o par
         // obrigatório disso: sem ele, um erro de provedor sem espaço (URL, hash) é
         // cortado pelo `overflow-hidden` em vez de quebrar a linha.
-        "ds-painel z-50 max-w-xs origin-(--radix-tooltip-content-transform-origin) overflow-hidden rounded-md bg-primary px-3 py-1.5 text-xs break-words text-primary-foreground",
+        "ds-painel z-50 max-w-xs origin-(--radix-tooltip-content-transform-origin) overflow-hidden rounded-sm bg-tint-ink px-3 py-1.5 text-xs font-medium break-words text-bg shadow-md",
         className,
       )}
       {...props}

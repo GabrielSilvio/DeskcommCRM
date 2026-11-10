@@ -11,8 +11,8 @@ export default async function ConnectNuvemshopPage() {
   return (
     <div className="space-y-6">
       <header>
-        <h2 className="text-2xl font-semibold tracking-tight">{traduzir("Conectar Nuvemshop", idioma)}</h2>
-        <p className="text-sm text-muted-foreground">
+        <h2 className="font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.03em]">{traduzir("Conectar Nuvemshop", idioma)}</h2>
+        <p className="text-base text-text-muted">
           {traduzir("Importe pedidos, clientes e produtos da sua loja Nuvemshop.", idioma)}
         </p>
       </header>

@@ -213,7 +213,7 @@ export function InstalledExtensionCard({
   return (
     <Card className="flex h-full flex-col p-5" data-testid={`extension-installed-${extension.id}`}>
       <div className="flex items-start gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-accent-soft text-accent">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent-soft text-accent-text">
           <Icon size={22} weight="duotone" aria-hidden />
         </div>
         <div className="min-w-0 flex-1">
@@ -249,7 +249,7 @@ export function InstalledExtensionCard({
       {deactivatedByRemoval}
 
       {canInstall ? (
-        <h3 className="mt-4 text-sm font-semibold">{t("Nesta organização")}</h3>
+        <h3 className="font-display mt-4 text-sm font-semibold">{t("Nesta organização")}</h3>
       ) : null}
 
       {!extension.compatible ? (
@@ -482,7 +482,7 @@ function PlatformBlock({
       data-testid={`extension-platform-${extension.id}`}
     >
       <div>
-        <h3 className="text-sm font-semibold">{t("Em todas as organizações")}</h3>
+        <h3 className="font-display text-sm font-semibold">{t("Em todas as organizações")}</h3>
         <p className="mt-0.5 text-xs text-muted-foreground" data-testid={`extension-active-count-${extension.id}`}>
           {organizacoesAtivas(t, active)}
         </p>

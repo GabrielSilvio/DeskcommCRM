@@ -50,7 +50,7 @@ function shortEmail(email: string | null): string {
 export function PlatformAdminsTableSkeleton() {
   const t = useT();
   return (
-    <div className="rounded-md border">
+    <div className="overflow-hidden rounded-lg border border-border bg-surface">
       <Table>
         <TableHeader>
           <TableRow>
@@ -133,7 +133,7 @@ export function PlatformAdminsTable({ data }: PlatformAdminsTableProps) {
   if (data.length === 0) return <EmptyState />;
 
   return (
-    <div className="rounded-md border">
+    <div className="overflow-hidden rounded-lg border border-border bg-surface">
       <Table>
         <TableHeader>
           <TableRow>
@@ -206,7 +206,7 @@ export function PlatformAdminsTable({ data }: PlatformAdminsTableProps) {
                   ) : (
                     <Badge
                       variant="outline"
-                      className="border-green-500 text-[10px] text-green-700"
+                      className="border-success text-[10px] text-success-fg"
                     >
                       {t("Ativo")}
                     </Badge>

@@ -444,8 +444,8 @@ export function FormularioDaDefinicao({
              é recusada, e a recusa chega horas depois sem ninguém ligar uma
              coisa à outra. O formulário deixava digitar `{{1}}` e nunca
              pedia o exemplo. */
-          <div className="flex flex-col gap-1.5 rounded-md border border-amber-300 bg-amber-50/50 p-2 dark:border-amber-800/60 dark:bg-amber-950/20">
-            <p className="text-[11px] text-amber-900 dark:text-amber-200">
+          <div className="flex flex-col gap-1.5 rounded-md border border-warning bg-warning-bg p-2">
+            <p className="text-[11px] text-warning-fg">
               {t("A revisão exige um exemplo de cada valor. Sem eles o modelo é recusado.")}
             </p>
             {Array.from({ length: nVariaveis }, (_, i) => {

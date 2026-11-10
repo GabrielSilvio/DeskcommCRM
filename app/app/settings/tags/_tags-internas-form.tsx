@@ -115,7 +115,7 @@ export function TagsInternasForm({
     <Card className="p-6">
       <form onSubmit={salvar} className="flex flex-col gap-5">
         <div className="flex flex-col gap-1">
-          <h3 className="text-sm font-semibold">{t(textos.titulo)}</h3>
+          <h3 className="font-display text-sm font-semibold">{t(textos.titulo)}</h3>
           <p className="max-w-2xl text-xs text-muted-foreground">{t(textos.descricao)}</p>
         </div>
 

@@ -277,7 +277,7 @@ export function AtendimentoForm({
         {combinacaoMorta ? (
           <p
             data-testid="aviso-combinacao-morta"
-            className="rounded-md border border-amber-500/40 bg-amber-50/60 p-3 text-xs dark:bg-amber-900/10"
+            className="rounded-lg border border-warning/40 bg-warning-bg p-3 text-xs"
           >
             {t("Com")} <strong>&ldquo;{t("só os seus")}&rdquo;</strong>{" "}
             {t(

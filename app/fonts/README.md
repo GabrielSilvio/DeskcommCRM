@@ -6,7 +6,8 @@ as fontes do Google **durante o `next build`** — e o build do CI falhava sempr
 que essa busca falhava (`Can't resolve '@vercel/turbopack-next/internal/font/google/font'`).
 Com os arquivos aqui, o build não depende de rede para fonte.
 
-Os arquivos são os **servidos pelo próprio Google Fonts**, sem nenhuma
+Os arquivos são os **servidos pelo próprio Google Fonts** (Figtree e Gabarito
+vêm do fontsource, o espelho npm/CDN das mesmas fontes OFL), sem nenhuma
 alteração nossa. Família, pesos, eixos e cobertura de caracteres são os mesmos
 que o `next/font/google` baixava.
 
@@ -21,6 +22,8 @@ que o `next/font/google` baixava.
 | `source-serif-4-200-900-latin.woff2` | Source Serif 4 | variável 200–900 | latin | `sourceserif4/v14` |
 | `ibm-plex-sans-300-700-latin.woff2` | IBM Plex Sans | variável, usada em 300–700 | latin | `ibmplexsans/v23` |
 | `jetbrains-mono-100-800-latin.woff2` | JetBrains Mono | variável 100–800 | latin | `jetbrainsmono/v24` |
+| `figtree-300-900-latin.woff2` | Figtree | variável 300–900 | latin | fontsource `figtree:vf` (jsDelivr) |
+| `gabarito-400-900-latin.woff2` | Gabarito | variável 400–900 | latin | fontsource `gabarito:vf` (jsDelivr) |
 
 ## Como baixar de novo
 
@@ -41,6 +44,16 @@ subsets juntos (e sem hinting, como o do Chrome):
 UA='Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:40.0) Gecko/20100101 Firefox/40.0'
 curl -sA "$UA" 'https://fonts.googleapis.com/css?family=Atkinson+Hyperlegible:400,700|IBM+Plex+Mono:400,500&subset=latin,latin-ext&display=swap'
 ```
+
+Figtree e Gabarito (subset latin, eixo `wght`) vêm do fontsource, sem enviar dado nenhum:
+
+```bash
+curl -sfLO 'https://cdn.jsdelivr.net/fontsource/fonts/figtree:vf@latest/latin-wght-normal.woff2'
+curl -sfLO 'https://cdn.jsdelivr.net/fontsource/fonts/gabarito:vf@latest/latin-wght-normal.woff2'
+```
+
+Depois renomeie para o padrão da pasta (`figtree-300-900-latin.woff2`,
+`gabarito-400-900-latin.woff2`) e confira o cabeçalho `wOF2`.
 
 ## Licença
 

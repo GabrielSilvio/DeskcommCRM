@@ -88,7 +88,7 @@ export function MfaForm({ next }: MfaFormProps) {
           type="checkbox"
           checked={confiar}
           onChange={(e) => setConfiar(e.target.checked)}
-          className="mt-0.5 h-4 w-4 rounded-md border-border"
+          className="mt-0.5 h-4 w-4 rounded-[5px] border-border"
         />
         <span>{t("Confiar neste dispositivo por 30 dias")}</span>
       </label>
@@ -96,7 +96,7 @@ export function MfaForm({ next }: MfaFormProps) {
       {error && (
         <div
           role="alert"
-          className="rounded-md border border-destructive/30 bg-destructive/10 px-3 py-2 text-center text-sm text-destructive"
+          className="rounded-md border border-error/30 bg-error-bg px-4 py-3 text-center text-sm text-error-fg"
         >
           {locked && secondsLeft > 0
             ? `${t("Muitas tentativas. Tente novamente em")} ${secondsLeft}s.`

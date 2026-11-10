@@ -182,7 +182,7 @@ export function ChaveDeConhecimento({ estado, onChaveCadastrada }: Props) {
       <div className="flex items-start gap-2">
         <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0 text-warning-fg" aria-hidden />
         <div className="space-y-1">
-          <h3 className="text-sm font-medium">
+          <h3 className="font-display text-sm font-semibold">
             {semChave === "google"
               ? t("A base é preparada pelo Google, e a chave do Google não está mais utilizável")
               : semChave === "openai"

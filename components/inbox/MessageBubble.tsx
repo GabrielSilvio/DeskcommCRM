@@ -103,7 +103,7 @@ function AckIndicator({ status, paradaSemConexao, saiSozinha, t }: {
     );
   }
   if (status === "read") {
-    return <Checks size={12} weight="bold" className="text-blue-400" aria-label={t("Lida")} />;
+    return <Checks size={12} weight="bold" className="text-accent-200" aria-label={t("Lida")} />;
   }
   if (status === "delivered") {
     return <Checks size={12} weight="bold" className="text-current/70" aria-label={t("Entregue")} />;
@@ -364,14 +364,14 @@ export function MessageBubble({
           isBareSticker
             ? "px-0 py-0"
             : cn(
-                "rounded-2xl px-3 py-2 shadow-sm",
+                "rounded-lg px-3 py-2 shadow-sm",
                 temMenu && "pr-8",
                 // A área de toque da seta ocupa 48px. O documento precisa
                 // terminar antes dela, inclusive quando o cartão encolhe.
                 temMenu && cartaoDeDocumentoVisivel && "pointer-coarse:pr-12 pointer-coarse:max-w-[85%]",
                 isOutbound
                   ? "rounded-br-sm bg-primary text-primary-foreground"
-                  : "rounded-bl-sm bg-muted text-foreground",
+                  : "rounded-bl-sm border border-border bg-surface text-foreground",
               ),
           // O pulo da agenda não é falha: o selo diz isso, e a moldura de erro
           // diria o contrário (#3850).
@@ -579,7 +579,7 @@ export function MessageBubble({
             {porModelo && (
               <div
                 data-testid="selo-do-modelo"
-                className="mb-1 inline-flex max-w-full items-center gap-1 rounded-sm bg-current/10 px-1.5 py-0.5 text-[10px] font-medium"
+                className="mb-1 inline-flex max-w-full items-center gap-1 rounded-full bg-current/10 px-1.5 py-0.5 text-[10px] font-medium"
               >
                 <FileText size={11} weight="bold" aria-hidden />
                 <span className="truncate">

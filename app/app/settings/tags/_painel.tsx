@@ -314,7 +314,7 @@ export function PainelDeTags({ tags, idioma, paginado = false }: { tags: LinhaDe
                       // registro sem passar por nenhuma tela de cadastro. Dar cor
                       // (o botão ao lado) traz a etiqueta para o vocabulário —
                       // escolher como ela aparece É curá-la.
-                      <span className="ml-2 rounded-md bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
+                      <span className="ml-2 rounded-full bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
                         {t("em uso, fora do vocabulário")}
                       </span>
                     )}
@@ -389,7 +389,7 @@ export function PainelDeTags({ tags, idioma, paginado = false }: { tags: LinhaDe
 
           {acao === "excluir" ? (
             alvo.em_regras > 0 && (
-              <p className="rounded-md border border-amber-500/40 bg-amber-500/10 p-3 text-sm">
+              <p className="rounded-lg border border-warning/40 bg-warning-bg p-3 text-sm">
                 {t("Atenção:")} {alvo.em_regras}{" "}
                 {t(
                   "regra(s) de agente continuam citando esta etiqueta. Excluir aqui não apaga a regra — a que põe a etiqueta vai recriá-la no próximo atendimento.",
@@ -405,14 +405,14 @@ export function PainelDeTags({ tags, idioma, paginado = false }: { tags: LinhaDe
                   placeholder={t("Digite o nome exato da etiqueta de destino")}/>
                 <datalist id="destinos-da-juncao">{destinos.map(linha=><option key={linha.tag} value={linha.tag}/>)}</datalist>
                 {destinoDaJuncaoInexistente && (
-                  <p role="alert" className="rounded-md border border-amber-500/40 bg-amber-500/10 p-3 text-sm">
+                  <p role="alert" className="rounded-lg border border-warning/40 bg-warning-bg p-3 text-sm">
                     {t(DESTINO_INEXISTENTE)}
                   </p>
                 )}
               </> :
               <select
                 id="destino-da-juncao"
-                className="h-9 rounded-md border border-input bg-background px-2 text-sm"
+                className="h-9 rounded-md border border-border-strong bg-surface px-2 text-sm"
                 value={destino}
                 onChange={(evento) => setDestino(evento.target.value)}
               >
@@ -483,7 +483,7 @@ export function PainelDeTags({ tags, idioma, paginado = false }: { tags: LinhaDe
                 // desfazer — então quem lê este aviso ainda pode escolher
                 // "Juntar" de propósito, ou outro nome. Mesma régua visual do
                 // aviso de `excluir` abaixo: a frase diz o que vai acontecer.
-                <p className="rounded-md border border-amber-500/40 bg-amber-500/10 p-3 text-sm">
+                <p className="rounded-lg border border-warning/40 bg-warning-bg p-3 text-sm">
                   {t(
                     "Este nome já existe no vocabulário — confirmar vai juntar as duas etiquetas numa só.",
                   )}

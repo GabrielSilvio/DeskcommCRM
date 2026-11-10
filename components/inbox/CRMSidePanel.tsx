@@ -770,7 +770,7 @@ function BotaoDeRecolherDoPainel({
       onClick={onAlternar}
       // Vocabulário e ícone iguais aos do menu da esquerda (`BotaoDeRecolher`).
       className={cn(
-        "flex items-center gap-1 rounded-md px-2 py-1 text-xs text-muted-foreground hover:bg-accent/50 hover:text-foreground",
+        "flex items-center gap-1 rounded-md px-2 py-1 text-xs text-muted-foreground hover:bg-accent-soft hover:text-foreground",
         recolhido && "justify-center",
       )}
       aria-label={rotulo}

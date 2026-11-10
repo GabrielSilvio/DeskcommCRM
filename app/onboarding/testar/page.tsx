@@ -36,8 +36,8 @@ export default async function TestarPage() {
   return (
     <div className="space-y-6">
       <header>
-        <h2 className="text-2xl font-semibold tracking-tight">{traduzir("Veja ele atender", idioma)}</h2>
-        <p className="text-sm text-muted-foreground">
+        <h2 className="font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.03em]">{traduzir("Veja ele atender", idioma)}</h2>
+        <p className="text-base text-text-muted">
           {traduzir(
             "Escreva como se fosse um cliente. Nada é enviado pelo WhatsApp — é só um ensaio, entre você e ele.",
             idioma,

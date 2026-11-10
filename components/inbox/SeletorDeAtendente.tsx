@@ -46,7 +46,7 @@ function SeletorComEquipe({
       <SelectTrigger
         className={cn(
           "h-8 min-w-0 flex-1 rounded-full border-transparent bg-surface-elevated px-3 text-xs shadow-none",
-          value != null && "border-accent bg-accent-soft text-accent",
+          value != null && "border-accent bg-accent-soft text-accent-text",
         )}
         aria-label={t("Filtrar por atendente")}
       >

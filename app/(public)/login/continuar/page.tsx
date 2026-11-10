@@ -34,10 +34,10 @@ export default async function ContinuarPage({
 
   if (!tokenHash || !type) {
     return (
-      <div className="space-y-6 text-center">
-        <h1 className="text-2xl font-semibold tracking-tight">{t("Link inválido ou incompleto")}</h1>
-        <p className="text-sm text-muted-foreground">{t("Peça um novo link para continuar.")}</p>
-        <Link href="/login/forgot" className="text-sm font-medium text-foreground underline underline-offset-4">
+      <div className="space-y-6">
+        <h1 className="font-display text-3xl font-extrabold leading-[1.1] tracking-[-0.03em]">{t("Link inválido ou incompleto")}</h1>
+        <p className="text-base text-text-muted">{t("Peça um novo link para continuar.")}</p>
+        <Link href="/login/forgot" className="text-sm font-medium text-accent-text underline underline-offset-4">
           {t("Recuperar senha")}
         </Link>
       </div>
@@ -46,16 +46,16 @@ export default async function ContinuarPage({
 
   return (
     <div className="space-y-6">
-      <div className="space-y-1.5 text-center">
-        <h1 className="text-2xl font-semibold tracking-tight">{t("Confirmar acesso")}</h1>
-        <p className="text-sm text-muted-foreground">
+      <div className="space-y-2">
+        <h1 className="font-display text-3xl font-extrabold leading-[1.1] tracking-[-0.03em]">{t("Confirmar acesso")}</h1>
+        <p className="text-base text-text-muted">
           {t("Para sua segurança, confirme que foi você quem abriu este link.")}
         </p>
       </div>
       <form method="post" action="/auth/confirm">
         <input type="hidden" name="token_hash" value={tokenHash} />
         <input type="hidden" name="type" value={type} />
-        <Button type="submit" className="w-full">
+        <Button type="submit" size="lg" className="h-12 w-full text-base">
           {t("Continuar")}
         </Button>
       </form>

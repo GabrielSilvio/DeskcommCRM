@@ -959,7 +959,7 @@ function Sessao({
                   <p className="mb-2 whitespace-pre-wrap break-words leading-relaxed text-text-muted">{lead.descricao}</p>
                 )}
                 {lead.contato_id && (
-                  <Link href={`/app/contacts/${lead.contato_id}`} className="text-accent hover:underline">
+                  <Link href={`/app/contacts/${lead.contato_id}`} className="text-accent-text hover:underline">
                     {t("Ver contato")}
                   </Link>
                 )}

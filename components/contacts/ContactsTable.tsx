@@ -229,7 +229,7 @@ export function ContactsTable({
                 title={t("Selecionar todas")}
                 data-testid="selecionar-todos-contatos"
                 onClick={onSelecionarTodosVisiveis}
-                className="flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border border-muted-foreground bg-background transition-colors hover:bg-surface-elevated focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-accent"
+                className="flex h-4 w-4 shrink-0 items-center justify-center rounded-[5px] border border-muted-foreground bg-background transition-colors hover:bg-surface-elevated focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-accent"
               >
                 {selecionados && contacts.every((c) => selecionados.has(c.id)) && (
                   <Check size={12} weight="bold" aria-hidden />
@@ -287,13 +287,13 @@ export function ContactsTable({
                   aria-label={`${t("Selecionar contato")} ${displayName(c, t)}`}
                   data-testid={`selecionar-contato-${c.id}`}
                   onClick={() => onAlternarSelecao(c.id)}
-                  className="relative flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border border-muted-foreground bg-background transition-colors hover:bg-surface-elevated focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-accent pointer-coarse:before:absolute pointer-coarse:before:-inset-3.5"
+                  className="relative flex h-4 w-4 shrink-0 items-center justify-center rounded-[5px] border border-muted-foreground bg-background transition-colors hover:bg-surface-elevated focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-accent pointer-coarse:before:absolute pointer-coarse:before:-inset-3.5"
                 >
                   {selecionados?.has(c.id) && <Check size={12} weight="bold" aria-hidden />}
                 </button>
               </TableCell>
             )}
-            <TableCell className="font-medium max-md:min-w-0 max-md:flex-1 max-md:p-0 max-md:wrap-anywhere">
+            <TableCell className="font-display font-semibold max-md:min-w-0 max-md:flex-1 max-md:p-0 max-md:wrap-anywhere">
               <Link
                 href={`/app/contacts/${c.id}`}
                 className="hover:underline max-md:flex max-md:min-h-11 max-md:items-center"

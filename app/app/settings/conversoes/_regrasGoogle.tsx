@@ -178,7 +178,7 @@ export function RegrasDeConversaoGoogle({
     <Card className="flex flex-col gap-4 p-6" data-testid="regras-google-por-etapa">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="max-w-2xl">
-          <h3 className="font-medium">{t("O que cada etapa do funil informa ao Google Ads")}</h3>
+          <h3 className="font-display font-medium">{t("O que cada etapa do funil informa ao Google Ads")}</h3>
           <p className="mt-1 text-sm text-muted-foreground">
             {t(
               "Quanto mais cedo você avisa, mais dados a campanha tem para aprender — mas só a venda ensina o Google a buscar quem compra. Cada etapa ligada envia a sua ação de conversão uma vez por negócio, quando ele entra ali.",
@@ -261,7 +261,7 @@ export function RegrasDeConversaoGoogle({
                     <Label htmlFor={`categoria-${e.id}`}>{t("Categoria da conversão")}</Label>
                     <select
                       id={`categoria-${e.id}`}
-                      className="rounded-md border bg-background p-2 text-sm"
+                      className="rounded-md border border-border-strong bg-surface p-2 text-sm"
                       value={r.category}
                       onChange={(ev) =>
                         mudar(e.id, { category: ev.target.value as CategoriaDeConversao })
@@ -281,7 +281,7 @@ export function RegrasDeConversaoGoogle({
                     <Label htmlFor={`canal-${e.id}`}>{t("Canal de entrada")}</Label>
                     <select
                       id={`canal-${e.id}`}
-                      className="rounded-md border bg-background p-2 text-sm"
+                      className="rounded-md border border-border-strong bg-surface p-2 text-sm"
                       value={r.channel}
                       onChange={(ev) => mudar(e.id, { channel: ev.target.value as CanalDeEntrada })}
                     >

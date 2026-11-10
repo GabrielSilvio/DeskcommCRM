@@ -25,26 +25,29 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* ─────────────────────────────────────────────────────────────────────────
-   DeskcommCRM — Design System tokens (Sage palette · density Aerada)
-   Source of truth: /app/design/lib/tokens.ts (PALETTES.sage)
+   DeskcommCRM — Design System tokens (paleta Cobalto · azul-marinho frio nos
+   neutros, raio grande, relevo macio nos botões).
+   A rampa de ação abaixo é o PADRÃO do produto: cada instalação a troca em
+   runtime pela cor da própria marca (lib/branding). `app/design/lib/tokens.ts`
+   guarda a paleta antiga só para o showcase de /design; não é régua daqui.
    Light + dark drawn separately (NOT inverted).
    ───────────────────────────────────────────────────────────────────────── */
 
 :root {
   /* Surfaces (light) */
-  --color-bg: #faf9f6;
+  --color-bg: #f3f5fc;
   --color-surface: #ffffff;
-  --color-surface-elevated: #f5f3ee;
-  --color-overlay: rgba(28, 26, 22, 0.42);
+  --color-surface-elevated: #e9edf9;
+  --color-overlay: rgba(12, 18, 48, 0.5);
 
   /* Text (light) */
-  --color-text: #1c1a16;
-  --color-text-muted: #5d594f;
-  --color-text-subtle: #7d786c;
+  --color-text: #0c1230;
+  --color-text-muted: #4f5876;
+  --color-text-subtle: #6b7493;
 
   /* Borders (light) */
-  --color-border: #e7e3da;
-  --color-border-strong: #d2cdbf;
+  --color-border: #dfe4f3;
+  --color-border-strong: #c5cde6;
 
   /* ---- Identidade de canal (#4094) -------------------------------------
    * A cor da faixa/ícone que marca DE ONDE veio a mensagem (aviso da esquina
@@ -58,49 +61,53 @@
   --color-canal-messenger: #0866ff;
   --color-canal-telegram: #0088cc;
 
-  /* Accent — Sage (11 stops) */
-  --color-accent-50: #f3f6f1;
-  --color-accent-100: #e4ebe0;
-  --color-accent-200: #c8d6c1;
-  --color-accent-300: #a4ba9a;
-  --color-accent-400: #82a077;
-  --color-accent-500: #67885d;
-  --color-accent-600: #506d48;
-  --color-accent-700: #41573b;
-  --color-accent-800: #374731;
-  --color-accent-900: #2f3c2b;
-  --color-accent-950: #171f15;
+  /* Accent — Cobalto (11 stops). Os graus são a rampa DERIVADA de #2f5bea por
+     `rampaDeSemente` (lib/branding/rampa.ts): `tests/unit/branding-rampa.test.ts`
+     exige que o CSS e a derivação coincidam, para que o produto sem marca e a
+     instalação que informa o mesmo hex pintem pixel por pixel igual. */
+  --color-accent-50: #f0f5ff;
+  --color-accent-100: #dfe9ff;
+  --color-accent-200: #bfd3ff;
+  --color-accent-300: #95b5ff;
+  --color-accent-400: #6c96ff;
+  --color-accent-500: #4979ff;
+  --color-accent-600: #2f5bea;
+  --color-accent-700: #274ab5;
+  --color-accent-800: #223e90;
+  --color-accent-900: #1f3675;
+  --color-accent-950: #0c193e;
   --color-accent: var(--color-accent-600);
   --color-accent-fg: #ffffff;
   --color-accent-soft: var(--color-accent-100);
   --color-accent-hover: var(--color-accent-700);
+  --color-accent-text: var(--color-accent-700);
 
-  /* Neutrals — greige (11 stops, light) */
-  --color-neutral-50: #faf9f6;
-  --color-neutral-100: #f3f1ec;
-  --color-neutral-200: #e7e3da;
-  --color-neutral-300: #d2cdbf;
-  --color-neutral-400: #a9a395;
-  --color-neutral-500: #7d786c;
-  --color-neutral-600: #5d594f;
-  --color-neutral-700: #46433b;
-  --color-neutral-800: #2e2c26;
-  --color-neutral-900: #1c1a16;
-  --color-neutral-950: #0e0d0a;
+  /* Neutrals — azul-marinho frio (11 stops, light) */
+  --color-neutral-50: #f3f5fc;
+  --color-neutral-100: #e9edf9;
+  --color-neutral-200: #dfe4f3;
+  --color-neutral-300: #c5cde6;
+  --color-neutral-400: #9aa3c2;
+  --color-neutral-500: #6b7493;
+  --color-neutral-600: #4f5876;
+  --color-neutral-700: #3a4262;
+  --color-neutral-800: #1d2547;
+  --color-neutral-900: #0c1230;
+  --color-neutral-950: #060a1c;
 
   /* States (light) */
-  --color-success: #5a8a5f;
-  --color-success-bg: rgba(90, 138, 95, 0.12);
-  --color-success-fg: #41673f;
-  --color-warning: #b07a2b;
-  --color-warning-bg: rgba(176, 122, 43, 0.12);
-  --color-warning-fg: #875a1a;
-  --color-error: #a94a3c;
-  --color-error-bg: rgba(169, 74, 60, 0.12);
-  --color-error-fg: #8a3a2e;
-  --color-info: #4a7a93;
-  --color-info-bg: rgba(74, 122, 147, 0.12);
-  --color-info-fg: #355d72;
+  --color-success: #14a85c;
+  --color-success-bg: #dbf6e7;
+  --color-success-fg: #0b6e3b;
+  --color-warning: #e2a100;
+  --color-warning-bg: #fff0c9;
+  --color-warning-fg: #8a5a00;
+  --color-error: #e5412b;
+  --color-error-bg: #ffe3dd;
+  --color-error-fg: #b3301f;
+  --color-info: #1f8fd6;
+  --color-info-bg: #dcf0fc;
+  --color-info-fg: #0d5f96;
 
   /* Spacing (4-base) */
   --space-0: 0px;
@@ -120,24 +127,36 @@
 
   /* Radius */
   --radius-none: 0px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  /* Dialog e blocos grandes. Não varia por tema, por isso só mora no :root. */
+  --radius-2xl: 40px;
   --radius-full: 9999px;
 
-  /* Shadows — desaturated, neutral-based */
-  --shadow-xs: 0 1px 2px 0 rgba(20, 18, 14, 0.04);
-  --shadow-sm: 0 1px 2px 0 rgba(20, 18, 14, 0.05), 0 1px 1px 0 rgba(20, 18, 14, 0.03);
-  --shadow-md: 0 4px 12px -2px rgba(20, 18, 14, 0.06), 0 2px 4px -1px rgba(20, 18, 14, 0.04);
-  --shadow-lg: 0 12px 32px -6px rgba(20, 18, 14, 0.1), 0 4px 12px -2px rgba(20, 18, 14, 0.06);
-  --shadow-xl: 0 24px 48px -12px rgba(20, 18, 14, 0.16), 0 8px 16px -4px rgba(20, 18, 14, 0.08);
+  /* Shadows — frias, puxadas para o azul-marinho do texto */
+  --shadow-xs: 0 1px 0 rgba(12, 18, 48, 0.06);
+  --shadow-sm: 0 1px 2px rgba(12, 18, 48, 0.06), 0 4px 10px -6px rgba(12, 18, 48, 0.14);
+  --shadow-md: 0 2px 4px rgba(12, 18, 48, 0.04), 0 14px 30px -16px rgba(12, 18, 48, 0.25);
+  --shadow-lg: 0 2px 4px rgba(12, 18, 48, 0.04), 0 24px 60px -24px rgba(12, 18, 48, 0.3);
+  --shadow-xl: 0 40px 100px -30px rgba(12, 18, 48, 0.55);
+  /* Tons de assunto — organizam temas, NUNCA comunicam estado (para estado há
+     success/warning/error/info). Variam por tema, então entram nos três blocos. */
+  --tint-sky: #dde6ff;
+  --tint-mint: #d5f5e2;
+  --tint-butter: #ffefba;
+  --tint-peach: #ffdfd4;
+  --tint-ink: #1d2547;
+  /* Relevo de baixo dos botões (3D macio): cheio e neutro. */
+  --press: inset 0 -3px 0 rgba(0, 0, 0, 0.14);
+  --press-soft: inset 0 -3px 0 rgba(12, 18, 48, 0.07);
 
-  /* Density — Aerada */
+  /* Density — linha de 56 mantida, respiro lateral mais apertado */
   --density-row: 56px;
-  --density-gap: 24px;
-  --density-px: 20px;
-  --density-py: 16px;
+  --density-gap: 20px;
+  --density-px: 16px;
+  --density-py: 14px;
 
   /* Motion — os quatro pares canônicos de `docs/design-system/07-motion-language.md`.
      Os nomes daqui são os de lá: `ease-out` = `ease-out-fast` (hover, micro-feedback),
@@ -266,7 +285,7 @@
    As 11 paradas `--color-accent-NNN` ficam DE FORA de propósito. Elas são
    idênticas nos dois blocos do produto, então omiti-las não muda pixel algum
    aqui; e, na instalação que trocou a cor, a subárvore clara passa a herdar a
-   rampa do `<html>` (a do revendedor) em vez de fixar a Sage. Pelo mesmo
+   rampa do `<html>` (a do revendedor) em vez de fixar a rampa Cobalto. Pelo mesmo
    motivo os papéis abaixo mantêm a forma `var(--color-accent-NNN)`.
 
    Buraco conhecido: `--color-accent-fg` é literal `#ffffff` e, numa subárvore
@@ -275,15 +294,15 @@
    (lib/branding/css.ts), que só ganha consumidor com a tela de marca.
    ───────────────────────────────────────────────────────────────────────── */
 [data-theme="light"] {
-  --color-bg: #faf9f6;
+  --color-bg: #f3f5fc;
   --color-surface: #ffffff;
-  --color-surface-elevated: #f5f3ee;
-  --color-overlay: rgba(28, 26, 22, 0.42);
-  --color-text: #1c1a16;
-  --color-text-muted: #5d594f;
-  --color-text-subtle: #7d786c;
-  --color-border: #e7e3da;
-  --color-border-strong: #d2cdbf;
+  --color-surface-elevated: #e9edf9;
+  --color-overlay: rgba(12, 18, 48, 0.5);
+  --color-text: #0c1230;
+  --color-text-muted: #4f5876;
+  --color-text-subtle: #6b7493;
+  --color-border: #dfe4f3;
+  --color-border-strong: #c5cde6;
 
   /* ---- Identidade de canal (#4094) -------------------------------------
    * A cor da faixa/ícone que marca DE ONDE veio a mensagem (aviso da esquina
@@ -300,34 +319,45 @@
   --color-accent-fg: #ffffff;
   --color-accent-soft: var(--color-accent-100);
   --color-accent-hover: var(--color-accent-700);
-  --color-neutral-50: #faf9f6;
-  --color-neutral-100: #f3f1ec;
-  --color-neutral-200: #e7e3da;
-  --color-neutral-300: #d2cdbf;
-  --color-neutral-400: #a9a395;
-  --color-neutral-500: #7d786c;
-  --color-neutral-600: #5d594f;
-  --color-neutral-700: #46433b;
-  --color-neutral-800: #2e2c26;
-  --color-neutral-900: #1c1a16;
-  --color-neutral-950: #0e0d0a;
-  --color-success: #5a8a5f;
-  --color-success-bg: rgba(90, 138, 95, 0.12);
-  --color-success-fg: #41673f;
-  --color-warning: #b07a2b;
-  --color-warning-bg: rgba(176, 122, 43, 0.12);
-  --color-warning-fg: #875a1a;
-  --color-error: #a94a3c;
-  --color-error-bg: rgba(169, 74, 60, 0.12);
-  --color-error-fg: #8a3a2e;
-  --color-info: #4a7a93;
-  --color-info-bg: rgba(74, 122, 147, 0.12);
-  --color-info-fg: #355d72;
-  --shadow-xs: 0 1px 2px 0 rgba(20, 18, 14, 0.04);
-  --shadow-sm: 0 1px 2px 0 rgba(20, 18, 14, 0.05), 0 1px 1px 0 rgba(20, 18, 14, 0.03);
-  --shadow-md: 0 4px 12px -2px rgba(20, 18, 14, 0.06), 0 2px 4px -1px rgba(20, 18, 14, 0.04);
-  --shadow-lg: 0 12px 32px -6px rgba(20, 18, 14, 0.1), 0 4px 12px -2px rgba(20, 18, 14, 0.06);
-  --shadow-xl: 0 24px 48px -12px rgba(20, 18, 14, 0.16), 0 8px 16px -4px rgba(20, 18, 14, 0.08);
+  --color-accent-text: var(--color-accent-700);
+  --color-neutral-50: #f3f5fc;
+  --color-neutral-100: #e9edf9;
+  --color-neutral-200: #dfe4f3;
+  --color-neutral-300: #c5cde6;
+  --color-neutral-400: #9aa3c2;
+  --color-neutral-500: #6b7493;
+  --color-neutral-600: #4f5876;
+  --color-neutral-700: #3a4262;
+  --color-neutral-800: #1d2547;
+  --color-neutral-900: #0c1230;
+  --color-neutral-950: #060a1c;
+  --color-success: #14a85c;
+  --color-success-bg: #dbf6e7;
+  --color-success-fg: #0b6e3b;
+  --color-warning: #e2a100;
+  --color-warning-bg: #fff0c9;
+  --color-warning-fg: #8a5a00;
+  --color-error: #e5412b;
+  --color-error-bg: #ffe3dd;
+  --color-error-fg: #b3301f;
+  --color-info: #1f8fd6;
+  --color-info-bg: #dcf0fc;
+  --color-info-fg: #0d5f96;
+  --shadow-xs: 0 1px 0 rgba(12, 18, 48, 0.06);
+  --shadow-sm: 0 1px 2px rgba(12, 18, 48, 0.06), 0 4px 10px -6px rgba(12, 18, 48, 0.14);
+  --shadow-md: 0 2px 4px rgba(12, 18, 48, 0.04), 0 14px 30px -16px rgba(12, 18, 48, 0.25);
+  --shadow-lg: 0 2px 4px rgba(12, 18, 48, 0.04), 0 24px 60px -24px rgba(12, 18, 48, 0.3);
+  --shadow-xl: 0 40px 100px -30px rgba(12, 18, 48, 0.55);
+  /* Tons de assunto — organizam temas, NUNCA comunicam estado (para estado há
+     success/warning/error/info). Variam por tema, então entram nos três blocos. */
+  --tint-sky: #dde6ff;
+  --tint-mint: #d5f5e2;
+  --tint-butter: #ffefba;
+  --tint-peach: #ffdfd4;
+  --tint-ink: #1d2547;
+  /* Relevo de baixo dos botões (3D macio): cheio e neutro. */
+  --press: inset 0 -3px 0 rgba(0, 0, 0, 0.14);
+  --press-soft: inset 0 -3px 0 rgba(12, 18, 48, 0.07);
   --background: var(--color-bg);
   --foreground: var(--color-text);
   --card: var(--color-surface);
@@ -365,19 +395,19 @@
 
 [data-theme="dark"] {
   /* Surfaces (dark — drawn) */
-  --color-bg: #161510;
-  --color-surface: #1d1c17;
-  --color-surface-elevated: #272620;
-  --color-overlay: rgba(0, 0, 0, 0.55);
+  --color-bg: #090d20;
+  --color-surface: #121735;
+  --color-surface-elevated: #1b2148;
+  --color-overlay: rgba(3, 5, 16, 0.66);
 
   /* Text (dark) */
-  --color-text: #f5f4ef;
-  --color-text-muted: #8e8b7f;
-  --color-text-subtle: #605e54;
+  --color-text: #eef1ff;
+  --color-text-muted: #a3acd0;
+  --color-text-subtle: #7c86ad;
 
   /* Borders (dark) */
-  --color-border: #33312a;
-  --color-border-strong: #444239;
+  --color-border: #262d57;
+  --color-border-strong: #39427a;
 
   /* ---- Identidade de canal (#4094) -------------------------------------
    * A cor da faixa/ícone que marca DE ONDE veio a mensagem (aviso da esquina
@@ -392,55 +422,63 @@
   --color-canal-telegram: #38bdf8;
 
   /* Accent stays same hex stops; default shifts up for dark contrast */
-  --color-accent-50: #f3f6f1;
-  --color-accent-100: #e4ebe0;
-  --color-accent-200: #c8d6c1;
-  --color-accent-300: #a4ba9a;
-  --color-accent-400: #82a077;
-  --color-accent-500: #67885d;
-  --color-accent-600: #506d48;
-  --color-accent-700: #41573b;
-  --color-accent-800: #374731;
-  --color-accent-900: #2f3c2b;
-  --color-accent-950: #171f15;
+  --color-accent-50: #f0f5ff;
+  --color-accent-100: #dfe9ff;
+  --color-accent-200: #bfd3ff;
+  --color-accent-300: #95b5ff;
+  --color-accent-400: #6c96ff;
+  --color-accent-500: #4979ff;
+  --color-accent-600: #2f5bea;
+  --color-accent-700: #274ab5;
+  --color-accent-800: #223e90;
+  --color-accent-900: #1f3675;
+  --color-accent-950: #0c193e;
   --color-accent: var(--color-accent-400);
-  --color-accent-fg: #161510;
-  --color-accent-soft: rgba(130, 160, 119, 0.16);
+  --color-accent-fg: #0a0f26;
+  --color-accent-soft: rgba(108, 150, 255, 0.18);
   --color-accent-hover: var(--color-accent-300);
+  --color-accent-text: var(--color-accent-300);
 
-  /* Neutrals — greige (11 stops, dark) */
-  --color-neutral-50: #f5f4ef;
-  --color-neutral-100: #e6e4dc;
-  --color-neutral-200: #bbb8ac;
-  --color-neutral-300: #8e8b7f;
-  --color-neutral-400: #605e54;
-  --color-neutral-500: #444239;
-  --color-neutral-600: #33312a;
-  --color-neutral-700: #272620;
-  --color-neutral-800: #1d1c17;
-  --color-neutral-900: #161510;
-  --color-neutral-950: #0c0b08;
+  /* Neutrals — azul-marinho frio (11 stops, dark) */
+  --color-neutral-50: #eef1ff;
+  --color-neutral-100: #dde2f7;
+  --color-neutral-200: #c3cae8;
+  --color-neutral-300: #a3acd0;
+  --color-neutral-400: #7c86ad;
+  --color-neutral-500: #39427a;
+  --color-neutral-600: #262d57;
+  --color-neutral-700: #1b2148;
+  --color-neutral-800: #121735;
+  --color-neutral-900: #090d20;
+  --color-neutral-950: #05081a;
 
   /* States (dark) */
-  --color-success: #82a077;
-  --color-success-bg: rgba(130, 160, 119, 0.18);
-  --color-success-fg: #a4ba9a;
-  --color-warning: #d09455;
-  --color-warning-bg: rgba(208, 148, 85, 0.18);
-  --color-warning-fg: #e0ad77;
-  --color-error: #c87263;
-  --color-error-bg: rgba(200, 114, 99, 0.18);
-  --color-error-fg: #d99182;
-  --color-info: #7da9bf;
-  --color-info-bg: rgba(125, 169, 191, 0.18);
-  --color-info-fg: #9bbfd2;
+  --color-success: #3fd08a;
+  --color-success-bg: rgba(63, 208, 138, 0.16);
+  --color-success-fg: #7be3b0;
+  --color-warning: #ffc533;
+  --color-warning-bg: rgba(255, 197, 51, 0.16);
+  --color-warning-fg: #ffd978;
+  --color-error: #ff7a66;
+  --color-error-bg: rgba(255, 122, 102, 0.16);
+  --color-error-fg: #ffab9d;
+  --color-info: #5cb8f0;
+  --color-info-bg: rgba(92, 184, 240, 0.16);
+  --color-info-fg: #9fd6f8;
 
   /* Shadows — heavier in dark */
-  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4), 0 1px 1px 0 rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.45), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 12px 32px -6px rgba(0, 0, 0, 0.55), 0 4px 12px -2px rgba(0, 0, 0, 0.4);
-  --shadow-xl: 0 24px 48px -12px rgba(0, 0, 0, 0.65), 0 8px 16px -4px rgba(0, 0, 0, 0.5);
+  --shadow-xs: 0 1px 0 rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 14px 30px -16px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 24px 60px -24px rgba(0, 0, 0, 0.8);
+  --shadow-xl: 0 40px 100px -30px rgba(0, 0, 0, 0.9);
+  --tint-sky: #1c2a66;
+  --tint-mint: #123d2c;
+  --tint-butter: #40340f;
+  --tint-peach: #46211a;
+  --tint-ink: #eef1ff;
+  --press: inset 0 -3px 0 rgba(0, 0, 0, 0.22);
+  --press-soft: inset 0 -3px 0 rgba(0, 0, 0, 0.25);
 
   /* shadcn-compat aliases */
   --background: var(--color-bg);
@@ -512,8 +550,9 @@
   --color-text-muted: var(--color-text-muted);
   --color-text-subtle: var(--color-text-subtle);
 
-  /* Accent — Sage */
+  /* Accent — Cobalto */
   --color-accent: var(--color-accent);
+  --color-accent-text: var(--color-accent-text);
   --color-accent-foreground: var(--color-accent-fg);
   --color-accent-soft: var(--color-accent-soft);
   --color-accent-hover: var(--color-accent-hover);
@@ -529,7 +568,7 @@
   --color-accent-900: var(--color-accent-900);
   --color-accent-950: var(--color-accent-950);
 
-  /* Neutrals — greige */
+  /* Neutrals — azul-marinho frio */
   --color-neutral-50: var(--color-neutral-50);
   --color-neutral-100: var(--color-neutral-100);
   --color-neutral-200: var(--color-neutral-200);
@@ -541,6 +580,13 @@
   --color-neutral-800: var(--color-neutral-800);
   --color-neutral-900: var(--color-neutral-900);
   --color-neutral-950: var(--color-neutral-950);
+
+  /* Tons de assunto: `bg-tint-sky`, `bg-tint-mint`… (organizam, nunca sinalizam estado) */
+  --color-tint-sky: var(--tint-sky);
+  --color-tint-mint: var(--tint-mint);
+  --color-tint-butter: var(--tint-butter);
+  --color-tint-peach: var(--tint-peach);
+  --color-tint-ink: var(--tint-ink);
 
   /* States */
   --color-success: var(--color-success);
@@ -582,7 +628,11 @@
 
   /* Tipografia */
   --font-sans:
-    var(--font-atkinson), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    var(--font-figtree), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Títulos e botões (`font-display`). Cai em Figtree antes do sistema para que
+     um glifo ausente na Gabarito não mude a família no meio da frase. */
+  --font-display:
+    var(--font-gabarito), var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Espaçamento. Os valores são px LITERAIS (`--space-6` = 24px), não rem — e
@@ -614,6 +664,7 @@
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);
   --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
   --radius-full: var(--radius-full);
 
   /* Sombra */
@@ -622,6 +673,9 @@
   --shadow-md: var(--shadow-md);
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
+  /* `shadow-press` / `shadow-press-soft`: relevo inferior dos botões */
+  --shadow-press: var(--press);
+  --shadow-press-soft: var(--press-soft);
 
   /* Motion */
   --ease-out: var(--ease-out);
@@ -819,7 +873,7 @@
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family:
-      var(--font-atkinson),
+      var(--font-figtree),
       ui-sans-serif,
       system-ui,
       -apple-system,
@@ -835,6 +889,14 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+  }
+
+  /* Regra de base perde para qualquer utilitário (`font-sans`, `font-mono`…),
+     então não desfaz quem já escolhe a própria fonte. */
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
   }
 
   code,
@@ -856,7 +918,7 @@
     color: var(--color-accent-50);
   }
 
-  /* Focus ring: Sage 500/400, 2px with offset */
+  /* Focus ring: accent 500/400, 2px with offset */
   :focus-visible {
     outline: 2px solid var(--color-accent-500);
     outline-offset: 2px;

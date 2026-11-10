@@ -26,7 +26,7 @@ const SheetOverlay = React.forwardRef<
       // do plugin `tailwindcss-animate`, que NUNCA foi instalado neste repo, e
       // classe inexistente no Tailwind não gera CSS nem erro — a cortina
       // aparecia e desaparecia seca. A régua está em `app/globals.css`.
-      "ds-cortina fixed inset-0 z-50 bg-black/80",
+      "ds-cortina fixed inset-0 z-50 bg-overlay",
       className,
     )}
     {...props}
@@ -56,13 +56,13 @@ SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
  * 120/200/320/420ms — e 500ms numa gaveta é o que a lei chama de "parece
  * travado".
  */
-const sheetVariants = cva("ds-gaveta fixed z-50 gap-4 bg-background p-6 shadow-lg", {
+const sheetVariants = cva("ds-gaveta fixed z-50 gap-4 bg-surface p-6 shadow-xl", {
   variants: {
     side: {
-      top: "inset-x-0 top-0 border-b",
-      bottom: "inset-x-0 bottom-0 border-t",
-      left: "inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm",
-      right: "inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm",
+      top: "inset-x-0 top-0 rounded-b-xl border-b",
+      bottom: "inset-x-0 bottom-0 rounded-t-xl border-t",
+      left: "inset-y-0 left-0 h-full w-3/4 rounded-r-xl border-r sm:max-w-sm",
+      right: "inset-y-0 right-0 h-full w-3/4 rounded-l-xl border-l sm:max-w-sm",
     },
   },
   defaultVariants: {
@@ -120,7 +120,7 @@ const SheetContent = React.forwardRef<
           cima dele e engolia o toque. Acima das faixas, abaixo do próprio
           Sheet (z-50).
         */}
-        <SheetPrimitive.Close className="absolute top-4 right-4 z-20 -m-3.5 rounded-sm p-3.5 opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-secondary lg:m-0 lg:p-0">
+        <SheetPrimitive.Close className="absolute top-4 right-4 z-20 -m-3.5 rounded-full p-3.5 text-text-muted opacity-70 ring-offset-surface transition-opacity hover:opacity-100 focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none data-[state=open]:bg-accent-soft lg:m-0 lg:p-0">
           <X className="h-4 w-4" />
           <span className="sr-only">{t("Fechar")}</span>
         </SheetPrimitive.Close>
@@ -150,7 +150,7 @@ const SheetTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Title
     ref={ref}
-    className={cn("text-lg font-semibold text-foreground", className)}
+    className={cn("font-display text-lg font-semibold text-text", className)}
     {...props}
   />
 ));
@@ -162,7 +162,7 @@ const SheetDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Description
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn("text-sm text-text-muted", className)}
     {...props}
   />
 ));

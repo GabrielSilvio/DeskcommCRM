@@ -102,9 +102,9 @@ export function InteligenciaDele({ inicial }: { inicial: EstadoDaChave }) {
 
   if (!temChave) {
     return (
-      <section className="space-y-3 rounded-lg border border-amber-500/40 bg-amber-500/5 p-5">
+      <section className="space-y-3 rounded-lg border border-warning/40 bg-warning-bg text-warning-fg p-5">
         <div>
-          <h3 className="text-sm font-medium">{t("Ele ainda não tem cérebro")}</h3>
+          <h3 className="font-display text-base font-bold">{t("Ele ainda não tem cérebro")}</h3>
           <p className="mt-1 text-sm text-muted-foreground">
             {t(
               "Seu funcionário pensa com a inteligência artificial que você contratar. A instalação não trouxe nenhuma chave — cole a sua aqui e ele já nasce funcionando.",
@@ -207,8 +207,8 @@ export function InteligenciaDele({ inicial }: { inicial: EstadoDaChave }) {
   }
 
   return (
-    <section className="space-y-1 rounded-lg border bg-background p-5">
-      <h3 className="text-sm font-medium">
+    <section className="space-y-1 rounded-xl border border-border bg-surface p-5">
+      <h3 className="font-display text-base font-bold">
         {t("O cérebro dele:")} {chave.rotulo}
         {chave.final ? (
           <span className="ml-1 font-normal text-muted-foreground">
@@ -222,7 +222,7 @@ export function InteligenciaDele({ inicial }: { inicial: EstadoDaChave }) {
         {prova?.estado === "problema" && (
           <>
             {t("A chave foi aceita, mas o teste não passou:")}{" "}
-            <span className="text-amber-700 dark:text-amber-500">
+            <span className=" text-warning-fg">
               {t(explicacaoParaQuemInstala(prova.codigo))}
             </span>
           </>

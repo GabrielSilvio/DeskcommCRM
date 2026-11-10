@@ -71,7 +71,7 @@ export function LimiarDeSentimento({ agentId, inicial, disabled }: Props) {
   return (
     <Card className="space-y-3 p-4">
       <div>
-        <h3 className="text-sm font-medium">{t("Limiar de sentimento")}</h3>
+        <h3 className="font-display text-sm font-semibold">{t("Limiar de sentimento")}</h3>
         <p className="text-xs text-muted-foreground">
           {t(
             "Abaixo desta nota o clima é considerado fechado e a conversa passa para uma pessoa. Quem só descreve o problema que o trouxe até aqui não irritou ninguém, então esse relato não deve custar a passagem para o humano.",

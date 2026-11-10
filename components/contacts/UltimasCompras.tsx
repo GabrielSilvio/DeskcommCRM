@@ -42,7 +42,7 @@ export function UltimasCompras({
   if (erro) {
     return (
       <section data-testid="ultimas-compras">
-        <h3 className="text-xs font-semibold text-text">{t("Últimas compras")}</h3>
+        <h3 className="font-display text-xs font-semibold text-text">{t("Últimas compras")}</h3>
         <div className="mt-2 space-y-1">
           <p className="text-xs text-error-fg">{t("Não consegui ler as compras.")}</p>
           {onTentarDeNovo && (
@@ -61,7 +61,7 @@ export function UltimasCompras({
 
   return (
     <section data-testid="ultimas-compras">
-      <h3 className="text-xs font-semibold text-text">{t("Últimas compras")}</h3>
+      <h3 className="font-display text-xs font-semibold text-text">{t("Últimas compras")}</h3>
       <ul className="mt-2 space-y-1.5">
         {compras.map((compra) => {
           // A MENSALIDADE da compra (fatia 1 da #3602), ao lado do que foi pago

@@ -198,7 +198,7 @@ function Vazio({
             <Link
               key={a.href}
               href={a.href}
-              className="text-sm font-medium text-accent underline underline-offset-4"
+              className="text-sm font-medium text-accent-text underline underline-offset-4"
             >
               {a.label}
             </Link>
@@ -228,7 +228,7 @@ function GraficoDiario({
   const total = dados.reduce((acc, p) => acc + p.value, 0);
   return (
     <Card className="p-4">
-      <h3 className="text-sm font-medium">{titulo}</h3>
+      <h3 className="font-display text-sm font-semibold">{titulo}</h3>
       <p className="mt-1 text-xs leading-relaxed text-text-muted">{significa}</p>
       {!temDado ? (
         <div className="mt-4">{vazio}</div>
@@ -294,7 +294,7 @@ function Ranking({
   const maior = linhas[0]?.[1] ?? 0;
   return (
     <Card className="p-4">
-      <h3 className="text-sm font-medium">{titulo}</h3>
+      <h3 className="font-display text-sm font-semibold">{titulo}</h3>
       <p className="mt-1 text-xs leading-relaxed text-text-muted">{significa}</p>
       {linhas.length === 0 ? (
         <div className="mt-4">{vazio}</div>
@@ -443,7 +443,7 @@ function Conteudo({ payload }: { payload: NonNullable<ReturnType<typeof useEvolu
           />
         </div>
         <Card className="p-4">
-          <h3 className="text-sm font-medium">{t("Linha do tempo do aprendizado")}</h3>
+          <h3 className="font-display text-sm font-semibold">{t("Linha do tempo do aprendizado")}</h3>
           <p className="mt-1 text-xs text-text-muted">
             {t("Cada linha é uma coisa nova que o agente passou a saber, na ordem em que aconteceu.")}
           </p>

@@ -86,13 +86,13 @@ export function QuadroClient({
         o primeiro cliente real.
       */}
       {sugestao.origem === "ia" ? (
-        <p className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-3 text-sm">
+        <p className="rounded-md border border-success/30 bg-success-bg p-3 text-sm">
           {t(
             "Seu funcionário montou este quadro olhando o que você me contou sobre o negócio. Ajuste o que quiser.",
           )}
         </p>
       ) : (
-        <div className="space-y-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-3 text-sm">
+        <div className="space-y-2 rounded-lg border border-warning/40 bg-warning-bg text-warning-fg p-3 text-sm">
           <p>
             {t("Não consegui pedir uma sugestão para o seu funcionário agora")}
             {sugestao.porque ? <> — {t(sugestao.porque)}</> : null}. {t("Comecei por um quadro pronto de")}{" "}
@@ -106,7 +106,7 @@ export function QuadroClient({
         </div>
       )}
 
-      <div className="space-y-3 rounded-lg border bg-background p-6">
+      <div className="space-y-3 rounded-xl border border-border bg-surface p-6">
         <div className="space-y-2">
           <label className="block text-sm font-medium" htmlFor="nome_do_quadro">
             {t("Nome do quadro")}
@@ -208,9 +208,9 @@ export function QuadroClient({
                 key={p.id}
                 type="button"
                 onClick={() => usarPacote(p.id)}
-                className="rounded-md border p-3 text-left text-sm hover:bg-muted"
+                className="rounded-xl border-2 border-border bg-surface p-4 text-left text-sm transition-all duration-base ease-out hover:-translate-y-0.5 hover:border-accent hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <span className="font-medium">{t(p.comoSeApresenta)}</span>
+                <span className="font-display font-bold">{t(p.comoSeApresenta)}</span>
                 <span className="mt-1 block text-xs text-muted-foreground">
                   {p.proposta.etapas.map((e) => e.nome).join(" → ")}
                 </span>
@@ -243,7 +243,7 @@ export function QuadroClient({
 
         <div className="flex flex-wrap items-center gap-3">
           {semNome ? (
-            <span className="text-xs text-amber-700 dark:text-amber-500">
+            <span className="text-xs text-warning-fg">
               {t("Dê um nome à coluna em branco.")}
             </span>
           ) : null}

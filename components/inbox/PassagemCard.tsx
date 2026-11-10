@@ -104,7 +104,7 @@ export function PassagemCard({ cartao, contatoId, onAssumir, assumindo }: Props)
         }
       >
         <div className="flex items-start justify-between gap-2">
-          <h3 id={tituloId} className="flex items-center gap-1.5 text-[13px] font-semibold">
+          <h3 id={tituloId} className="flex items-center gap-1.5 font-display text-[13px] font-semibold">
             <Robot size={14} weight="fill" aria-hidden />
             {t(cartao.titulo)}
           </h3>

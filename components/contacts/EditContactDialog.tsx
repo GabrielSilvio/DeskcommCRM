@@ -376,7 +376,7 @@ export function EditContactDialog({
           {customFieldDefs.length > 0 && (
             <div className="space-y-3 rounded-md border border-border p-3">
               <div>
-                <h3 className="text-sm font-medium">{t("Campos personalizados")}</h3>
+                <h3 className="font-display text-sm font-semibold">{t("Campos personalizados")}</h3>
                 <p className="text-xs text-muted-foreground">
                   {t("Campos definidos no funil padrão da organização.")}
                 </p>

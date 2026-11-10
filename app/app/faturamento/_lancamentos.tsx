@@ -168,7 +168,7 @@ export function ListaDeLancamentos({
               checked={jaPago}
               data-testid="lancamento-ja-pago"
               onChange={(e) => setJaPago(e.target.checked)}
-              className="size-4 rounded-sm border-border accent-accent"
+              className="size-4 rounded-[5px] border-border accent-accent"
             />
             {t("Já pago")}
           </label>
@@ -209,7 +209,7 @@ export function ListaDeLancamentos({
                       <button
                         type="button"
                         onClick={() => onPagar(l.id)}
-                        className="text-xs text-accent max-md:inline-flex max-md:min-h-11 max-md:min-w-11 max-md:items-center max-md:justify-center"
+                        className="text-xs text-accent-text max-md:inline-flex max-md:min-h-11 max-md:min-w-11 max-md:items-center max-md:justify-center"
                         data-testid={`pagar-${l.id}`}
                       >
                         {t("Pagar")}

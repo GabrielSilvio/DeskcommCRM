@@ -154,7 +154,7 @@ export function TagReportClient() {
                     <Link
                       href={`/app/inbox?filter=all&tag=${encodeURIComponent(linha.etiqueta)}`}
                       data-testid="link-de-etiqueta"
-                      className="text-accent underline underline-offset-2 max-md:inline-flex max-md:min-h-11 max-md:items-center"
+                      className="text-accent-text underline underline-offset-2 max-md:inline-flex max-md:min-h-11 max-md:items-center"
                     >
                       {linha.etiqueta}
                     </Link>

@@ -41,7 +41,7 @@ export function UserMenu() {
           <Button variant="ghost" size="icon" className="rounded-full" aria-label={`${t("Menu do usuário")}: ${initials(user.full_name, user.email)}`}>
             <Avatar className="h-8 w-8">
               {user.avatar_url && <AvatarImage src={user.avatar_url} alt="" />}
-              <AvatarFallback>{initials(user.full_name, user.email)}</AvatarFallback>
+              <AvatarFallback className="bg-tint-sky font-display font-bold text-accent-text">{initials(user.full_name, user.email)}</AvatarFallback>
             </Avatar>
           </Button>
         </DropdownMenuTrigger>
@@ -49,7 +49,7 @@ export function UserMenu() {
           <DropdownMenuLabel>
             <div className="flex flex-col">
               <span className="text-sm font-medium">{user.full_name ?? user.email}</span>
-              <span className="truncate text-xs text-muted-foreground">{user.email}</span>
+              <span className="truncate text-xs text-text-muted">{user.email}</span>
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
@@ -122,7 +122,7 @@ export function UserMenu() {
                   <ShieldCheck size={16} className="mr-2" aria-hidden />
                   <span className="flex flex-col">
                     <span>{t("Modo administrador")}</span>
-                    <span className="text-xs text-muted-foreground">
+                    <span className="text-xs text-text-muted">
                       {t("Configurar este servidor")}
                     </span>
                   </span>

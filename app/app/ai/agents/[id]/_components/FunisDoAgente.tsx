@@ -70,7 +70,7 @@ export function FunisDoAgente({ funis, value, onChange, cobertura, disabled = fa
   return (
     <Card className="space-y-3 p-4">
       <div>
-        <h3 className="text-sm font-medium">{t("Em que negócios ele pode mexer")}</h3>
+        <h3 className="font-display text-sm font-semibold">{t("Em que negócios ele pode mexer")}</h3>
         <p className="text-xs text-muted-foreground">
           {t(
             "Marque os funis que este assistente cuida. Ele conversa com qualquer cliente, mas só move, edita ou encerra negócio dos funis marcados aqui.",
@@ -93,7 +93,7 @@ export function FunisDoAgente({ funis, value, onChange, cobertura, disabled = fa
                 id={`funil-${f.id}`}
                 data-testid={`funil-${f.id}`}
                 type="checkbox"
-                className="h-4 w-4 shrink-0 rounded-md border-border accent-primary"
+                className="h-4 w-4 shrink-0 rounded-[5px] border-border accent-primary"
                 checked={marcados.has(f.id)}
                 onChange={(e) => alternar(f.id, e.target.checked)}
                 disabled={disabled}

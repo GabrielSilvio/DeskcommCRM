@@ -79,7 +79,7 @@ export function ModulosManager({ inicial }: { inicial: ListagemDeModulos }) {
             <div className="flex items-start justify-between gap-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="text-base font-semibold">{t(modulo.nome)}</h3>
+                  <h3 className="font-display text-base font-semibold">{t(modulo.nome)}</h3>
                   {instalado ? (
                     <Badge variant={instalado.estado === "ativo" ? "success" : "destructive"}>
                       {instalado.estado === "ativo" ? t("Instalado") : t("Suspenso")}

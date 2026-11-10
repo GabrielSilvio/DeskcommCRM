@@ -63,7 +63,7 @@ export function AplicativoNoCelular() {
   const avisos = (
     <Link
       href="/app/settings/notifications"
-      className="inline-flex min-h-11 items-center font-medium text-accent underline-offset-4 hover:underline"
+      className="inline-flex min-h-11 items-center font-medium text-accent-text underline-offset-4 hover:underline"
     >
       {t("Ligar os avisos em Notificações")}
     </Link>

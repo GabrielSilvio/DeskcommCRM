@@ -12,7 +12,7 @@ import type { AgendamentoListado } from "@/lib/agenda/consulta";
 import { DetalheDoCompromisso } from "./DetalheDoCompromisso";
 
 const PUBLICATION: Record<string, string> = { not_configured: "Somente no CRM", pending: "Publicação pendente", synced: "Publicado no Google", failed: "Falha de publicação", conflict: "Conflito com o Google", removed: "Remoção confirmada no Google" };
-const field = "rounded-md border border-border bg-surface-elevated p-2 text-sm";
+const field = "rounded-md border border-border-strong bg-surface p-2 text-sm";
 function instanteCivil(value: string, zone: string) {
   const [date = "", time = "00:00"] = value.split("T"); const [year = Number.NaN, month = Number.NaN, day = Number.NaN] = date.split("-").map(Number); const [hour = 0, minute = 0] = time.split(":").map(Number);
   return instanteDe({ ano: year, mes: month, dia: day, hora: hour, minuto: minute }, zone);

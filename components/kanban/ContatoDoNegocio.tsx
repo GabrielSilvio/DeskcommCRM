@@ -430,7 +430,7 @@ function PessoasRelacionadas({ leadId }: { leadId: string | null }) {
                 <Link
                   href={`/app/inbox?id=${pessoa.conversa_id}`}
                   aria-label={`${t("Abrir conversa com")} ${pessoa.nome ?? pessoa.telefone ?? ""}`.trim()}
-                  className="text-accent underline-offset-2 hover:underline"
+                  className="text-accent-text underline-offset-2 hover:underline"
                 >
                   {t("Conversa")}
                 </Link>
@@ -739,7 +739,7 @@ function DadosDoContato({ contato }: { contato: Contact }) {
                   href={`https://wa.me/${digitos}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-accent underline-offset-2 hover:underline"
+                  className="text-xs text-accent-text underline-offset-2 hover:underline"
                 >
                   {t("Abrir no WhatsApp")}
                 </a>

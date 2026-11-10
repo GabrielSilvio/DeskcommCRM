@@ -42,9 +42,9 @@ interface Props {
   canManage: boolean;
 }
 
-const BADGE_VARIANT: Record<StatusConvite, "default" | "outline" | "secondary" | "destructive"> = {
-  aceito: "default",
-  pendente: "outline",
+const BADGE_VARIANT: Record<StatusConvite, "success" | "warning" | "secondary" | "destructive"> = {
+  aceito: "success",
+  pendente: "warning",
   expirado: "secondary",
   revogado: "destructive",
 };
@@ -91,7 +91,7 @@ export function TeamInvitesClient({ canManage }: Props) {
       {invites.length === 0 ? (
         <p className="text-sm text-muted-foreground">{t("Nenhum convite enviado.")}</p>
       ) : (
-        <div className="overflow-x-auto rounded-md border">
+        <div className="overflow-x-auto rounded-lg border">
           <Table className="max-md:block">
             <TableHeader className="max-md:hidden">
               <TableRow>

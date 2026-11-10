@@ -90,7 +90,7 @@ function shortCnpj(cnpj: string | null): string {
 export function TenantsTableSkeleton() {
   const t = useT();
   return (
-    <div className="rounded-md border">
+    <div className="overflow-hidden rounded-lg border border-border bg-surface">
       <Table>
         <TableHeader>
           <TableRow>
@@ -138,7 +138,7 @@ export function TenantsTable({
   const t = useT();
   if (data.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center gap-3 rounded-md border py-16 text-center text-muted-foreground">
+      <div className="flex flex-col items-center justify-center gap-3 rounded-lg border border-border bg-surface py-16 text-center text-muted-foreground">
         <Buildings size={36} weight="duotone" className="opacity-40" aria-hidden />
         <p className="text-sm font-medium">{t("Nenhum tenant encontrado")}</p>
         <p className="max-w-xs text-xs opacity-70">
@@ -150,7 +150,7 @@ export function TenantsTable({
 
   return (
     <div className="space-y-4">
-      <div className="rounded-md border">
+      <div className="overflow-hidden rounded-lg border border-border bg-surface">
         <Table>
           <TableHeader>
             <TableRow>
@@ -170,7 +170,7 @@ export function TenantsTable({
             {data.map((row) => (
               <TableRow key={row.id}>
                 <TableCell className="font-mono text-xs">{row.slug}</TableCell>
-                <TableCell className="font-medium">{row.display_name}</TableCell>
+                <TableCell className="font-display font-semibold">{row.display_name}</TableCell>
                 <TableCell className="font-mono text-xs text-muted-foreground">
                   {shortCnpj(row.cnpj)}
                 </TableCell>

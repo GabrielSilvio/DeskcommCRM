@@ -498,7 +498,7 @@ export function CustomFieldsEditor({ fields, value, onChange, mode, disabled, cl
                             "flex min-h-11 cursor-pointer items-center px-3 py-2 text-sm",
                             i === destacado
                               ? "bg-accent text-accent-foreground"
-                              : "hover:bg-accent/50",
+                              : "hover:bg-accent-soft",
                           )}
                           onClick={() => escolher(o.value)}
                         >

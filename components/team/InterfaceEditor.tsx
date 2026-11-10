@@ -38,7 +38,7 @@ export function InterfaceEditor({
         id={id}
         value={value.preset}
         onChange={(e) => onChange({ preset: e.target.value as InterfaceSettings["preset"] })}
-        className="h-10 w-full rounded-md border bg-background px-3 text-sm max-md:min-h-11"
+        className="h-10 w-full rounded-md border border-border-strong bg-surface px-3 text-sm max-md:min-h-11"
       >
         <option value="completa">{t("Completa")}</option>
         <option value="simplificada">{t("Simplificada")}</option>

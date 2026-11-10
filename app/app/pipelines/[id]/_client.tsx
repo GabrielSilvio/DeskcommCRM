@@ -386,14 +386,14 @@ export function PipelinePageClient({
               funil que não recebe mais escrita seria a mesma promessa falsa
               que o "Novo negócio" apagado. Por isso as abas nem aparecem. */}
           {!arquivado && (
-            <div className="flex items-center gap-0.5 rounded-md border bg-muted p-0.5">
+            <div className="flex items-center gap-0.5 rounded-full border bg-muted p-0.5">
               <button
                 type="button"
                 data-testid="visao-quadro"
                 aria-pressed={visao === "quadro"}
                 onClick={() => mudarVisao("quadro")}
                 className={cn(
-                  "rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors",
+                  "rounded-full px-2.5 py-1.5 font-display text-xs font-semibold transition-colors",
                   visao === "quadro"
                     ? "bg-background text-foreground shadow-sm"
                     : "text-muted-foreground hover:text-foreground",
@@ -407,7 +407,7 @@ export function PipelinePageClient({
                 aria-pressed={visao === "lista"}
                 onClick={() => mudarVisao("lista")}
                 className={cn(
-                  "rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors",
+                  "rounded-full px-2.5 py-1.5 font-display text-xs font-semibold transition-colors",
                   visao === "lista"
                     ? "bg-background text-foreground shadow-sm"
                     : "text-muted-foreground hover:text-foreground",
@@ -421,7 +421,7 @@ export function PipelinePageClient({
                 aria-pressed={visao === "calendario"}
                 onClick={() => mudarVisao("calendario")}
                 className={cn(
-                  "rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors",
+                  "rounded-full px-2.5 py-1.5 font-display text-xs font-semibold transition-colors",
                   visao === "calendario"
                     ? "bg-background text-foreground shadow-sm"
                     : "text-muted-foreground hover:text-foreground",

@@ -172,7 +172,7 @@ export function BarraInferior() {
                 className={cn(
                   "relative flex min-h-11 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-md px-1 py-1",
                   "transition-[color,background-color] duration-fast",
-                  aqui ? "text-accent" : "text-muted-foreground",
+                  aqui ? "font-semibold text-accent-text" : "text-text-muted",
                 )}
               >
                 <Icone size={22} weight={aqui ? "fill" : "regular"} aria-hidden />

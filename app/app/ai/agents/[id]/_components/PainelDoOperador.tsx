@@ -168,7 +168,7 @@ export function PainelDoOperador(props: Props) {
       {props.enabled ? (
         <>
           <Card className="space-y-2 p-4">
-            <h3 className="text-sm font-medium">{t("A inteligência que ele usa para organizar")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("A inteligência que ele usa para organizar")}</h3>
             <p className="text-xs text-muted-foreground">
               {t(
                 "Pode ser diferente da que conversa. Organizar o sistema é uma tarefa mais mecânica que atender uma pessoa — costuma sair bem com um modelo mais barato.",
@@ -207,7 +207,7 @@ export function PainelDoOperador(props: Props) {
           </Card>
 
           <Card className="space-y-2 p-4">
-            <h3 className="text-sm font-medium">{t("O que ele pode mexer no sistema")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("O que ele pode mexer no sistema")}</h3>
             <p className="text-xs text-muted-foreground">
               {t(
                 "Esta lista é só deste papel — nada aqui é usado enquanto ele conversa com o cliente. Ligue por jornada de trabalho.",

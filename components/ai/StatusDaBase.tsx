@@ -50,7 +50,7 @@ export function StatusDaBase({
     <Card className="space-y-2 p-4" data-testid="status-da-base">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="space-y-0.5">
-          <h3 className="text-sm font-medium">{t("Estado da base de conhecimento")}</h3>
+          <h3 className="font-display text-sm font-semibold">{t("Estado da base de conhecimento")}</h3>
           <p className="text-xs text-text-muted" data-testid="status-da-base-resumo">
             {r.total} {t("materiais")} ·{" "}
             <span className="text-success-fg">

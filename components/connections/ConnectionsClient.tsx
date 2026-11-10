@@ -580,7 +580,7 @@ export function ConnectionsClient({ wahaConfigured }: { wahaConfigured: boolean 
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">
                       <Phone size={16} className="text-muted-foreground" aria-hidden />
-                      <span className="truncate text-sm font-medium">{channelLabel(c, t)}</span>
+                      <span className="truncate font-display text-sm font-semibold">{channelLabel(c, t)}</span>
                       {ehCanalOficial(c) && (
                         <Badge variant="default" className="shrink-0">
                           {t("API oficial")}

@@ -61,7 +61,7 @@ export function EntrarComGoogle({ next, convite }: { next?: string; convite?: st
       </div>
       {erro && (
         <div
-          className="rounded-md border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm text-destructive"
+          className="rounded-md border border-error/30 bg-error-bg px-4 py-3 text-sm text-error-fg"
           role="alert"
         >
           {erro}
@@ -71,7 +71,8 @@ export function EntrarComGoogle({ next, convite }: { next?: string; convite?: st
       <Button
         type="button"
         variant="outline"
-        className="w-full"
+        size="lg"
+        className="h-12 w-full text-base"
         disabled={isPending || saindo}
         onClick={onClick}
       >

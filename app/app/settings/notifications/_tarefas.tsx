@@ -98,7 +98,7 @@ export function TaskReminderPrefs() {
           </Label>
           <select
             id="lembrete-antecedencia"
-            className="h-9 rounded-md border bg-background px-2 text-sm"
+            className="h-9 rounded-md border border-border-strong bg-surface px-2 text-sm"
             value={pref.antecedencia_min}
             disabled={salvando}
             onChange={(e) => {

@@ -100,13 +100,13 @@ function AvisoVisivel() {
     <div
       role="alert"
       data-testid="aviso-proposta-destaque"
-      className="fixed right-4 bottom-4 z-50 w-80 max-md:bottom-[calc(var(--rodape-ocupado,0px)+1rem)] rounded-lg border border-border bg-card p-4 shadow-lg"
+      className="fixed right-4 bottom-4 z-50 w-80 max-md:bottom-[calc(var(--rodape-ocupado,0px)+1rem)] rounded-xl border border-border bg-surface p-4 shadow-lg"
     >
       {/* O TÍTULO sai como veio — é linha de `agent_inbox_items`, com dado de
           gente (nome da proposta, do cliente). Mesma regra do AgentInboxList:
           nunca por t(). */}
-      <p className="text-sm font-medium">{atual.title}</p>
-      <p className="mt-1 text-xs text-muted-foreground">{corpo}</p>
+      <p className="font-display text-sm font-semibold">{atual.title}</p>
+      <p className="mt-1 text-xs text-text-muted">{corpo}</p>
       <div className="mt-3 flex gap-2">
         {/* Abrir É dispensar: quem atendeu o aviso não pode achá-lo de novo na
             próxima carga do polling, ainda com a proposta aberta na frente. */}

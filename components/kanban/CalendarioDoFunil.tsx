@@ -252,14 +252,14 @@ export function CalendarioDoFunil({ pipelineId, pipeline: funil, stages, leads }
             </SelectContent>
           </Select>
 
-          <div className="flex items-center gap-0.5 rounded-md border bg-muted p-0.5">
+          <div className="flex items-center gap-0.5 rounded-full border bg-muted p-0.5">
             <button
               type="button"
               data-testid="calendario-mes"
               aria-pressed={visao === "mes"}
               onClick={() => setVisao("mes")}
               className={cn(
-                "rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors",
+                "rounded-full px-2.5 py-1.5 font-display text-xs font-semibold transition-colors",
                 visao === "mes"
                   ? "bg-background text-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground",
@@ -273,7 +273,7 @@ export function CalendarioDoFunil({ pipelineId, pipeline: funil, stages, leads }
               aria-pressed={visao === "semana"}
               onClick={() => setVisao("semana")}
               className={cn(
-                "rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors",
+                "rounded-full px-2.5 py-1.5 font-display text-xs font-semibold transition-colors",
                 visao === "semana"
                   ? "bg-background text-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground",

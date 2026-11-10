@@ -24,11 +24,11 @@ const CORES: Record<
   { moldura: string; rotulo: string; texto: string; borda: string; tracejado: string }
 > = {
   aviso: {
-    moldura: "border-amber-300/70 bg-background/60 dark:border-amber-800/70 dark:bg-black/25",
-    rotulo: "text-amber-900/70 dark:text-amber-200/70",
-    texto: "text-amber-900 dark:text-amber-200",
-    borda: "border-amber-300/60 dark:border-amber-800/60",
-    tracejado: "border-amber-300/70 dark:border-amber-800/70",
+    moldura: "border-warning bg-surface",
+    rotulo: "text-warning-fg",
+    texto: "text-warning-fg",
+    borda: "border-warning/60",
+    tracejado: "border-warning/70",
   },
   neutro: {
     moldura: "border-border bg-muted/40",

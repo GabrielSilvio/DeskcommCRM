@@ -92,7 +92,7 @@ function Linha({
         onClick={() => comBloqueio(() => aoAlternarConcluida(tarefa))}
         className={cn(
           // O `before` estende a área de toque a 44px sem crescer o desenho de 16px.
-          "relative mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-md border transition-colors pointer-coarse:before:absolute pointer-coarse:before:-inset-3.5 pointer-coarse:before:content-['']",
+          "relative mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-[5px] border transition-colors pointer-coarse:before:absolute pointer-coarse:before:-inset-3.5 pointer-coarse:before:content-['']",
           encerrada
             ? "border-primary bg-primary text-primary-foreground"
             : "border-muted-foreground/40 hover:border-primary",

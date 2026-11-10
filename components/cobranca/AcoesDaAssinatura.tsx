@@ -234,7 +234,7 @@ export function AcoesDaAssinatura(p: PropsDasAcoes) {
         </div>
       )}
       {fatura && (
-        <div className="space-y-2 rounded-md border p-3 text-sm">
+        <div className="space-y-2 rounded-lg border border-border bg-surface p-3 text-sm">
           <p>{t("Sua fatura está pronta. Pague por Pix, boleto ou cartão.")}</p>
           <Button asChild>
             <a href={fatura} target="_blank" rel="noopener noreferrer">
@@ -324,11 +324,11 @@ export function AcoesDaAssinatura(p: PropsDasAcoes) {
       </div>
 
       {trocando && (
-        <div className="space-y-3 rounded-md border p-3">
+        <div className="space-y-3 rounded-lg border border-border bg-surface p-3">
           <div className="flex flex-wrap items-end gap-2">
           <div className="space-y-1">
             <Label htmlFor="novo-plano">{t("Novo plano")}</Label>
-            <select id="novo-plano" className="h-9 rounded-md border bg-background px-2 text-sm" value={novo} onChange={(e) => setNovo(e.target.value)}>
+            <select id="novo-plano" className="h-9 rounded-md border border-border-strong bg-surface px-2 text-sm focus-visible:border-accent-500 focus-visible:ring-2 focus-visible:ring-accent-soft focus-visible:outline-hidden" value={novo} onChange={(e) => setNovo(e.target.value)}>
               {p.planosParaTroca.map((plano) => (
                 <option key={plano.id} value={plano.id}>
                   {plano.nome}
@@ -340,8 +340,8 @@ export function AcoesDaAssinatura(p: PropsDasAcoes) {
           {p.planoAtual && selecionado && (
             <div className="grid gap-2 text-sm sm:grid-cols-2" aria-live="polite">
               {[p.planoAtual, selecionado].map((plano, i) => (
-                <section key={plano.id} className="rounded-md bg-muted/40 p-3">
-                  <h3 className="font-medium">{i === 0 ? t("Plano atual") : t("Novo plano")}: {plano.nome}</h3>
+                <section key={plano.id} className="rounded-lg bg-surface-elevated p-3">
+                  <h3 className="font-display font-semibold">{i === 0 ? t("Plano atual") : t("Novo plano")}: {plano.nome}</h3>
                   <p>{reais(plano.preco_cents)} / {plano.intervalo === "ano" ? t("ano") : t("mês")}</p>
                   <ul className="mt-2 space-y-1 text-muted-foreground">
                     <li>{t("Pessoas")}: {plano.max_assentos ?? t("sem limite")}</li>
@@ -391,7 +391,7 @@ export function AcoesDaAssinatura(p: PropsDasAcoes) {
       )}
 
       {cancelando && (
-        <div className="space-y-2 rounded-md border p-3 text-sm">
+        <div className="space-y-2 rounded-lg border border-border bg-surface p-3 text-sm">
           <p>{t("Você mantém o acesso até o fim do período já pago. Não há reembolso proporcional.")}</p>
           <Button
             variant="destructive"

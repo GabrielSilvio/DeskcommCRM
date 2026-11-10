@@ -373,7 +373,7 @@ export function NewContactDialog({
           </div>
           {campos.length > 0 && (
             <div className="space-y-3 rounded-md border border-border p-3">
-              <h3 className="text-sm font-medium">{t("Campos personalizados")}</h3>
+              <h3 className="font-display text-sm font-semibold">{t("Campos personalizados")}</h3>
               <CustomFieldsEditor
                 fields={campos}
                 mode="contact"

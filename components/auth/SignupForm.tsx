@@ -171,12 +171,12 @@ export function SignupForm({
   if (contaExistente && convite) {
     const destino = `/login?next=${encodeURIComponent(`/team/accept-invite/${convite.token}`)}`;
     return (
-      <div className="space-y-4 rounded-md border bg-muted/40 px-4 py-6 text-center" role="status">
+      <div className="space-y-4 rounded-md border bg-bg px-4 py-6 text-center" role="status">
         <p className="text-sm font-medium">{t("Você já tem uma conta com este e-mail")}</p>
         <p className="text-sm text-muted-foreground">
           {t("Entre com ela para aceitar o convite — não é preciso criar outra.")}
         </p>
-        <Button asChild className="w-full">
+        <Button asChild size="lg" className="h-12 w-full text-base">
           <Link href={destino}>{t("Entrar e aceitar o convite")}</Link>
         </Button>
       </div>
@@ -185,7 +185,7 @@ export function SignupForm({
 
   if (sentTo) {
     return (
-      <div className="space-y-2 rounded-md border bg-muted/40 px-4 py-6 text-center" role="status">
+      <div className="space-y-2 rounded-md border bg-bg px-4 py-6 text-center" role="status">
         <p className="text-sm font-medium">{t("Confirme seu e-mail")}</p>
         <p className="text-sm text-muted-foreground">
           {t("Enviamos um link de confirmação para")} <strong>{sentTo}</strong>.{" "}
@@ -238,7 +238,7 @@ export function SignupForm({
       {!convite && planos.length > 0 && (
         <div className="space-y-1.5">
           <Label htmlFor="cobranca_plan_id">{t("Plano")}</Label>
-          <select id="cobranca_plan_id" className="h-10 w-full rounded-md border bg-background px-3 text-sm" {...register("cobranca_plan_id")}>
+          <select id="cobranca_plan_id" className="h-11 w-full rounded-md border border-border bg-surface px-3 text-sm" {...register("cobranca_plan_id")}>
             {planos.map((plano) => (
               <option key={plano.id} value={plano.id}>
                 {plano.nome} — {new Intl.NumberFormat(undefined, { style: "currency", currency: "BRL" }).format(plano.preco_cents / 100)} / {plano.intervalo === "ano" ? t("ano") : t("mês")}
@@ -277,7 +277,7 @@ export function SignupForm({
           />
           <button
             type="button"
-            className="absolute inset-y-0 right-0 flex w-11 items-center justify-center rounded-r-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:outline-hidden focus-visible:ring-inset"
+            className="absolute inset-y-0 right-0 flex w-11 items-center justify-center rounded-r-md text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:outline-hidden focus-visible:ring-inset"
             aria-pressed={showPassword}
             onClick={() => setShowPassword((visible) => !visible)}
           >
@@ -304,7 +304,7 @@ export function SignupForm({
           />
           <button
             type="button"
-            className="absolute inset-y-0 right-0 flex w-11 items-center justify-center rounded-r-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:outline-hidden focus-visible:ring-inset"
+            className="absolute inset-y-0 right-0 flex w-11 items-center justify-center rounded-r-md text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:outline-hidden focus-visible:ring-inset"
             aria-pressed={showPasswordConfirm}
             onClick={() => setShowPasswordConfirm((visible) => !visible)}
           >
@@ -328,14 +328,14 @@ export function SignupForm({
       </div>
       {serverError && (
         <div
-          className="rounded-md border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm text-destructive"
+          className="rounded-md border border-error/30 bg-error-bg px-4 py-3 text-sm text-error-fg"
           role="alert"
         >
           {serverError}
         </div>
       )}
       {semResposta && <AvisoSemResposta />}
-      <Button type="submit" className="w-full" disabled={isPending}>
+      <Button type="submit" size="lg" className="h-12 w-full text-base" disabled={isPending}>
         {isPending ? t("Criando conta...") : t("Criar conta")}
       </Button>
     </form>

@@ -167,7 +167,7 @@ export function DialogoDosModulos({ modulos, onSalvos }: Props) {
                           aria-label={`${t("Mover para cima")} · ${t(ROTULO_DO_MODULO[modulo.id])}`}
                           disabled={indice === 0}
                           onClick={() => mover(indice, indice - 1)}
-                          className="h-6 w-6 rounded-md text-xs text-muted-foreground hover:bg-surface disabled:opacity-40"
+                          className="h-6 w-6 rounded-full text-xs text-muted-foreground hover:bg-surface disabled:opacity-40"
                         >
                           ↑
                         </button>
@@ -176,7 +176,7 @@ export function DialogoDosModulos({ modulos, onSalvos }: Props) {
                           aria-label={`${t("Mover para baixo")} · ${t(ROTULO_DO_MODULO[modulo.id])}`}
                           disabled={indice === rascunho.length - 1}
                           onClick={() => mover(indice, indice + 1)}
-                          className="h-6 w-6 rounded-md text-xs text-muted-foreground hover:bg-surface disabled:opacity-40"
+                          className="h-6 w-6 rounded-full text-xs text-muted-foreground hover:bg-surface disabled:opacity-40"
                         >
                           ↓
                         </button>

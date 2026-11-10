@@ -50,7 +50,7 @@ function Bloco({
   const t = useT();
   return (
     <div className="space-y-2">
-      <h3 className="text-sm font-semibold">{t(titulo)}</h3>
+      <h3 className="font-display text-sm font-semibold">{t(titulo)}</h3>
       {linhas.length === 0 ? (
         <p className="text-sm text-muted-foreground">{t("Nenhuma perda na janela.")}</p>
       ) : (
@@ -109,7 +109,7 @@ export function PerdasPanel() {
         <Bloco titulo="Por etapa de saída" linhas={relatorio.porEtapa} coluna="Etapa" />
 
         <div className="space-y-2 md:col-span-3">
-          <h3 className="text-sm font-semibold">{t("Valor por moeda")}</h3>
+          <h3 className="font-display text-sm font-semibold">{t("Valor por moeda")}</h3>
           <Table>
             <TableHeader>
               <TableRow>

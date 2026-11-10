@@ -69,14 +69,14 @@ export function RecoveryForm({ next }: RecoveryFormProps) {
       {error && (
         <div
           role="alert"
-          className="rounded-md border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm text-destructive"
+          className="rounded-md border border-error/30 bg-error-bg px-4 py-3 text-sm text-error-fg"
         >
           {error}
         </div>
       )}
       {semResposta && <AvisoSemResposta />}
 
-      <Button type="submit" className="w-full" disabled={isPending}>
+      <Button type="submit" size="lg" className="h-12 w-full text-base" disabled={isPending}>
         {isPending ? t("Validando…") : t("Recuperar acesso")}
       </Button>
     </form>

@@ -255,7 +255,7 @@ export function CardDeCobranca({
             <Label htmlFor="plano-da-empresa">{t("Plano da empresa")}</Label>
             <select
               id="plano-da-empresa"
-              className="h-9 rounded-md border bg-background px-2 text-sm"
+              className="h-9 rounded-md border border-border-strong bg-surface px-2 text-sm focus-visible:border-accent-500 focus-visible:ring-2 focus-visible:ring-accent-soft focus-visible:outline-hidden"
               value={escolhido}
               onChange={(e) => setEscolhido(e.target.value)}
             >

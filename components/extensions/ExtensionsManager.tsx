@@ -900,13 +900,13 @@ export function ExtensionsManager({
       className="mx-auto flex w-full max-w-6xl flex-col gap-6 p-4 sm:p-6"
       data-testid="extensions-manager"
     >
-      <header className="relative overflow-hidden rounded-xl border border-border bg-surface p-5 shadow-xs sm:p-7">
+      <header className="relative overflow-hidden rounded-xl border border-border bg-surface p-5 sm:p-7">
         <div
           aria-hidden
           className="absolute -top-16 -right-12 h-40 w-40 rounded-full bg-accent-soft/70 blur-2xl"
         />
         <div className="relative flex items-start gap-4">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-accent-200 bg-accent-soft text-accent">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-accent-200 bg-accent-soft text-accent-text">
             <PuzzlePiece size={24} weight="duotone" aria-hidden />
           </div>
           <div>

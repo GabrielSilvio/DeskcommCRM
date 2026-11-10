@@ -115,7 +115,7 @@ export function DetalheDaCampanha({ id }: { id: string }) {
       <header className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <h1 className="text-2xl font-semibold tracking-tight">{c.name}</h1>
+            <h1 className="font-display text-2xl font-bold tracking-tight">{c.name}</h1>
             <EstadoDaCampanha status={c.status} />
           </div>
           {c.failure_code && (
@@ -255,7 +255,7 @@ export function DetalheDaCampanha({ id }: { id: string }) {
         <div className="flex flex-wrap items-center justify-between gap-2">
           <h2 className="font-medium">{t("Quem está na lista")}</h2>
           <select
-            className="h-9 rounded-md border border-border bg-surface px-2 text-sm"
+            className="h-9 rounded-md border border-border-strong bg-surface px-2 text-sm focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-accent-500"
             value={filtroDeStatus}
             onChange={(e) => setFiltroDeStatus(e.target.value)}
             aria-label={t("Filtrar destinatários")}
@@ -625,9 +625,9 @@ function numero(valor: string): number | null {
 
 function Numero({ titulo, valor }: { titulo: string; valor: number }) {
   return (
-    <Card className="p-4">
-      <p className="text-sm text-muted-foreground">{titulo}</p>
-      <p className="text-2xl font-semibold">{valor}</p>
+    <Card className="rounded-xl bg-surface p-4">
+      <p className="text-sm text-text-muted">{titulo}</p>
+      <p className="font-display text-2xl font-bold tabular-nums">{valor}</p>
     </Card>
   );
 }

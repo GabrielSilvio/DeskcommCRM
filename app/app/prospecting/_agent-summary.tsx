@@ -40,7 +40,7 @@ export function AgentSetupSummary({
             ? t("Pronto para testar e publicar")
             : t("Seu agente está tomando forma")}
         </p>
-        <h3 className="mt-1 text-lg font-semibold break-words">{draft.name || t("Novo agente")}</h3>
+        <h3 className="mt-1 font-display text-lg font-semibold break-words">{draft.name || t("Novo agente")}</h3>
         <p className="mt-1 text-xs text-muted-foreground">
           {filled} {t("de")} {fields.length} {t("definições preenchidas")}
         </p>

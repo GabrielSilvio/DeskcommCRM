@@ -92,7 +92,7 @@ export function RegrasDeComissao({
   };
 
   return (
-    <section className="space-y-3 rounded-xl border p-4">
+    <section className="space-y-3 rounded-xl border bg-surface p-4">
       <h2 className="font-semibold">{t("Comissão")}</h2>
       <p className="text-sm text-text-muted">
         {t("Quanto cada pessoa recebe por atendimento. Sem regra, a comissão é zero.")}

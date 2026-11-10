@@ -233,7 +233,7 @@ export function ExtensionGuide({
         {t("Voltar às extensões")}
       </Link>
 
-      <header className="overflow-hidden rounded-xl border border-border bg-surface shadow-xs">
+      <header className="overflow-hidden rounded-xl border border-border bg-surface">
         <div className="border-b border-border bg-accent-soft/45 px-5 py-4 sm:px-7">
           <div className="flex flex-wrap items-center gap-2">
             <Badge variant="success">{t("Ativa")}</Badge>
@@ -247,7 +247,7 @@ export function ExtensionGuide({
           </p>
           {displayTitle.fallback || displaySummary.fallback ? <FallbackNotice /> : null}
           <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground">
-            <ListChecks size={16} weight="duotone" aria-hidden className="text-accent" />
+            <ListChecks size={16} weight="duotone" aria-hidden className="text-accent-text" />
             {portasLegiveis(guide.manifest.permissions, t)}
           </div>
         </div>
@@ -293,14 +293,14 @@ export function ExtensionGuide({
               key={card.id}
               id={`extension-card-${card.id}`}
               data-testid={`extension-guide-card-${card.id}`}
-              className={`scroll-mt-6 rounded-xl border bg-surface shadow-xs ${
+              className={`scroll-mt-6 rounded-xl border bg-surface ${
                 card.id === selectedCardId
                   ? "border-accent ring-1 ring-accent-200"
                   : "border-border"
               } ${compact ? "p-4" : "p-5 sm:p-6"}`}
             >
               <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-accent-soft text-accent">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent-soft text-accent-text">
                   <Icon size={22} weight="duotone" aria-hidden />
                 </div>
                 <div>
@@ -322,7 +322,7 @@ export function ExtensionGuide({
                       key={`${card.id}:${index}`}
                       className="border-l-2 border-accent-200 pl-4"
                     >
-                      <h3 className="text-sm font-semibold">{heading.text}</h3>
+                      <h3 className="font-display text-sm font-semibold">{heading.text}</h3>
                       <p className="mt-1 text-sm leading-relaxed whitespace-pre-line text-muted-foreground">
                         {body.text}
                       </p>

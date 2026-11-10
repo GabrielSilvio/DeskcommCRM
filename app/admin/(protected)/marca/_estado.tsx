@@ -160,7 +160,7 @@ export function EstadoDaMarca({
       ) : null}
 
       <Card className="p-4">
-        <h3 className="text-sm font-medium text-text">{t("De onde vem cada coisa")}</h3>
+        <h3 className="font-display text-sm font-semibold text-text">{t("De onde vem cada coisa")}</h3>
         <div className="mt-2">
           <LinhaDeOrigem
             campo={t("Nome do sistema")}
@@ -184,7 +184,7 @@ export function EstadoDaMarca({
 
       {derivada ? (
         <Card className="p-4">
-          <h3 className="text-sm font-medium text-text">{t("O texto em cima dos botões")}</h3>
+          <h3 className="font-display text-sm font-semibold text-text">{t("O texto em cima dos botões")}</h3>
           <p className="mt-1 text-xs text-text-muted">
             {t(
               "Quanto maior o número, mais fácil de ler. AA é o mínimo recomendado internacionalmente para texto.",

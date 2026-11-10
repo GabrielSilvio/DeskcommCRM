@@ -233,7 +233,7 @@ export function ApiTokensClient() {
                     onClick={() => toggleScope(s.id)}
                     title={t(s.label)}
                     aria-label={`${s.id} — ${t(s.label)}`}
-                    className={`rounded-md border px-2 py-1 text-xs ${
+                    className={`rounded-full border px-2 py-1 text-xs ${
                       scopes.includes(s.id) ? "border-primary bg-primary/10" : "border-border"
                     }`}
                   >

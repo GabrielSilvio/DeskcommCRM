@@ -102,7 +102,7 @@ export function AvisoSemResposta() {
   return (
     <div
       role="alert"
-      className="space-y-2 rounded-md border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm text-destructive"
+      className="space-y-2 rounded-md border border-error/30 bg-error-bg px-4 py-3 text-sm text-error-fg"
     >
       <p>{t("Não recebemos a resposta do servidor. Recarregue a página para tentar de novo.")}</p>
       <Button type="button" variant="link" onClick={() => window.location.reload()}>

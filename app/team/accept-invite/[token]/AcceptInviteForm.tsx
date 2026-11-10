@@ -6,10 +6,10 @@ export function AcceptInviteForm({ token, label, failureLabel, pendingLabel, pla
   const [result, submit, pending] = useActionState<AcceptInviteResult | null, FormData>(
     async () => acceptInviteAction(token), null,
   );
-  return <form action={submit} className="mt-4 space-y-3">
-    {result && !result.ok && <p role="alert">{result.error === "limite_do_plano" ? planLimitLabel : failureLabel}</p>}
+  return <form action={submit} className="mt-6 space-y-3">
+    {result && !result.ok && <p role="alert" className="rounded-md border border-error/30 bg-error-bg px-4 py-3 text-sm text-error-fg">{result.error === "limite_do_plano" ? planLimitLabel : failureLabel}</p>}
     <button type="submit" disabled={pending}
-      className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground">
+      className="inline-flex h-12 items-center justify-center rounded-full bg-accent px-7 text-center font-display text-base font-semibold text-accent-foreground shadow-press transition-all duration-base ease-spring hover:-translate-y-0.5 hover:bg-accent-hover active:translate-y-0 disabled:pointer-events-none disabled:opacity-60 motion-reduce:transition-none motion-reduce:hover:translate-y-0 w-full">
       {pending ? pendingLabel : label}
     </button>
   </form>;

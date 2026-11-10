@@ -40,7 +40,7 @@ export function LinhaDoRecurso({
 }) {
   return (
     <li
-      className="flex flex-col gap-3 rounded-lg border p-4 sm:flex-row sm:items-start sm:justify-between"
+      className="flex flex-col gap-3 rounded-lg border bg-surface p-4 sm:flex-row sm:items-start sm:justify-between"
       data-recurso={recurso.id}
     >
       <div className="min-w-0 space-y-1">

@@ -74,7 +74,7 @@ export function IdentidadeDaConversao({
     <Card className="p-6">
       <form onSubmit={salvar} className="flex flex-col gap-5">
         <div className="flex flex-col gap-1">
-          <h3 className="text-sm font-semibold">
+          <h3 className="font-display text-sm font-semibold">
             {t("Página e conta do WhatsApp Business das vendas de clique-para-WhatsApp")}
           </h3>
           <p className="max-w-2xl text-xs text-muted-foreground">

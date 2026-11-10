@@ -69,20 +69,20 @@ export default async function GetStartedPage() {
 
   return (
     <IdiomaProvider locale={user.idioma}>
-      <main className="bg-muted/40 flex min-h-screen items-center justify-center px-4 py-10">
-        <div className="w-full max-w-md space-y-6 rounded-lg border bg-background p-6 shadow-sm">
+      <main className="flex min-h-screen items-center justify-center bg-bg px-3 py-6 sm:px-4 sm:py-10">
+        <div className="w-full max-w-lg space-y-6 rounded-xl bg-surface p-6 shadow-md sm:rounded-2xl sm:p-10">
           <div className="space-y-2">
-            <p className="text-xs uppercase tracking-wider text-muted-foreground">
+            <p className="text-xs font-semibold uppercase tracking-wider text-text-subtle">
               {marca.nome}
             </p>
-            <h1 className="text-2xl font-semibold tracking-tight">
+            <h1 className="font-display text-3xl font-extrabold leading-[1.1] tracking-[-0.03em]">
               {pedido === "pending"
                 ? t("Pedido enviado")
                 : pedido === "rejected"
                   ? t("Pedido não aprovado")
                   : t("Configure sua organização")}
             </h1>
-            <p className="text-sm leading-relaxed text-muted-foreground">
+            <p className="text-base leading-relaxed text-text-muted">
               {pedido === "pending"
                 ? t(
                     "Seu pedido para abrir a empresa está com quem administra esta instalação. Quando ele for aprovado, é só entrar de novo.",

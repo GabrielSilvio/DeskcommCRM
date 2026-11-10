@@ -4,6 +4,7 @@ import { marcaDaSaida } from "@/lib/branding/saida";
 import { createClient } from "@/lib/supabase/server";
 import { IdiomaProvider } from "@/lib/i18n/IdiomaProvider";
 import { idiomaDoVisitante } from "@/lib/i18n/idiomaAnonimo";
+import { traduzir } from "@/lib/i18n/dicionario";
 
 /**
  * A casca das telas de acesso — login, cadastro, recuperação, MFA, confirmar acesso.
@@ -59,10 +60,19 @@ export default async function PublicLayout({ children }: { children: React.React
 
   return (
     <IdiomaProvider locale={locale}>
-      <div className="flex min-h-screen items-center justify-center bg-background p-6">
-        <div className="w-full max-w-sm space-y-6">
+      {/*
+        Duas colunas só em tela larga: o formulário num bloco branco e, ao lado,
+        um painel na cor da marca com UMA frase. No celular o painel some e fica
+        só o bloco — a pessoa veio entrar, não ler. O painel usa `bg-accent`, a
+        rampa que cada instalação troca pela própria marca, e é decorativo
+        (`aria-hidden`): a frase repete o que a página inicial já afirma e sai
+        do mesmo dicionário dela (nenhum texto novo para traduzir).
+      */}
+      <div className="min-h-screen bg-bg p-3 sm:p-6 lg:grid lg:grid-cols-2 lg:gap-6">
+        <div className="flex items-center justify-center py-4 sm:py-10">
+          <div className="w-full max-w-md space-y-8 rounded-xl bg-surface p-6 shadow-md sm:rounded-2xl sm:p-10">
           {marca.logoUrl || marca.logoDarkUrl ? (
-            <div className="flex justify-center">
+            <div className="flex justify-start">
               {/*
                 <img> em vez de next/image pelo mesmo motivo da barra lateral: a URL
                 é de quem hospeda e o `next/image` exige allowlist de domínios
@@ -113,12 +123,28 @@ export default async function PublicLayout({ children }: { children: React.React
               </div>
             </div>
           ) : marcaEhADoProduto({ name: marca.nome, logoUrl: null }) ? (
-            <div className="flex justify-center">
+            <div className="flex justify-start">
               <LogotipoDoProduto nome={marca.nome} className="h-12 w-auto" />
             </div>
           ) : null}
           {children}
+          </div>
         </div>
+        <aside
+          aria-hidden
+          className="relative hidden overflow-hidden rounded-2xl bg-accent p-12 text-accent-foreground lg:sticky lg:top-6 lg:flex lg:h-[calc(100vh-3rem)] lg:flex-col lg:justify-end"
+        >
+          {/* Formas macias, só CSS: dão volume ao bloco sem imagem nem 3D. */}
+          <span className="absolute -right-24 -top-24 size-80 rounded-full bg-accent-foreground/10" />
+          <span className="absolute right-16 top-40 size-40 rounded-[40px] bg-accent-foreground/10" />
+          <span className="absolute -left-16 top-1/3 size-56 rounded-full bg-accent-foreground/[0.07]" />
+          <p className="relative max-w-md font-display text-5xl font-extrabold leading-[1.05] tracking-[-0.03em]">
+            {traduzir(
+              "Atendimento e vendas pelo WhatsApp, com agentes de inteligência artificial.",
+              locale,
+            )}
+          </p>
+        </aside>
       </div>
     </IdiomaProvider>
   );

@@ -93,7 +93,7 @@ export function BasesDoAgente({ materiais, value, onChange, disabled = false }: 
   return (
     <Card className="space-y-3 p-4">
       <div>
-        <h3 className="text-sm font-medium">{t("O que ele consulta antes de responder")}</h3>
+        <h3 className="font-display text-sm font-semibold">{t("O que ele consulta antes de responder")}</h3>
         <p className="text-xs text-muted-foreground">
           {t(
             "Marque o material do seu negócio que este assistente pode ler. Ele procura ali antes de responder, em vez de improvisar — e cita de onde tirou.",
@@ -124,7 +124,7 @@ export function BasesDoAgente({ materiais, value, onChange, disabled = false }: 
                 id={`base-${m.id}`}
                 data-testid={`base-${m.id}`}
                 type="checkbox"
-                className="h-4 w-4 shrink-0 rounded-md border-border accent-primary"
+                className="h-4 w-4 shrink-0 rounded-[5px] border-border accent-primary"
                 checked={marcados.has(m.id)}
                 onChange={(e) => alternar(m.id, e.target.checked)}
                 disabled={disabled}

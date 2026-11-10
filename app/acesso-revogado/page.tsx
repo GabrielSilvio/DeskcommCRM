@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { createClient } from "@/lib/supabase/server";
 import { IdiomaProvider } from "@/lib/i18n/IdiomaProvider";
 import { normalizarIdioma } from "@/lib/i18n/idiomas";
@@ -37,10 +36,10 @@ export default async function AcessoRevogadoPage() {
 
   return (
     <IdiomaProvider locale={idioma}>
-      <main className="flex min-h-screen items-center justify-center p-8">
-        <Card className="w-full max-w-md space-y-4 p-8 text-center">
-          <h1 className="text-2xl font-semibold">{traduzir("Acesso revogado", idioma)}</h1>
-          <p className="text-sm text-muted-foreground">
+      <main className="flex min-h-screen items-center justify-center bg-bg p-4 sm:p-8">
+        <div className="w-full max-w-lg space-y-4 rounded-2xl bg-tint-peach p-8 text-center sm:p-12">
+          <h1 className="font-display text-3xl font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl">{traduzir("Acesso revogado", idioma)}</h1>
+          <p className="text-base text-text-muted">
             {traduzir(
               "Seu acesso a esta organização foi retirado. Se você acredita que isso é um engano, fale com quem administra a empresa — só ela pode devolvê-lo.",
               idioma,
@@ -56,18 +55,18 @@ export default async function AcessoRevogadoPage() {
             `lib/auth/public-paths.ts`), então abrir o link daqui funciona. O que
             faltava era alguém dizer isso.
           */}
-          <p className="rounded-md border border-amber-300/60 bg-amber-50 px-4 py-3 text-sm dark:border-amber-500/30 dark:bg-amber-950/20">
+          <p className="rounded-lg bg-surface px-4 py-3 text-text text-sm">
             {traduzir(
               "Recebeu um convite novo? Abra o link que chegou no seu e-mail — ele funciona mesmo com esta tela aberta, e devolve o seu acesso.",
               idioma,
             )}
           </p>
           <form action={signOut}>
-            <Button type="submit" className="w-full">
+            <Button type="submit" size="lg" className="h-12 w-full text-base">
               {traduzir("Sair", idioma)}
             </Button>
           </form>
-        </Card>
+        </div>
       </main>
     </IdiomaProvider>
   );

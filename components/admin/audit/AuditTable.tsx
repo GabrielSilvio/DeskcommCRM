@@ -53,7 +53,7 @@ function shortId(id: string | null | undefined): string {
 export function AuditTableSkeleton() {
   const t = useT();
   return (
-    <div className="rounded-md border">
+    <div className="overflow-hidden rounded-lg border border-border bg-surface">
       <Table>
         <TableHeader>
           <TableRow>
@@ -121,7 +121,7 @@ export function AuditTable({
 
   return (
     <div className="space-y-3">
-      <div className="rounded-md border">
+      <div className="overflow-hidden rounded-lg border border-border bg-surface">
         <Table>
           <TableHeader>
             <TableRow>

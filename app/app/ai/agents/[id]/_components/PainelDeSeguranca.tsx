@@ -163,7 +163,7 @@ export function PainelDeSeguranca() {
       <AjustesDeEstilo />
 
       <Card className="space-y-2 p-4">
-        <h3 className="text-sm font-medium">{t("Antes de cada mensagem sair")}</h3>
+        <h3 className="font-display text-sm font-semibold">{t("Antes de cada mensagem sair")}</h3>
         <p className="text-xs text-muted-foreground">
           {t("O assistente escreve, e o sistema confere. São")} {CONFERENCIAS_DE_SAIDA.length}{" "}
           {t(
@@ -178,7 +178,7 @@ export function PainelDeSeguranca() {
       </Card>
 
       <Card className="space-y-2 p-4">
-        <h3 className="text-sm font-medium">{t("Antes de o assistente ler")}</h3>
+        <h3 className="font-display text-sm font-semibold">{t("Antes de o assistente ler")}</h3>
         <p className="text-xs text-muted-foreground">
           {t("Esta roda sobre a mensagem que chega, antes das outras — por isso aparece separada.")}
         </p>

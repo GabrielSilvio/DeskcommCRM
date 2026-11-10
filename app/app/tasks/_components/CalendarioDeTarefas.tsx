@@ -71,7 +71,7 @@ export function CalendarioDeTarefas({ tarefas, podeEditar, aoAbrirTarefa, aoClic
   }
 
   return (
-    <div className="overflow-hidden rounded-xl border bg-card shadow-sm">
+    <div className="overflow-hidden rounded-xl border bg-surface">
       <div className="flex items-center justify-between border-b px-4 py-3">
         <Button
           variant="ghost"

@@ -231,9 +231,9 @@ export function FileUploadCustomField({
               >
                 <div className="flex items-center gap-2 min-w-0">
                   {isImage ? (
-                    <ImageIcon className="h-4 w-4 shrink-0 text-sky-500" />
+                    <ImageIcon className="h-4 w-4 shrink-0 text-info" />
                   ) : (
-                    <FileText className="h-4 w-4 shrink-0 text-amber-500" />
+                    <FileText className="h-4 w-4 shrink-0 text-warning" />
                   )}
                   <span className="truncate font-medium text-text" title={file.name}>
                     {file.name}
@@ -341,9 +341,9 @@ export function FileUploadCustomField({
           <DialogHeader className="flex flex-row items-center justify-between pb-2 border-b border-border/80">
             <div className="flex items-center gap-2 min-w-0 pr-4">
               {previewAttachment?.type?.startsWith("image/") ? (
-                <ImageIcon className="h-4 w-4 shrink-0 text-sky-500" />
+                <ImageIcon className="h-4 w-4 shrink-0 text-info" />
               ) : (
-                <FileText className="h-4 w-4 shrink-0 text-amber-500" />
+                <FileText className="h-4 w-4 shrink-0 text-warning" />
               )}
               <DialogTitle className="text-sm font-semibold truncate text-text">
                 {previewAttachment?.name}

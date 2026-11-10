@@ -36,27 +36,26 @@ export function Stepper({ passos }: { passos: PassoVisivel[] }) {
   const idx = passos.findIndex((p) => pathname.includes(`/${p.segmento}`));
 
   return (
-    <ol
-      aria-label="onboarding steps"
-      className="flex w-full items-center justify-between gap-2 px-2 py-3"
-    >
+    <ol aria-label="onboarding steps" className="flex w-full items-start gap-2 px-1 py-3 sm:gap-3">
       {passos.map((p, i) => {
         const isActive = i === idx;
         return (
           <li
             key={p.segmento}
             aria-current={isActive ? "step" : undefined}
-            className="flex flex-1 flex-col items-center text-xs"
+            className="flex min-w-0 flex-1 flex-col gap-2 text-xs"
           >
+            {/* Pílula de progresso: cheia no passo atual, suave no que já foi
+                resolvido, vazia no que falta. O número fica só para leitor de tela. */}
             <div
               className={cn(
-                "flex h-7 w-7 items-center justify-center rounded-full border text-[11px] font-medium",
-                isActive && "border-primary bg-primary text-primary-foreground",
-                !isActive && p.cumprido && "border-primary/40 bg-primary/10 text-primary",
-                !isActive && !p.cumprido && "border-muted-foreground/20 text-muted-foreground",
+                "h-2.5 rounded-full transition-colors duration-base ease-out",
+                isActive && "bg-accent",
+                !isActive && p.cumprido && "bg-accent-200 dark:bg-accent-800",
+                !isActive && !p.cumprido && "bg-border-strong/60",
               )}
             >
-              {i + 1}
+              <span className="sr-only">{i + 1}</span>
             </div>
             {/* Some visualmente abaixo de `sm`: os rótulos são frases (`Quem
                 trabalha com ele`, `Onde ele organiza`), não palavras — com 7
@@ -67,8 +66,8 @@ export function Stepper({ passos }: { passos: PassoVisivel[] }) {
                 `sr-only` mantém ele lido por leitor de tela mesmo escondido. */}
             <span
               className={cn(
-                "sr-only mt-1 truncate sm:not-sr-only",
-                isActive ? "font-medium text-foreground" : "text-muted-foreground",
+                "sr-only truncate sm:not-sr-only",
+                isActive ? "font-display font-bold text-text" : "text-text-subtle",
               )}
             >
               {t(p.rotulo)}

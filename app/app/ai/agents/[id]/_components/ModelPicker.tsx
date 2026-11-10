@@ -282,7 +282,7 @@ export function ModelPicker({ provider, value, onChange, disabled, id, placehold
                           }
                         }}
                         className={cn(
-                          "flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden hover:bg-accent focus:bg-accent",
+                          "flex cursor-pointer items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden hover:bg-accent-soft focus:bg-accent-soft",
                           selecionado && "font-medium",
                         )}
                       >

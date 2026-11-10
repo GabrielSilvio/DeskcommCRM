@@ -128,7 +128,7 @@ export function PlanosDaInstalacao({ planos }: { planos: readonly PlanoDaTela[] 
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,22rem)_1fr]">
       <form onSubmit={salvar} className="space-y-3 rounded-lg border p-4" aria-label={editando ? t("Editar plano") : t("Novo plano")}>
-        <h3 className="text-sm font-semibold">{editando ? t("Editar plano") : t("Novo plano")}</h3>
+        <h3 className="font-display text-sm font-semibold">{editando ? t("Editar plano") : t("Novo plano")}</h3>
         <div className="space-y-1">
           <Label htmlFor="plano-nome">{t("Nome do plano")}</Label>
           <Input id="plano-nome" maxLength={60} {...campo("nome")} />
@@ -142,7 +142,7 @@ export function PlanosDaInstalacao({ planos }: { planos: readonly PlanoDaTela[] 
             <Label htmlFor="plano-intervalo">{t("Intervalo de cobrança")}</Label>
             <select
               id="plano-intervalo"
-              className="h-9 w-full rounded-md border bg-background px-2 text-sm"
+              className="h-9 w-full rounded-md border border-border-strong bg-surface px-2 text-sm focus-visible:border-accent-500 focus-visible:ring-2 focus-visible:ring-accent-soft focus-visible:outline-hidden"
               value={campos.intervalo}
               onChange={(e) => setCampos({ ...campos, intervalo: e.target.value as Intervalo })}
             >
@@ -191,7 +191,7 @@ export function PlanosDaInstalacao({ planos }: { planos: readonly PlanoDaTela[] 
           padraoId: planos.find((p) => p.padrao_no_cadastro && !p.arquivado_em)?.id ?? null,
           oferecidos: planos.filter((p) => p.oferecido_ao_cliente && !p.arquivado_em),
         }) && (
-          <p role="status" className="rounded-md border border-amber-300/60 bg-amber-50 px-3 py-2 text-sm dark:border-amber-500/30 dark:bg-amber-950/20">
+          <p role="status" className="rounded-md border border-warning/40 bg-warning-bg px-3 py-2 text-sm text-warning-fg">
             {t("Nenhum plano está marcado para o cadastro. Quem se cadastra precisa escolher um plano, o “Entrar com Google” some da tela de cadastro e empresas criadas sem plano pela integração são recusadas. Use “Usar no cadastro” em um plano.")}
           </p>
         )}
@@ -209,9 +209,9 @@ export function PlanosDaInstalacao({ planos }: { planos: readonly PlanoDaTela[] 
                 <div className="min-w-0 space-y-0.5">
                   <p className="font-medium">
                     {p.nome}
-                    {p.padrao_no_cadastro && <span className="ml-2 rounded-md bg-muted px-1.5 py-0.5 text-xs">{t("Plano do cadastro")}</span>}
-                    {p.arquivado_em && <span className="ml-2 rounded-md bg-muted px-1.5 py-0.5 text-xs">{t("Arquivado")}</span>}
-                    {!p.oferecido_ao_cliente && <span className="ml-2 rounded-md bg-muted px-1.5 py-0.5 text-xs">{t("Só você atribui")}</span>}
+                    {p.padrao_no_cadastro && <span className="ml-2 rounded-full bg-surface-elevated px-2 py-0.5 text-xs font-semibold">{t("Plano do cadastro")}</span>}
+                    {p.arquivado_em && <span className="ml-2 rounded-full bg-surface-elevated px-2 py-0.5 text-xs font-semibold">{t("Arquivado")}</span>}
+                    {!p.oferecido_ao_cliente && <span className="ml-2 rounded-full bg-surface-elevated px-2 py-0.5 text-xs font-semibold">{t("Só você atribui")}</span>}
                   </p>
                   <p className="text-muted-foreground">
                     {brl.format(p.preco_cents / 100)} {p.intervalo === "mes" ? t("por mês") : t("por ano")} · {p.trial_dias} {t("dias de teste")}

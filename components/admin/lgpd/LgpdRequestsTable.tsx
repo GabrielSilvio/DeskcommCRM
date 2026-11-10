@@ -96,7 +96,7 @@ const RISK_LABELS: Record<AdminLgpdRiskLevel, string> = {
 export function LgpdRequestsTableSkeleton() {
   const t = useT();
   return (
-    <div className="rounded-md border">
+    <div className="overflow-hidden rounded-lg border border-border bg-surface">
       <Table>
         <TableHeader>
           <TableRow>
@@ -162,7 +162,7 @@ export function LgpdRequestsTable({
 
   return (
     <div className="space-y-3">
-      <div className="rounded-md border">
+      <div className="overflow-hidden rounded-lg border border-border bg-surface">
         <Table>
           <TableHeader>
             <TableRow>

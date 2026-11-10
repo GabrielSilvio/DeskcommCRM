@@ -8,7 +8,6 @@ import { OutrasOrganizacoes } from "@/app/onboarding/_components/OutrasOrganizac
 import { AcoesDaAssinatura } from "@/components/cobranca/AcoesDaAssinatura";
 import { PainelDaAssinatura } from "@/components/cobranca/PainelDaAssinatura";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { orgAtivaSemPortao, requireAuth } from "@/lib/auth/server";
 import { ROLE_RANK } from "@/lib/auth/types";
 import { emailDeSuporte } from "@/lib/branding/saida";
@@ -101,32 +100,32 @@ export default async function AccountSuspendedPage({
 
   return (
     <IdiomaProvider locale={idioma}>
-      <main className="flex min-h-screen flex-col items-center gap-8 p-4 sm:p-8">
-        <Card className="w-full max-w-md space-y-4 p-8 text-center">
-          <h1 className="text-2xl font-semibold">{t("Conta suspensa")}</h1>
+      <main className="flex min-h-screen flex-col items-center gap-8 bg-bg p-4 sm:p-8">
+        <div className="w-full max-w-lg space-y-4 rounded-2xl bg-tint-butter p-8 text-center sm:p-12">
+          <h1 className="font-display text-3xl font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-4xl">{t("Conta suspensa")}</h1>
           {/* Quem participa de várias empresas precisa saber QUAL parou. Dado, não interface: sem t(). */}
-          <p className="text-base font-medium">{ativa.name}</p>
+          <p className="font-display text-lg font-bold">{ativa.name}</p>
           {mostra === "pagamento" ? (
-            <p className="text-sm text-muted-foreground">
+            <p className="text-base text-text-muted">
               {t("A conta foi suspensa por falta de pagamento. Assim que o pagamento for confirmado, tudo volta a funcionar na hora.")}
             </p>
           ) : !administra ? (
-            <p className="text-sm text-muted-foreground">
+            <p className="text-base text-text-muted">
               {t("Sua conta está suspensa. Avise o administrador da sua empresa.")}
             </p>
           ) : suporte ? (
-            <p className="text-sm text-muted-foreground">
+            <p className="text-base text-text-muted">
               {t("Sua conta está suspensa. Entre em contato com")}{" "}
               <a
                 href={`mailto:${suporte}`}
-                className="underline underline-offset-4 hover:text-foreground transition-colors"
+                className="font-semibold text-text underline underline-offset-4 transition-colors hover:text-accent-text"
               >
                 {suporte}
               </a>{" "}
               {t("para mais informações.")}
             </p>
           ) : (
-            <p className="text-sm text-muted-foreground">
+            <p className="text-base text-text-muted">
               {t(
                 "Sua conta está suspensa. Fale com quem administra este sistema para saber o motivo e como reativá-la.",
               )}
@@ -137,12 +136,12 @@ export default async function AccountSuspendedPage({
             {/* Encerra a sessão, como a irmã /acesso-revogado: um link para /login
                 deixava a pessoa logada, e o próximo /app a trazia de volta aqui. */}
             <form action={signOut}>
-              <Button type="submit" variant="outline">
+              <Button type="submit" variant="outline" size="lg">
                 {t("Sair")}
               </Button>
             </form>
           </div>
-        </Card>
+        </div>
         {mostra === "pagamento" && painel?.assinatura && (
           <section aria-label={t("Pagamento")} className="w-full max-w-xl space-y-4">
             <PainelDaAssinatura dados={painel} idioma={idioma} />
@@ -170,10 +169,10 @@ export default async function AccountSuspendedPage({
         {administra && (
           <section aria-labelledby="lgpd-no-hub" className="w-full max-w-5xl space-y-4">
             <header className="space-y-1">
-              <h2 id="lgpd-no-hub" className="text-lg font-semibold">
+              <h2 id="lgpd-no-hub" className="font-display text-xl font-bold">
                 {t("Solicitações LGPD")}
               </h2>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-base text-text-muted">
                 {t("Os pedidos de LGPD dos seus clientes continuam com prazo durante a suspensão.")}
               </p>
             </header>

@@ -4,14 +4,14 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 /**
- * Badge — Sage design system.
+ * Badge — design system PingCloser: pílula, estado por `-bg`/`-fg`.
  * Variants: default (accent soft), neutral, success, warning, error, info.
  * Compat aliases: secondary -> neutral, destructive -> error, outline -> neutral.
  */
 const badgeVariants = cva(
   [
     "inline-flex items-center gap-1 rounded-full border px-3 py-0.5",
-    "text-xs font-medium leading-5",
+    "text-xs font-semibold leading-5",
     "transition-colors duration-fast ease-out",
     "focus:outline-hidden focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2",
   ].join(" "),
@@ -19,7 +19,7 @@ const badgeVariants = cva(
     variants: {
       variant: {
         default:
-          "border-transparent bg-accent-soft text-accent",
+          "border-transparent bg-accent-soft text-accent-text",
         neutral:
           "border-border bg-surface-elevated text-text-muted",
         success:

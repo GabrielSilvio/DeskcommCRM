@@ -1260,7 +1260,7 @@ function PipelineEditor({
 
   return (
     <div className="space-y-4" data-testid={`editor-${pipeline.id}`}>
-      <h3 className="text-sm font-semibold">{t("Vocabulário e campos")}</h3>
+      <h3 className="font-display text-sm font-semibold">{t("Vocabulário e campos")}</h3>
       <p className="text-xs text-muted-foreground">
         {t("Como este funil chama o card nas telas (o Negócio). Ex.: numa loja, o Negócio pode se chamar Pedido.")}
       </p>
@@ -1485,7 +1485,7 @@ function PipelineEditor({
             já decide isso (e loga `logger.warn`); o que faltava era quem
             configurou FICAR SABENDO. */}
         {escolhaPerdida && (
-          <p role="alert" className="text-xs font-medium text-amber-600 dark:text-amber-400">
+          <p role="alert" className="text-xs font-medium text-warning-fg">
             {etapaDeclarada === null
               ? t(
                   "Nenhuma etapa escolhida: as conversas novas estão entrando na primeira etapa do funil.",

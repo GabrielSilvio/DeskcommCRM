@@ -182,10 +182,10 @@ export function KanbanCard({
           // o card, não o estado do React.
           data-densidade={denso ? "compacta" : "confortavel"}
           className={cn(
-            "group relative overflow-hidden rounded-md border border-border bg-surface",
+            "group relative overflow-hidden rounded-lg border border-border bg-surface",
             denso ? "py-1.5 pl-2.5 pr-2" : "py-2.5 pl-3 pr-3",
             "shadow-xs transition-colors",
-            "hover:border-border-strong",
+            "hover:border-border-strong hover:shadow-md",
             snapshot.isDragging && "rotate-1 shadow-md ring-1 ring-accent/40",
             isSelected && "ring-2 ring-accent",
           )}
@@ -272,7 +272,7 @@ export function KanbanCard({
                 // dossiê). O dado não some — some a segunda linha.
                 title={denso ? card.title : undefined}
                 className={cn(
-                  "text-sm font-medium leading-5 text-text",
+                  "font-display text-sm font-semibold leading-5 text-text",
                   denso ? "line-clamp-1 h-5" : "line-clamp-2 h-10",
                 )}
               >
@@ -309,7 +309,7 @@ export function KanbanCard({
           <p
             data-testid="card-valor"
             className={cn(
-              "flex items-baseline gap-1 font-medium tabular-nums",
+              "flex items-baseline gap-1 font-display font-medium tabular-nums",
               denso ? "mt-0.5 h-4 text-[11px] leading-4" : "mt-1 h-5 text-xs leading-5",
               value || recorrente ? "text-text" : "text-text-muted",
             )}

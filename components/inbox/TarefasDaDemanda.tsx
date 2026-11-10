@@ -121,7 +121,7 @@ function SecaoDeTarefasDaDemanda({ demandaId, contactId, leadId, podeEditar }: P
             type="button"
             data-testid="inbox-nova-tarefa"
             onClick={abrirNova}
-            className="flex items-center gap-1 text-xs font-medium text-accent hover:underline"
+            className="flex items-center gap-1 text-xs font-medium text-accent-text hover:underline"
           >
             <Plus size={12} aria-hidden />
             {t("Nova tarefa")}

@@ -77,7 +77,7 @@ export function Recorrencias({
   const pode = nome.trim().length >= 2 && cents !== null && cents > 0 && diaValido && contaId !== "";
 
   return (
-    <section className="space-y-3 rounded-xl border p-4">
+    <section className="space-y-3 rounded-xl border bg-surface p-4">
       <h2 className="font-semibold">{t("Todo mês")}</h2>
       <p className="text-sm text-text-muted">
         {t("Aluguel, internet, contador. O sistema abre a conta no dia certo.")}

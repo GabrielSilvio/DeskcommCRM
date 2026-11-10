@@ -241,7 +241,7 @@ function Resultados({
           <button
             type="button"
             onClick={() => aoDigitar("")}
-            className="rounded-md px-2 py-1 text-xs text-muted-foreground hover:bg-muted"
+            className="rounded-full px-2.5 py-1 text-xs text-muted-foreground hover:bg-muted"
           >
             {t("Limpar")}
           </button>
@@ -254,9 +254,9 @@ function Resultados({
           type="button"
           onClick={() => mudarCategoria("todos")}
           className={cn(
-            "rounded-md px-2.5 py-1 font-medium whitespace-nowrap transition-colors pointer-coarse:min-h-11",
+            "rounded-full px-3 py-1 font-medium whitespace-nowrap transition-colors pointer-coarse:min-h-11",
             categoriaAtiva === "todos"
-              ? "bg-foreground text-background shadow-xs"
+              ? "bg-accent text-accent-foreground"
               : "text-muted-foreground hover:bg-muted hover:text-foreground",
           )}
         >
@@ -270,9 +270,9 @@ function Resultados({
               type="button"
               onClick={() => mudarCategoria(cat.id)}
               className={cn(
-                "rounded-md px-2.5 py-1 font-medium whitespace-nowrap transition-colors pointer-coarse:min-h-11",
+                "rounded-full px-3 py-1 font-medium whitespace-nowrap transition-colors pointer-coarse:min-h-11",
                 categoriaAtiva === cat.id
-                  ? "bg-foreground text-background shadow-xs"
+                  ? "bg-accent text-accent-foreground"
                   : "text-muted-foreground hover:bg-muted hover:text-foreground",
               )}
             >

@@ -132,8 +132,8 @@ function Escolha({
     <label
       data-testid={`forma-${valor}`}
       data-marcada={marcada ? "sim" : "nao"}
-      className={`flex cursor-pointer items-start gap-3 rounded-lg border p-3 transition-colors ${
-        marcada ? "border-primary bg-primary/5" : "border-border hover:bg-muted/40"
+      className={`flex cursor-pointer items-start gap-3 rounded-xl border-2 p-4 transition-all duration-base ease-out motion-reduce:transition-none ${
+        marcada ? "border-accent bg-accent-soft" : "border-border bg-surface hover:-translate-y-0.5 hover:border-accent hover:shadow-md motion-reduce:hover:translate-y-0"
       }`}
     >
       <input
@@ -146,7 +146,7 @@ function Escolha({
         aria-label={titulo}
       />
       <span className="space-y-1">
-        <span className="block text-sm font-medium">{titulo}</span>
+        <span className="block font-display text-base font-bold">{titulo}</span>
         <span className="block text-xs text-muted-foreground">{corpo}</span>
       </span>
     </label>
@@ -355,7 +355,7 @@ export function ConnectWhatsappClient({
   // é o único estado em que esta tela não tem efeito colateral nenhum.
   if (forma === null) {
     return (
-      <div className="space-y-4 rounded-lg border bg-background p-6">
+      <div className="space-y-4 rounded-xl border border-border bg-surface p-6">
         <fieldset className="space-y-3">
           <legend className="text-sm font-medium">{t("Como você já usa esse número?")}</legend>
           <p className="text-xs text-muted-foreground">
@@ -396,11 +396,11 @@ export function ConnectWhatsappClient({
 
   if (forma === "oficial" || forma === "parceiro") {
     return (
-      <div className="space-y-4 rounded-lg border bg-background p-6">
+      <div className="space-y-4 rounded-xl border border-border bg-surface p-6">
         <VoltarParaEscolha onVoltar={() => setForma(null)} />
 
         {forma === "oficial" && !oficialPodeReceber && (
-          <div className="rounded-md border border-amber-300/60 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-500/40 dark:bg-amber-950/40 dark:text-amber-100">
+          <div className="rounded-lg border border-warning/40 bg-warning-bg text-warning-fg p-4 text-sm">
             <p className="font-medium">
               {t("Este servidor ainda não está pronto para RECEBER por este caminho.")}
             </p>
@@ -423,10 +423,10 @@ export function ConnectWhatsappClient({
   }
 
   return (
-    <div className="space-y-4 rounded-lg border bg-background p-6">
+    <div className="space-y-4 rounded-xl border border-border bg-surface p-6">
       <VoltarParaEscolha onVoltar={() => setForma(null)} />
       {!wahaConfigured && (
-        <div className="rounded-md border border-amber-300/60 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-500/40 dark:bg-amber-950/40 dark:text-amber-100">
+        <div className="rounded-lg border border-warning/40 bg-warning-bg text-warning-fg p-4 text-sm">
           <p className="font-medium">{t("O WhatsApp desta instalação ainda não subiu.")}</p>
           <p className="mt-1">
             {t("Ele roda no seu próprio servidor. Dá para seguir sem ele agora e conectar o número depois, em")}{" "}
@@ -437,7 +437,7 @@ export function ConnectWhatsappClient({
       )}
 
       {wahaConfigured && (
-        <div className="rounded-md border bg-muted/40 p-4">
+        <div className="rounded-md border bg-bg p-4">
           {/*
             O que estava aqui: "Sessão: org_f3d61bc0" e "Status: INIT".
             O primeiro é um identificador que o produto deriva do id interno da
@@ -489,7 +489,7 @@ export function ConnectWhatsappClient({
           )}
 
           {status === "WORKING" && (
-            <p className="mt-3 text-sm font-medium text-emerald-700 dark:text-emerald-400">
+            <p className="mt-3 text-sm font-medium text-success-fg">
               ✓ {t("Conectado! Avançando…")}
             </p>
           )}

@@ -31,23 +31,20 @@ import "./globals.css";
 
 // Fontes versionadas em app/fonts/ (origem e licença no README de lá): o
 // next/font/google as baixava durante o build, e o build caía quando o Google
-// não respondia. A família passa a se chamar como a variável JS ("atkinson"),
-// então use sempre a custom property (--font-atkinson), nunca o nome da fonte.
-const atkinson = localFont({
-  src: [
-    {
-      path: "./fonts/atkinson-hyperlegible-400-latin-latin-ext.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "./fonts/atkinson-hyperlegible-700-latin-latin-ext.woff2",
-      weight: "700",
-      style: "normal",
-    },
-  ],
+// não respondia. A família passa a se chamar como a variável JS, então use
+// sempre a custom property (--font-figtree, --font-gabarito), nunca o nome da
+// fonte. As duas são variáveis (um arquivo cobre todos os pesos).
+// Figtree é o texto corrido; Gabarito é a voz dos títulos e botões.
+const figtree = localFont({
+  src: [{ path: "./fonts/figtree-300-900-latin.woff2", weight: "300 900", style: "normal" }],
   display: "swap",
-  variable: "--font-atkinson",
+  variable: "--font-figtree",
+});
+
+const gabarito = localFont({
+  src: [{ path: "./fonts/gabarito-400-900-latin.woff2", weight: "400 900", style: "normal" }],
+  display: "swap",
+  variable: "--font-gabarito",
 });
 
 const plexMono = localFont({
@@ -337,7 +334,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       lang="pt-BR"
       data-theme="light"
       suppressHydrationWarning
-      className={`${atkinson.variable} ${plexMono.variable}`}
+      className={`${figtree.variable} ${gabarito.variable} ${plexMono.variable}`}
     >
       <head>
         {/* Primeiro de tudo: a cor da instalação, antes do CSS e do script de tema. */}

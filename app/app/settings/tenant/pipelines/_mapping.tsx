@@ -254,7 +254,7 @@ export function AgentMappingSection({
             se chama Funis e trata dos funis do tenant. Duas coisas diferentes
             com o mesmo nome, na mesma tela, fazem o dono da clínica procurar um
             segundo funil que não existe. O título diz o que a seção FAZ. */}
-        <h3 className="text-sm font-semibold">{t("Para onde o card vai em cada passo")}</h3>
+        <h3 className="font-display text-sm font-semibold">{t("Para onde o card vai em cada passo")}</h3>
         <p className="max-w-3xl text-sm leading-relaxed text-text-muted">
           {t(
             "Quando o agente avança no atendimento, o card do cliente pode andar sozinho no seu funil. Escolha para qual etapa ele vai em cada momento. Deixar em «não mover» é uma escolha válida — o card fica onde está e o agente segue trabalhando.",

@@ -118,7 +118,7 @@ export function RoteirosDoContato({ contactId, variante = "ficha" }: Props) {
   const compacto = variante === "painel";
   const conteudo = (
     <div className="space-y-4" data-testid="roteiros-do-contato">
-      <h3 className="flex items-center gap-2 text-sm font-semibold">
+      <h3 className="flex items-center gap-2 font-display text-sm font-semibold">
         <ListChecks size={16} aria-hidden className="text-text-muted" />
         {t("Respostas dos roteiros de atendimento")}
       </h3>

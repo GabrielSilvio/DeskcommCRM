@@ -136,7 +136,7 @@ export function SecurityClient({
             className={
               "shrink-0 rounded-full px-2 py-0.5 text-xs " +
               (mfaEnrolled
-                ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400"
+                ? "bg-success-bg text-success-fg"
                 : "bg-muted text-muted-foreground")
             }
           >
@@ -184,7 +184,7 @@ export function SecurityClient({
               {t("Nível mínimo")}
               <select
                 id="mfa-papel-minimo"
-                className="h-9 rounded-md border border-input bg-background px-2 text-sm max-md:min-h-11"
+                className="h-9 rounded-md border border-border-strong bg-surface px-2 text-sm max-md:min-h-11"
                 value={novoPapel}
                 disabled={mexendo}
                 onChange={(e) => setNovoPapel(e.target.value as PapelMinimoDeMfa)}
@@ -205,7 +205,7 @@ export function SecurityClient({
                 type="number"
                 min={0}
                 max={30}
-                className="h-9 w-24 rounded-md border border-input bg-background px-2 text-sm max-md:min-h-11"
+                className="h-9 w-24 rounded-md border border-border-strong bg-surface px-2 text-sm max-md:min-h-11"
                 value={novosDias}
                 disabled={mexendo || novoPapel === "none"}
                 onChange={(e) =>
@@ -240,7 +240,7 @@ export function SecurityClient({
         {codes ? (
           <RecoveryCodesPanel codes={codes} onAcknowledge={() => setCodes(null)} />
         ) : mfaEnrolled && semCodigos && !gerouAgora ? (
-          <div role="status" className="space-y-3 rounded-md border border-amber-500/40 bg-amber-500/10 p-3 text-sm">
+          <div role="status" className="space-y-3 rounded-lg border border-warning/40 bg-warning-bg p-3 text-sm">
             <p>
               {t(
                 "Você está sem códigos de recuperação válidos: os gerados antes da última atualização deixaram de valer, e cada código só vale uma vez. Sem eles, perder o celular tira o seu acesso.",

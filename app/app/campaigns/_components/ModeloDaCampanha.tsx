@@ -261,7 +261,7 @@ export function ModeloDaCampanha({
                     <>
                       <select
                         aria-label={`${t("Origem")}: ${v.rotulo}`}
-                        className="h-9 w-full rounded-md border border-border bg-surface px-2 text-sm"
+                        className="h-9 w-full rounded-md border border-border-strong bg-surface px-2 text-sm focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-accent-500"
                         value={f?.kind ?? ""}
                         onChange={(e) =>
                           trocarOrigem(v, e.target.value as FonteDaCampanha["kind"] | "")

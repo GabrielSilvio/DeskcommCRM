@@ -349,7 +349,7 @@ export function RouterEditorClient({
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <div className="space-y-4">
           <Card className="space-y-3 p-4">
-            <h3 className="text-sm font-medium">{t("Identificação")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("Identificação")}</h3>
             <div className="space-y-1">
               <Label htmlFor="router-name">{t("Nome")}</Label>
               <Input
@@ -389,7 +389,7 @@ export function RouterEditorClient({
           </Card>
 
           <Card className="space-y-3 p-4">
-            <h3 className="text-sm font-medium">{t("Agente por número do remetente")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("Agente por número do remetente")}</h3>
             <p className="text-xs text-muted-foreground">
               {t(
                 "Com regras nesta lista, o telefone vinculado à conversa escolhe o agente antes da IA. Os demais números usam o fallback público. Intenções, campanhas e o agente anterior não mudam essa escolha.",
@@ -457,7 +457,7 @@ export function RouterEditorClient({
           </Card>
 
           <Card className="space-y-3 p-4">
-            <h3 className="text-sm font-medium">{t("Modelo que identifica a intenção")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("Modelo que identifica a intenção")}</h3>
             <div className="space-y-1">
               <Label htmlFor="router-classifier">{t("Modelo do classificador")}</Label>
               <Select
@@ -522,7 +522,7 @@ export function RouterEditorClient({
           </Card>
 
           <Card className="space-y-3 p-4">
-            <h3 className="text-sm font-medium">{t("Se nenhuma intenção casar")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("Se nenhuma intenção casar")}</h3>
             <div className="space-y-1">
               <Label htmlFor="router-fallback">{t("Agente de fallback")}</Label>
               <Select
@@ -567,7 +567,7 @@ export function RouterEditorClient({
           <Card className="space-y-3 p-4">
             <div className="flex flex-wrap items-start justify-between gap-2">
               <div className="min-w-0">
-                <h3 className="text-sm font-medium">{t("Intenções")}</h3>
+                <h3 className="font-display text-sm font-semibold">{t("Intenções")}</h3>
                 <p className="text-xs text-muted-foreground">
                   {t(
                     "Cada intenção descreve uma situação e diz qual agente deve assumir a conversa quando o cliente quer aquilo.",
@@ -1010,7 +1010,7 @@ function TestPanel({
               )}
             </p>
             {abaixoDoMinimo && confianca !== null && (
-              <p className="text-xs text-amber-600">
+              <p className="text-xs text-warning-fg">
                 {t("Confiança")} {(confianca * 100).toFixed(0)}% — {t("abaixo do mínimo de")}{" "}
                 {(result.min_confidence * 100).toFixed(0)}%,{" "}
                 {t("cairia no atendimento padrão em produção.")}

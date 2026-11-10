@@ -492,7 +492,7 @@ export function StagesSection({
   return (
     <div className="scroll-mt-20 space-y-4" id={ancoraDasEtapas(pipelineId)} data-testid={`etapas-${pipelineId}`}>
       <div className="space-y-1">
-        <h3 className="text-sm font-semibold">{t("Etapas deste funil")}</h3>
+        <h3 className="font-display text-sm font-semibold">{t("Etapas deste funil")}</h3>
         <p className="max-w-3xl text-sm leading-relaxed text-text-muted">
           {t(
             "Estas são as colunas do seu quadro, na ordem em que o cliente avança. Você pode renomear, criar, reordenar e arquivar.",

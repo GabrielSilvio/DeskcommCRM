@@ -75,7 +75,7 @@ export function TeamMembersClient({ currentUserId, canManage }: Props) {
 
   return (
     <>
-      <div className="rounded-md border">
+      <div className="rounded-lg border">
         <Table className="max-md:block">
           <TableHeader className="max-md:hidden">
             <TableRow>
@@ -160,9 +160,9 @@ export function TeamMembersClient({ currentUserId, canManage }: Props) {
                   {m.revoked_at ? (
                     <Badge variant="destructive">{t("Revogado")}</Badge>
                   ) : m.accepted_at ? (
-                    <Badge variant="default">{t("Aceito")}</Badge>
+                    <Badge variant="success">{t("Aceito")}</Badge>
                   ) : (
-                    <Badge variant="outline">{t("Pendente")}</Badge>
+                    <Badge variant="warning">{t("Pendente")}</Badge>
                   )}
                 </TableCell>
                 {/* No celular o cabeçalho some, e o rótulo vem do atributo. */}

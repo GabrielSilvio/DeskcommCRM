@@ -117,7 +117,7 @@ export function MfaEnrollModal({ motivo = "obrigatorio" }: { motivo?: "obrigator
               </p>
             </div>
             {error && (
-              <div className="rounded-md border border-destructive/30 bg-destructive/10 px-3 py-2 text-sm text-destructive">
+              <div className="rounded-md border border-error/30 bg-error-bg px-4 py-3 text-sm text-error-fg">
                 {error}
               </div>
             )}
@@ -185,7 +185,7 @@ export function MfaEnrollModal({ motivo = "obrigatorio" }: { motivo?: "obrigator
                     hasError={!!error}
                   />
                   {error && (
-                    <div className="rounded-md border border-destructive/30 bg-destructive/10 px-3 py-2 text-center text-sm text-destructive">
+                    <div className="rounded-md border border-error/30 bg-error-bg px-4 py-3 text-center text-sm text-error-fg">
                       {error}
                     </div>
                   )}

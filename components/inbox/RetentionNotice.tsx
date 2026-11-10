@@ -19,9 +19,9 @@ const KIND_ICON: Record<RetentionKind, typeof ShieldCheck> = {
 
 const KIND_CLASS: Record<RetentionKind, string> = {
   protection: "border-warning bg-warning-bg text-warning-fg",
-  compliance: "border-destructive/40 bg-destructive/10 text-destructive",
-  quality: "border-border bg-muted/40 text-muted-foreground",
-  handoff: "border-border bg-muted/40 text-muted-foreground",
+  compliance: "border-error/40 bg-error-bg text-error-fg",
+  quality: "border-border bg-surface-elevated text-text-muted",
+  handoff: "border-info/30 bg-info-bg text-info-fg",
 };
 
 /**
@@ -50,7 +50,7 @@ export function RetentionNotice({ conversationId }: { conversationId: string }) 
     >
       <Icon size={16} weight="duotone" className="mt-0.5 shrink-0" aria-hidden />
       <div className="min-w-0">
-        <p className="font-medium">
+        <p className="font-display font-semibold">
           {copy.title}
           <span className="ml-2 font-normal opacity-70">{when}</span>
         </p>

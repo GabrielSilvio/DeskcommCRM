@@ -90,8 +90,8 @@ export function NavHub({
   return (
     <div className="flex h-full flex-col gap-8 p-6">
       <header>
-        <h1 className="text-2xl font-semibold tracking-tight">{traduzir(title, locale)}</h1>
-        {subtitle && <p className="text-sm text-muted-foreground">{traduzir(subtitle, locale)}</p>}
+        <h1 className="font-display text-2xl font-bold tracking-tight">{traduzir(title, locale)}</h1>
+        {subtitle && <p className="text-sm text-text-muted">{traduzir(subtitle, locale)}</p>}
       </header>
 
       {secoes.map(({ section, items }) => (
@@ -102,7 +102,7 @@ export function NavHub({
         >
           <h2
             id={`hub-${group}-${slug(section)}`}
-            className="text-xs font-medium tracking-wider text-muted-foreground uppercase"
+            className="text-xs font-medium tracking-wider text-text-muted uppercase"
           >
             {traduzir(section, locale)}
           </h2>
@@ -116,11 +116,11 @@ export function NavHub({
                       size={20}
                       weight="regular"
                       aria-hidden
-                      className="mt-0.5 shrink-0 text-muted-foreground"
+                      className="mt-0.5 shrink-0 text-text-muted"
                     />
                     <div>
-                      <h3 className="text-sm font-semibold">{traduzir(item.label, locale)}</h3>
-                      <p className="mt-1 text-xs text-muted-foreground">
+                      <h3 className="font-display text-sm font-semibold">{traduzir(item.label, locale)}</h3>
+                      <p className="mt-1 text-xs text-text-muted">
                         {traduzir(item.description, locale)}
                       </p>
                     </div>
@@ -138,11 +138,11 @@ export function NavHub({
             <div>
               <h2
                 id="hub-crm-orientacoes-instaladas"
-                className="text-xs font-medium tracking-wider text-muted-foreground uppercase"
+                className="text-xs font-medium tracking-wider text-text-muted uppercase"
               >
                 {traduzir("Orientações instaladas", locale)}
               </h2>
-              <p className="mt-1 text-xs text-muted-foreground">
+              <p className="mt-1 text-xs text-text-muted">
                 {traduzir(
                   "Guias adicionados depois da instalação, sem acesso aos dados do CRM.",
                   locale,
@@ -151,7 +151,7 @@ export function NavHub({
             </div>
             <Link
               href="/app/extensions"
-              className="text-xs font-medium text-accent underline-offset-4 hover:underline focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:outline-hidden"
+              className="text-xs font-medium text-accent-text underline-offset-4 hover:underline focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:outline-hidden"
             >
               {traduzir("Gerenciar extensões", locale)}
             </Link>
@@ -166,10 +166,10 @@ export function NavHub({
                 className="mt-0.5 shrink-0 text-warning-fg"
               />
               <div>
-                <h3 className="text-sm font-semibold">
+                <h3 className="font-display text-sm font-semibold">
                   {traduzir("Não foi possível conferir as orientações instaladas", locale)}
                 </h3>
-                <p className="mt-1 text-xs text-muted-foreground">
+                <p className="mt-1 text-xs text-text-muted">
                   {traduzir(
                     "Abra Extensões para tentar novamente e ver o estado registrado no servidor.",
                     locale,
@@ -199,17 +199,17 @@ export function NavHub({
                           size={20}
                           weight="duotone"
                           aria-hidden
-                          className="mt-0.5 shrink-0 text-accent"
+                          className="mt-0.5 shrink-0 text-accent-text"
                         />
                         <div className="min-w-0">
-                          <p className="truncate text-[11px] font-medium tracking-wide text-muted-foreground uppercase">
+                          <p className="truncate text-[11px] font-medium tracking-wide text-text-muted uppercase">
                             {localize(guide.manifest.display.title, locale).text}
                           </p>
                           <h3 className="mt-0.5 text-sm font-semibold">
                             {localize(contribution.title, locale).text}
                           </h3>
                           {guide.configuration.show_description ? (
-                            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                            <p className="mt-1 text-xs leading-relaxed text-text-muted">
                               {localize(contribution.description, locale).text}
                             </p>
                           ) : null}

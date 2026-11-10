@@ -1024,7 +1024,7 @@ export function AgentForm(props: Props) {
         <div className="space-y-4">
           {/* Identification */}
           <Card className="space-y-3 p-4">
-            <h3 className="text-sm font-medium">{t("Quem é este agente")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("Quem é este agente")}</h3>
             <div className="space-y-1">
               <Label htmlFor="name">{t("Nome")}</Label>
               <Input
@@ -1098,7 +1098,7 @@ export function AgentForm(props: Props) {
 
           {/* Provider + credential + model */}
           <Card className="space-y-3 p-4">
-            <h3 className="text-sm font-medium">{t("A inteligência que ele usa")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("A inteligência que ele usa")}</h3>
             <div className="space-y-1">
               <Label htmlFor="provider">{t("Empresa de inteligência artificial")}</Label>
               <Select
@@ -1160,7 +1160,7 @@ export function AgentForm(props: Props) {
               <p className="text-xs text-destructive">{validation.credential_id}</p>
             ) : null}
             {cred && credSt && credSt !== "validated" ? (
-              <p className="text-xs text-amber-600 dark:text-amber-400">
+              <p className="text-xs text-warning-fg">
                 {t("Credencial selecionada está com status")} {t(STATUS_LABEL[credSt])}
                 {t(". Publish bloqueado até validar.")}
               </p>
@@ -1169,7 +1169,7 @@ export function AgentForm(props: Props) {
 
           {/* WhatsApp session */}
           <Card className="space-y-3 p-4">
-            <h3 className="text-sm font-medium">{t("Por qual número ele atende")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("Por qual número ele atende")}</h3>
             {props.routerMembership && (
               <div className="flex items-start gap-2 rounded-md bg-accent-soft p-3 text-xs text-text-muted">
                 <Info className="mt-0.5 shrink-0" aria-hidden />
@@ -1247,7 +1247,7 @@ export function AgentForm(props: Props) {
 
           {/* Limits */}
           <Card className="space-y-3 p-4">
-            <h3 className="text-sm font-medium">{t("Freios de segurança")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("Freios de segurança")}</h3>
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-1">
                 <Label htmlFor="max_steps">{t("Ações por atendimento (1 a 25)")}</Label>
@@ -1396,7 +1396,7 @@ export function AgentForm(props: Props) {
           {/* Prompt */}
           <Card className="space-y-2 p-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-medium">{t("As instruções dele")}</h3>
+              <h3 className="font-display text-sm font-semibold">{t("As instruções dele")}</h3>
               <div className="flex items-center gap-2">
                 {/* O contador é o aviso que chega ANTES do erro: quem cola um
                     texto grande vê na hora que ele não vai caber, em vez de
@@ -1448,7 +1448,7 @@ export function AgentForm(props: Props) {
 
           {/* Estilo de resposta (split de mensagens — Onda 4) */}
           <Card className="space-y-3 p-4">
-            <h3 className="text-sm font-medium">{t("Estilo de resposta")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("Estilo de resposta")}</h3>
             <div className="flex items-center gap-2">
               <Switch
                 id="split_messages"
@@ -1488,7 +1488,7 @@ export function AgentForm(props: Props) {
 
           {/* Voz (plano de voz, Fase 7) */}
           <Card className="space-y-3 p-4">
-            <h3 className="text-sm font-medium">{t("Responder falando")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("Responder falando")}</h3>
             <div className="flex items-center gap-2">
               <Switch
                 id="voz_enabled"
@@ -1530,7 +1530,7 @@ export function AgentForm(props: Props) {
 
           {/* Capacidades */}
           <Card className="space-y-2 p-4">
-            <h3 className="text-sm font-medium">{t("O que o agente pode fazer")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("O que o agente pode fazer")}</h3>
             <p className="text-xs text-muted-foreground">
               {t(
                 "Ligue por jornada de trabalho. O agente só consegue fazer o que estiver ligado aqui — e o que estiver ligado, ele fará sozinho durante o atendimento.",
@@ -1564,7 +1564,7 @@ export function AgentForm(props: Props) {
 
           {/* Triggers */}
           <Card className="space-y-2 p-4">
-            <h3 className="text-sm font-medium">{t("Quando ele entra em ação")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("Quando ele entra em ação")}</h3>
             <TriggerEditor
               value={form.trigger_config}
               onChange={(v) => patch({ trigger_config: v })}
@@ -1577,7 +1577,7 @@ export function AgentForm(props: Props) {
           {/* Ver as fotos que o cliente envia (9108). O custo vai escrito ao lado
               porque é ele que decide: cada foto descrita é uma chamada paga. */}
           <Card className="space-y-2 p-4">
-            <h3 className="text-sm font-medium">{t("Fotos que o cliente envia")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("Fotos que o cliente envia")}</h3>
             <div className="flex items-center gap-2">
               <Switch
                 id="image_vision_enabled"
@@ -1596,7 +1596,7 @@ export function AgentForm(props: Props) {
 
           {/* Handoff */}
           <Card className="space-y-3 p-4">
-            <h3 className="text-sm font-medium">{t("Passar para uma pessoa")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("Passar para uma pessoa")}</h3>
             <div className="flex items-center gap-2">
               <Switch
                 id="handoff_tool_enabled"
@@ -1658,7 +1658,7 @@ export function AgentForm(props: Props) {
 
           {/* Casos humanos */}
           <Card className="space-y-3 p-4">
-            <h3 className="text-sm font-medium">{t("Pedir ajuda sem sair da conversa")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("Pedir ajuda sem sair da conversa")}</h3>
             <div className="flex items-center gap-2">
               <Switch
                 id="cases_enabled"
@@ -1679,7 +1679,7 @@ export function AgentForm(props: Props) {
 
           {/* Propostas comerciais */}
           <Card className="space-y-3 p-4">
-            <h3 className="text-sm font-medium">{t("Propostas comerciais")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("Propostas comerciais")}</h3>
             <div className="flex items-center gap-2">
               <Switch
                 id="proposal_ai_draft_enabled"
@@ -1695,7 +1695,7 @@ export function AgentForm(props: Props) {
 
           {/* Follow-up */}
           <Card className="space-y-3 p-4">
-            <h3 className="text-sm font-medium">{t("Follow-up")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("Follow-up")}</h3>
             <p className="text-xs text-muted-foreground">
               {t(
                 "Retomar sozinho quem parou de responder, para o interessado não sumir sem ninguém perceber.",

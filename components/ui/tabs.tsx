@@ -38,7 +38,7 @@ const TabsList = React.forwardRef<
       // agente: a primeira aba, "Configuração", ficava em left = -80 px, e quem
       // ia ao Histórico no celular não tinha como voltar. `safe` centraliza
       // quando cabe e começa pela primeira quando não cabe.
-      "inline-flex h-9 max-w-full items-center max-lg:h-auto justify-center-safe overflow-x-auto rounded-lg bg-muted p-1 text-muted-foreground",
+      "inline-flex h-9 max-w-full items-center max-lg:h-auto justify-center-safe overflow-x-auto rounded-full bg-surface-elevated p-1 text-text-muted",
       className,
     )}
     {...props}
@@ -70,7 +70,7 @@ const TabsTrigger = React.forwardRef<
       //
       // `lg:` é o mesmo corte que `components/ui/button.tsx` usa para separar
       // "quem aciona é dedo" de "quem aciona é cursor".
-      "inline-flex min-h-11 items-center justify-center rounded-md px-3 py-1 text-sm font-medium whitespace-nowrap ring-offset-background transition-[background-color,color,box-shadow] duration-fast focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm lg:min-h-0",
+      "inline-flex min-h-11 items-center justify-center rounded-full px-4 py-1 font-display text-sm font-semibold whitespace-nowrap ring-offset-surface-elevated transition-[background-color,color,box-shadow] duration-base ease-spring hover:text-text focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-surface data-[state=active]:text-text data-[state=active]:shadow-sm lg:min-h-0",
       className,
     )}
     {...props}
@@ -85,7 +85,7 @@ const TabsContent = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
-      "mt-2 ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-hidden",
+      "mt-2 ring-offset-bg focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 focus-visible:outline-hidden",
       className,
     )}
     {...props}

@@ -254,8 +254,8 @@ export function TestPanel({ agent, draft, published, readOnly, channelSessions }
           </div>
         </div>
 
-        <div className="rounded-md border border-amber-500/40 bg-amber-500/5 p-3 text-xs">
-          <p className="font-medium text-amber-700 dark:text-amber-400">
+        <div className="rounded-md border border-warning/40 bg-warning-bg p-3 text-xs">
+          <p className="font-medium text-warning-fg">
             {t("⚠ Modo teste consome créditos do provider.")}
           </p>
           <p className="mt-1 text-muted-foreground">
@@ -387,7 +387,7 @@ export function TestPanel({ agent, draft, published, readOnly, channelSessions }
                     role="status"
                     key={`aviso-${i}`}
                     data-testid="teste-aviso-de-envio"
-                    className="rounded-md border border-amber-500/40 bg-amber-500/5 p-2"
+                    className="rounded-md border border-warning/40 bg-warning-bg p-2"
                   >
                     {x.message}
                   </p>

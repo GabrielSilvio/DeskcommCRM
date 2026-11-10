@@ -171,10 +171,18 @@ describe("o que o sistema ajustou, com as duas cores (#2482)", () => {
 
   for (const caso of CASOS) {
     describe(caso.rotulo, () => {
-      it("verde + âmbar: só o escuro da âmbar fala, e nenhum alerta de erro ou sucesso sobra", () => {
+      it("verde + âmbar: só o escuro da âmbar fala, e nenhum alerta de erro sobra", () => {
         const camada = caso.camada({ accent_hex: SEMENTE_CLARA, accent_dark_hex: SEMENTE_ESCURA });
-        expect(sigla(camada)).toEqual(["accent_deslocado|escuro|--color-accent"]);
-        expect(textos(camada)).not.toMatch(/erro|sucesso/);
+        // O sucesso que sobra é da própria âmbar no escuro (com o verde do produto
+        // novo, ela colide com `success` sob dicromacia — `derivarMarca(âmbar)`
+        // sozinha emite o mesmo par). O que NÃO pode sobrar é nada do verde (que só
+        // pinta o claro) nem do claro da âmbar: nenhum motivo de tema claro e
+        // nenhum alerta de erro.
+        expect(sigla(camada)).toEqual([
+          "accent_deslocado|escuro|--color-accent",
+          "semantica_deslocada|escuro|success",
+        ]);
+        expect(textos(camada)).not.toMatch(/erro/);
       });
 
       it("roxo + cinza: o aviso de cor neutra é do MODO ESCURO, nunca da cor principal", () => {
@@ -194,7 +202,6 @@ describe("o que o sistema ajustou, com as duas cores (#2482)", () => {
         // avisos do escuro que ele de fato pinta.
         expect(sigla(caso.camada({ accent_hex: SEMENTE_CLARA, accent_dark_hex: null }))).toEqual([
           "accent_deslocado|escuro|--color-accent",
-          "redundancia_nao_cromatica_necessaria|escuro|success",
         ]);
       });
     });

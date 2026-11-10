@@ -16,7 +16,7 @@ type Resource = { id: string; name: string; capacity: number; is_active: boolean
 type Calendar = { id: string; name: string; account_email: string; user_id: string; available: boolean; can_read: boolean; can_write: boolean };
 type Block = { id: string; scope_kind: string; event_type_id: string | null; owner_user_id: string | null; resource_id: string | null; starts_at: string; ends_at: string; reason: string; revision: number };
 type Data = { service: DadosDoServico; resources: Resource[]; calendars: Calendar[]; blocks: Block[]; preview: { availability: DisponibilidadeDoServico[] } | null };
-const field = "rounded-md border border-border bg-surface-elevated p-2 text-sm w-full";
+const field = "rounded-md border border-border-strong bg-surface p-2 text-sm w-full";
 const hhmm = (m: number) => `${Math.floor(m / 60).toString().padStart(2, "0")}:${(m % 60).toString().padStart(2, "0")}`;
 const minute = (s: string) => { const [h = Number.NaN, m = Number.NaN] = s.split(":").map(Number); return h * 60 + m; };
 const NEW_ROW: HorarioDoServico = { weekday: 1, on_date: null, timing_kind: "fixed", start_minute: 840, end_minute: null, duration_minutes: null, capacity_rule: "inherit", capacity_limit: null };

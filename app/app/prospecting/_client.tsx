@@ -930,7 +930,7 @@ export function ProspectingClient() {
                   aria-selected={aba === id}
                   aria-controls={`prospecting-painel-${id}`}
                   onClick={() => setAba(id)}
-                  className={`flex-1 rounded-md px-2 py-1.5 ${aba === id ? "bg-background font-medium shadow-sm" : "text-muted-foreground"}`}
+                  className={`flex-1 rounded-full px-2 py-1.5 ${aba === id ? "bg-surface font-medium shadow-press-soft" : "text-muted-foreground"}`}
                 >
                   {rotulo}
                 </button>
@@ -1277,7 +1277,7 @@ export function ProspectingClient() {
                     [t("Score médio"), scoreMedio()],
                   ].map(([label, value]) => (
                     <div key={label}>
-                      <p className="text-2xl font-semibold tabular-nums">{value}</p>
+                      <p className="font-display text-2xl font-bold tabular-nums">{value}</p>
                       <p className="text-xs text-muted-foreground">{label}</p>
                     </div>
                   ))}

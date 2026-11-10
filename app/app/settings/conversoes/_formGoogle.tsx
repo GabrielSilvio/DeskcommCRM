@@ -120,7 +120,7 @@ export function FormularioDeConversoesGoogle({
     return (
       <Card className="p-6" data-testid="google-ads-nao-configurado">
         <div className="flex flex-col gap-2">
-          <h3 className="font-medium">{t("Google Ads")}</h3>
+          <h3 className="font-display font-medium">{t("Google Ads")}</h3>
           {api === "google_ads" && dataManagerConfigurado && (
             <a
               className="text-sm underline"
@@ -153,7 +153,7 @@ export function FormularioDeConversoesGoogle({
     return (
       <Card className="p-6">
         <div className="flex flex-col gap-3">
-          <h3 className="font-medium">{t("Google Ads")}</h3>
+          <h3 className="font-display font-medium">{t("Google Ads")}</h3>
           {api === "google_ads" && dataManagerConfigurado && (
             <a
               className="text-sm underline"
@@ -186,7 +186,7 @@ export function FormularioDeConversoesGoogle({
           )}
         </p>
         <div className="flex items-center justify-between">
-          <h3 className="font-medium">{t("Google Ads")}</h3>
+          <h3 className="font-display font-medium">{t("Google Ads")}</h3>
           {api === "google_ads" && dataManagerConfigurado && (
             <a
               className="text-sm underline"
@@ -261,7 +261,7 @@ export function FormularioDeConversoesGoogle({
             <Label htmlFor="google_purchase_category">{t("Categoria da conversão")}</Label>
             <select
               id="google_purchase_category"
-              className="rounded-md border bg-background p-2 text-sm"
+              className="rounded-md border border-border-strong bg-surface p-2 text-sm"
               value={categoriaDaVenda}
               onChange={(e) => setCategoriaDaVenda(e.target.value as CategoriaDeConversao)}
             >
@@ -276,7 +276,7 @@ export function FormularioDeConversoesGoogle({
             <Label htmlFor="google_purchase_value_mode">{t("Valor do negócio")}</Label>
             <select
               id="google_purchase_value_mode"
-              className="rounded-md border bg-background p-2 text-sm"
+              className="rounded-md border border-border-strong bg-surface p-2 text-sm"
               value={modoDeValor}
               onChange={(e) => setModoDeValor(e.target.value as ModoDeValorDaVenda)}
             >

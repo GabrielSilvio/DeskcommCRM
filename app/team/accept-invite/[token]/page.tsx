@@ -50,8 +50,8 @@ export default async function AcceptInvitePage({ params }: PageProps) {
   if (await authRateLimited("invite_accept", null, AUTH_LIMITS.invite_accept)) {
     return (
       <Shell idioma={idioma}>
-        <h1 className="text-xl font-semibold">{t("Muitas tentativas")}</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <h1 className="font-display text-3xl font-extrabold leading-[1.1] tracking-[-0.03em]">{t("Muitas tentativas")}</h1>
+        <p className="mt-3 text-base text-text-muted">
           {t("Aguarde alguns minutos e abra o link do convite de novo.")}
         </p>
       </Shell>
@@ -63,8 +63,8 @@ export default async function AcceptInvitePage({ params }: PageProps) {
   if (!payload) {
     return (
       <Shell idioma={idioma}>
-        <h1 className="text-xl font-semibold">{t("Convite inválido ou expirado")}</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <h1 className="font-display text-3xl font-extrabold leading-[1.1] tracking-[-0.03em]">{t("Convite inválido ou expirado")}</h1>
+        <p className="mt-3 text-base text-text-muted">
           {t(
             "Este link não é válido ou já passou da janela de 24h. Peça um novo convite ao admin do tenant.",
           )}
@@ -77,14 +77,14 @@ export default async function AcceptInvitePage({ params }: PageProps) {
     const next = encodeURIComponent(`/team/accept-invite/${token}`);
     return (
       <Shell idioma={idioma}>
-        <h1 className="text-xl font-semibold">{t("Você foi convidado")}</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <h1 className="font-display text-3xl font-extrabold leading-[1.1] tracking-[-0.03em]">{t("Você foi convidado")}</h1>
+        <p className="mt-3 text-base text-text-muted">
           {t("Use o e-mail")} <strong>{payload.email}</strong>{" "}
           {t(
             "para entrar na equipe que convidou você. Se ainda não tem conta, crie a sua. Se já tem, entre com ela.",
           )}
         </p>
-        <div className="mt-4 flex flex-col items-stretch gap-3">
+        <div className="mt-6 flex flex-col items-stretch gap-3">
           {/*
             Criar conta é o caminho de quem ainda não tem conta.
             As duas saídas levam o token: sem ele,
@@ -93,13 +93,13 @@ export default async function AcceptInvitePage({ params }: PageProps) {
           */}
           <Link
             href={`/signup?invite=${encodeURIComponent(token)}`}
-            className="inline-block rounded-md bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground"
+            className="inline-flex h-12 items-center justify-center rounded-full bg-accent px-7 text-center font-display text-base font-semibold text-accent-foreground shadow-press transition-all duration-base ease-spring hover:-translate-y-0.5 hover:bg-accent-hover active:translate-y-0 disabled:pointer-events-none disabled:opacity-60 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
           >
             {t("Criar minha conta")}
           </Link>
           <Link
             href={`/login?next=${next}`}
-            className="text-center text-sm underline underline-offset-4"
+            className="text-center text-sm font-medium text-accent-text underline underline-offset-4"
           >
             {t("Já tenho conta? Entrar")}
           </Link>
@@ -112,16 +112,16 @@ export default async function AcceptInvitePage({ params }: PageProps) {
   if (userEmail !== payload.email.trim().toLowerCase()) {
     return (
       <Shell idioma={idioma}>
-        <h1 className="text-xl font-semibold">{t("Email não corresponde")}</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <h1 className="font-display text-3xl font-extrabold leading-[1.1] tracking-[-0.03em]">{t("Email não corresponde")}</h1>
+        <p className="mt-3 text-base text-text-muted">
           {t("Você está logado como")} <strong>{user.email}</strong>,{" "}
           {t("mas o convite foi enviado para")} <strong>{payload.email}</strong>.{" "}
           {t("Saia e faça login com o email correto.")}
         </p>
-        <form action="/api/auth/signout" method="post" className="mt-4">
+        <form action="/api/auth/signout" method="post" className="mt-6 flex">
           <button
             type="submit"
-            className="rounded-md border px-4 py-2 text-sm font-medium hover:bg-accent"
+            className="inline-flex h-12 items-center justify-center rounded-full border border-border-strong bg-surface px-7 font-display text-base font-semibold text-text shadow-press-soft transition-all duration-base ease-spring hover:-translate-y-0.5 hover:bg-bg active:translate-y-0 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
           >
             {t("Sair")}
           </button>
@@ -132,8 +132,8 @@ export default async function AcceptInvitePage({ params }: PageProps) {
 
   return (
     <Shell idioma={idioma}>
-      <h1 className="text-xl font-semibold">{t("Aceitar convite")}</h1>
-      <p className="mt-2 text-sm text-muted-foreground">
+      <h1 className="font-display text-3xl font-extrabold leading-[1.1] tracking-[-0.03em]">{t("Aceitar convite")}</h1>
+      <p className="mt-3 text-base text-text-muted">
         {t("Você foi convidado para entrar como")} <strong>{payload.role}</strong>.{" "}
         {t("Confirme abaixo para ativar seu acesso.")}
       </p>
@@ -149,8 +149,8 @@ export default async function AcceptInvitePage({ params }: PageProps) {
 function Shell({ idioma, children }: { idioma: Idioma; children: React.ReactNode }) {
   return (
     <IdiomaProvider locale={idioma}>
-      <div className="flex min-h-screen items-center justify-center p-6">
-        <div className="w-full max-w-md rounded-lg border bg-card p-8 shadow-sm">{children}</div>
+      <div className="flex min-h-screen items-center justify-center bg-bg p-4 sm:p-6">
+        <div className="w-full max-w-md rounded-xl bg-surface p-6 shadow-md sm:rounded-2xl sm:p-10">{children}</div>
       </div>
     </IdiomaProvider>
   );

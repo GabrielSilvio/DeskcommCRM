@@ -381,7 +381,7 @@ export function ScheduleDialog({
               id="tz"
               value={timezone}
               onChange={(e) => setTimezone(e.target.value)}
-              className="h-9 w-full rounded-md border border-input bg-background px-2 text-sm"
+              className="h-9 w-full rounded-md border border-border-strong bg-surface px-2 text-sm"
             >
               {FUSOS_OFERECIDOS.map((f) => (
                 <option key={f.codigo} value={f.codigo}>
@@ -687,7 +687,7 @@ export function AttendantsClient({ canManage, organizationTimezone, setoresLigad
     <div className="space-y-6">
       <RoutingCard canManage={canManage} />
 
-      <div className="rounded-md border">
+      <div className="rounded-lg border">
         <div className="border-b px-4 py-3" data-testid="atendentes-e-horarios">
           <h2 className="text-sm font-semibold">{t("Atendentes e horários de atendimento")}</h2>
           <p className="text-xs text-muted-foreground">

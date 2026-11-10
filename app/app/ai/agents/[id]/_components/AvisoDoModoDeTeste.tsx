@@ -49,11 +49,11 @@ export function AvisoDoModoDeTeste({
     <div
       data-testid="aviso-modo-de-teste"
       role="status"
-      className="flex items-start gap-2 rounded-md border border-amber-500/40 bg-amber-500/5 p-3 text-xs"
+      className="flex items-start gap-2 rounded-md border border-warning/40 bg-warning-bg p-3 text-xs"
     >
-      <Info className="mt-0.5 shrink-0 text-amber-600 dark:text-amber-400" aria-hidden />
+      <Info className="mt-0.5 shrink-0 text-warning-fg" aria-hidden />
       <div className="space-y-1">
-        <p className="font-medium text-amber-700 dark:text-amber-400">
+        <p className="font-medium text-warning-fg">
           {t("Este número está em modo de teste")}
         </p>
         <p className="text-muted-foreground">{motivo}</p>

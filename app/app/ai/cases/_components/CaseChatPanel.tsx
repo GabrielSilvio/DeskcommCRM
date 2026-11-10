@@ -262,7 +262,7 @@ export function CaseChatPanel({ caseId }: { caseId: string }) {
               "Nenhum provedor de IA está configurado. Peça a quem administra para configurar em IA › Provedores.",
             )}
           </p>
-          <a className="text-sm text-accent underline underline-offset-2" href="/app/ai/providers">
+          <a className="text-sm text-accent-text underline underline-offset-2" href="/app/ai/providers">
             {t("Abrir IA › Provedores")}
           </a>
         </div>

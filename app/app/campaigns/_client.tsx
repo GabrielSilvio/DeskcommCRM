@@ -33,7 +33,7 @@ export function ListaDeCampanhas() {
     <div className="space-y-4 p-6">
       <header className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0">
-          <h1 className="text-2xl font-semibold tracking-tight">{t("Campanhas")}</h1>
+          <h1 className="font-display text-2xl font-bold tracking-tight">{t("Campanhas")}</h1>
           <p className="text-sm text-muted-foreground">
             {t("Escolha o público, escreva a mensagem e acompanhe quem recebeu.")}
           </p>
@@ -57,7 +57,7 @@ export function ListaDeCampanhas() {
         </label>
         <select
           id="filtro-status"
-          className="h-9 rounded-md border border-border bg-surface px-2 text-sm"
+          className="h-9 rounded-md border border-border-strong bg-surface px-2 text-sm focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-accent-500"
           value={status}
           onChange={(e) => setStatus(e.target.value)}
         >

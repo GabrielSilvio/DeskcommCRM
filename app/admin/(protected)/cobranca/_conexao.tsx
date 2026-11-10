@@ -112,7 +112,7 @@ export function ConexaoDaCobranca({
     <Card className="max-w-2xl space-y-4 p-6">
       {urlDoEscolhido === null && (
         // Antes do clique, não depois de um 422: o endereço vem da instalação, fora desta tela.
-        <p role="alert" className="rounded-md border p-3 text-sm">
+        <p role="alert" className="rounded-lg border border-border bg-surface p-3 text-sm">
           {asaas
             ? t("O Asaas só avisa pagamentos num endereço https público (ex.: https://crm.example.com). Configure o domínio do sistema com HTTPS e volte aqui.")
             : t("A Stripe só avisa pagamentos num endereço https público (ex.: https://crm.example.com). Configure o domínio do sistema com HTTPS e volte aqui.")}
@@ -131,7 +131,7 @@ export function ConexaoDaCobranca({
         <Label htmlFor="provedor">{t("Provedor")}</Label>
         <select
           id="provedor"
-          className="h-9 rounded-md border bg-background px-2 text-sm"
+          className="h-9 rounded-md border border-border-strong bg-surface px-2 text-sm focus-visible:border-accent-500 focus-visible:ring-2 focus-visible:ring-accent-soft focus-visible:outline-hidden"
           value={escolhido}
           onChange={(e) => setEscolhido(e.target.value === "asaas" ? "asaas" : "stripe")}
         >
@@ -173,7 +173,7 @@ export function ConexaoDaCobranca({
         </p>
       )}
       {aPublicar !== null && (
-        <div role="alert" className="space-y-2 rounded-md border p-3 text-sm">
+        <div role="alert" className="space-y-2 rounded-lg border border-border bg-surface p-3 text-sm">
           <p>
             {(aPublicar === 1 ? t("{n} empresa assinou em modo de teste. Ao publicar, ela volta para o teste grátis e precisa assinar de novo com um cartão de verdade.") : t("{n} empresas assinaram em modo de teste. Ao publicar, elas voltam para o teste grátis e precisam assinar de novo com um cartão de verdade.")).replace(
               "{n}",
@@ -198,7 +198,7 @@ export function ConexaoDaCobranca({
           aria-label={t("Falta um passo: cadastre o aviso de pagamento no Asaas")}
           className="space-y-3 rounded-md border bg-warning-bg p-4 text-sm text-warning-fg"
         >
-          <h3 className="font-semibold">{t("Falta um passo: cadastre o aviso de pagamento no Asaas")}</h3>
+          <h3 className="font-display font-semibold">{t("Falta um passo: cadastre o aviso de pagamento no Asaas")}</h3>
           <p>
             {t("O Asaas não deixou o sistema cadastrar o aviso sozinho. No Asaas, abra Integrações › Webhooks. Se já existir um aviso com o endereço abaixo, edite-o e troque só o token; se não, clique em Adicionar e preencha assim:")}
           </p>

@@ -206,7 +206,7 @@ export function SkillsClient({ initialState }: Props) {
                                   <span>
                                     • {t("Palavras-chave de ativação")}:{" "}
                                     {skill.comparativo.any_adicionadas.length > 0 && (
-                                      <span className="text-accent">+{skill.comparativo.any_adicionadas.join(", ")}</span>
+                                      <span className="text-accent-text">+{skill.comparativo.any_adicionadas.join(", ")}</span>
                                     )}
                                     {skill.comparativo.any_adicionadas.length > 0 &&
                                       skill.comparativo.any_removidas.length > 0 && <span aria-hidden> </span>}
@@ -221,7 +221,7 @@ export function SkillsClient({ initialState }: Props) {
                                   <span>
                                     • {t("Etiquetas de ativação")}:{" "}
                                     {skill.comparativo.tags_adicionadas.length > 0 && (
-                                      <span className="text-accent">+{skill.comparativo.tags_adicionadas.join(", ")}</span>
+                                      <span className="text-accent-text">+{skill.comparativo.tags_adicionadas.join(", ")}</span>
                                     )}
                                     {skill.comparativo.tags_adicionadas.length > 0 &&
                                       skill.comparativo.tags_removidas.length > 0 && <span aria-hidden> </span>}

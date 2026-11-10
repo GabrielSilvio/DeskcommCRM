@@ -960,7 +960,7 @@ export default function ReceitasProntas({ connectionId, motor, canWrite }: Props
                   key={opcao.id}
                   type="button"
                   onClick={() => escolherReceita(opcao)}
-                  className="block w-full rounded-md border bg-background p-2 text-left text-sm hover:bg-accent"
+                  className="block w-full rounded-md border bg-background p-2 text-left text-sm hover:bg-accent-soft"
                 >
                   <span className="block font-medium">{t(opcao.rotulo)}</span>
                   <span className="block text-xs text-muted-foreground">

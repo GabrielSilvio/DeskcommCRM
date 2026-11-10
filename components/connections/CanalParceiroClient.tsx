@@ -225,7 +225,7 @@ export function CanalParceiroClient() {
       <Card className="flex flex-col gap-4 p-4">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <h3 className="text-sm font-semibold">
+            <h3 className="font-display text-sm font-semibold">
               {t("Conectar por")} {rotulo}
             </h3>
             <p className="text-xs text-muted-foreground">
@@ -389,7 +389,7 @@ export function CanalParceiroClient() {
           um passo 2 vazio faz parecer que falta algo que ainda não podia existir. */}
       {recemConectado?.webhook_automatico && (
         <Card className="flex flex-col gap-1 p-4">
-          <h3 className="text-sm font-semibold">{t("Webhook configurado")}</h3>
+          <h3 className="font-display text-sm font-semibold">{t("Webhook configurado")}</h3>
           <p className="text-xs text-muted-foreground">
             {t(
               "A instalação registrou o webhook no provedor: só os eventos deste número chegam a esta organização. Não há nada para colar.",
@@ -401,7 +401,7 @@ export function CanalParceiroClient() {
       {recemConectado && !recemConectado.webhook_automatico && (
         <Card className="flex flex-col gap-4 border-warning/40 bg-warning-bg p-4">
           <div>
-            <h3 className="text-sm font-semibold">{t("Falta ligar a volta")}</h3>
+            <h3 className="font-display text-sm font-semibold">{t("Falta ligar a volta")}</h3>
             <p className="text-xs text-muted-foreground">
               {t("Cole os dois valores abaixo no webhook do seu provedor. Sem isso o CRM")}{" "}
               <strong>{t("envia mas não recebe")}</strong>
@@ -429,7 +429,7 @@ export function CanalParceiroClient() {
 
       {conectado && !recemConectado && estado?.webhook_automatico && (
         <Card className="flex flex-col gap-1 p-4">
-          <h3 className="text-sm font-semibold">Webhook</h3>
+          <h3 className="font-display text-sm font-semibold">Webhook</h3>
           <p className="text-xs text-muted-foreground">
             {t("Configurado automaticamente no provedor: só os eventos deste número chegam aqui.")}
           </p>
@@ -439,7 +439,7 @@ export function CanalParceiroClient() {
       {conectado && !recemConectado && !estado?.webhook_automatico && estado?.webhook_url && (
         <Card className="flex flex-col gap-3 p-4">
           <div>
-            <h3 className="text-sm font-semibold">Webhook</h3>
+            <h3 className="font-display text-sm font-semibold">Webhook</h3>
             <p className="text-xs text-muted-foreground">
               {t(
                 "O endereço que o provedor usa para entregar as mensagens. O segredo não é mostrado de novo — para gerar outro, exclua a conexão e conecte de novo.",

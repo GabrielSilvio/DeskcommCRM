@@ -1105,7 +1105,7 @@ export const Composer = forwardRef<ComposerHandle, Props>(function Composer(
             type="button"
             onClick={() => setMode("reply")}
             className={cn(
-              "min-h-11 rounded-full px-3 py-1 text-xs font-medium transition-colors lg:min-h-0 lg:px-2.5",
+              "min-h-11 rounded-full px-3 py-1 font-display text-xs font-semibold transition-colors lg:min-h-0 lg:px-2.5",
               mode === "reply"
                 ? "bg-accent text-accent-foreground"
                 : "text-muted-foreground hover:bg-muted",
@@ -1117,7 +1117,7 @@ export const Composer = forwardRef<ComposerHandle, Props>(function Composer(
             type="button"
             onClick={() => setMode("note")}
             className={cn(
-              "min-h-11 rounded-full px-3 py-1 text-xs font-medium transition-colors lg:min-h-0 lg:px-2.5",
+              "min-h-11 rounded-full px-3 py-1 font-display text-xs font-semibold transition-colors lg:min-h-0 lg:px-2.5",
               mode === "note"
                 ? "bg-warning text-warning-fg"
                 : "text-muted-foreground hover:bg-muted",
@@ -1292,8 +1292,8 @@ export const Composer = forwardRef<ComposerHandle, Props>(function Composer(
               // 16px abaixo do `md`: o Safari do iPhone AMPLIA a página ao focar
               // campo com fonte menor, e a conversa sai do quadro. 44px de alvo
               // até o `lg`, como o resto dos botões de toque.
-              "max-h-40 min-h-11 flex-1 resize-none rounded-md border border-input bg-background px-3 py-2 text-base md:text-sm lg:min-h-9",
-              "placeholder:text-muted-foreground focus:ring-1 focus:ring-ring focus:outline-hidden",
+              "max-h-40 min-h-11 flex-1 resize-none rounded-md border border-border-strong bg-surface px-3 py-2 text-base md:text-sm lg:min-h-9",
+              "placeholder:text-muted-foreground focus:border-accent focus:ring-2 focus:ring-accent/30 focus:outline-hidden",
             )}
             disabled={mode === "note" ? isDisabled : respostaBarrada}
             aria-label={t("Mensagem")}

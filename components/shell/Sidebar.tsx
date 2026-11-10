@@ -222,7 +222,7 @@ export function SidebarContent({
         ) : (
           <span
             className={cn(
-              "min-w-0 truncate font-semibold tracking-tight",
+              "min-w-0 truncate font-display font-bold tracking-tight",
               collapsed && "sr-only",
             )}
             title={nome}
@@ -231,7 +231,7 @@ export function SidebarContent({
           </span>
         )}
         {collapsed && !marcaDoProduto && (
-          <span aria-hidden className="text-lg font-bold text-primary">
+          <span aria-hidden className="font-display text-lg font-bold text-accent-text">
             {/* Spread e não `[0]`: nome começando com emoji ou acento composto
                 quebraria no meio do code point. Mesma regra de `resolveBranding`
                 — a inicial precisa acompanhar o nome que a barra mostra, senão
@@ -340,7 +340,7 @@ export function SidebarContent({
                     type="button"
                     onClick={() => toggleGrupo(group.id)}
                     aria-expanded={aberto}
-                    className="flex w-full items-center justify-between rounded-md px-3 py-1 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent/40 hover:text-foreground"
+                    className="flex w-full items-center justify-between rounded-md px-3 py-1 text-xs font-medium text-text-subtle transition-colors hover:bg-surface-elevated hover:text-text"
                   >
                     {t(group.label)}
                     <CaretDown
@@ -375,8 +375,8 @@ export function SidebarContent({
                           className={cn(
                             "relative flex items-center gap-3 rounded-md px-3 py-1 text-sm transition-colors",
                             isActive
-                              ? "bg-accent text-accent-foreground"
-                              : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
+                              ? "bg-accent-soft font-semibold text-accent-text"
+                              : "text-text-muted hover:bg-surface-elevated hover:text-text",
                             collapsed && "justify-center px-2",
                           )}
                         >
@@ -407,8 +407,8 @@ export function SidebarContent({
                         className={cn(
                           "flex items-center gap-3 rounded-md px-3 py-1 text-sm transition-colors",
                           pathname === group.hub.href
-                            ? "bg-accent text-accent-foreground"
-                            : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
+                            ? "bg-accent-soft font-semibold text-accent-text"
+                            : "text-text-muted hover:bg-surface-elevated hover:text-text",
                           collapsed && "justify-center px-2",
                         )}
                       >
@@ -434,8 +434,8 @@ export function SidebarContent({
             className={cn(
               "mb-0.5 flex items-center gap-3 rounded-md px-3 py-1 text-sm transition-colors",
               pathname.startsWith(rodape.href)
-                ? "bg-accent text-accent-foreground"
-                : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
+                ? "bg-accent-soft font-semibold text-accent-text"
+                : "text-text-muted hover:bg-surface-elevated hover:text-text",
               collapsed && "justify-center px-2",
             )}
           >
@@ -457,8 +457,8 @@ export function SidebarContent({
             className={cn(
               "mb-0.5 flex items-center gap-3 rounded-md px-3 py-1 text-sm transition-colors",
               pathname.startsWith(ajuda.href)
-                ? "bg-accent text-accent-foreground"
-                : "text-muted-foreground hover:bg-accent/50 hover:text-foreground",
+                ? "bg-accent-soft font-semibold text-accent-text"
+                : "text-text-muted hover:bg-surface-elevated hover:text-text",
               collapsed && "justify-center px-2",
             )}
           >
@@ -507,7 +507,7 @@ function BotaoDeRecolher({
       onClick={onClick}
       disabled={isPending}
       className={cn(
-        "flex w-full items-center gap-2 rounded-md px-3 py-2 text-xs text-muted-foreground hover:bg-accent/50 hover:text-foreground",
+        "flex w-full items-center gap-2 rounded-md px-3 py-2 text-xs text-text-muted transition-colors hover:bg-surface-elevated hover:text-text",
         (collapsed || soIcone) && "justify-center px-2",
       )}
       aria-label={rotulo}
@@ -562,7 +562,7 @@ export function Sidebar({ collapsed }: { collapsed: boolean }) {
         // `duration-base` em vez do `duration-200` literal: 200ms é o mesmo
         // número, mas vindo de `--duration-base`. A Lei de movimento fecha a
         // tabela de durações, e número solto é o que a faz apodrecer.
-        "sticky top-[var(--faixas-de-cima,0px)] z-30 flex h-[calc(100dvh-var(--faixas-de-cima,0px))] shrink-0 flex-col border-r bg-card transition-[width] duration-base",
+        "sticky top-[var(--faixas-de-cima,0px)] z-30 flex h-[calc(100dvh-var(--faixas-de-cima,0px))] shrink-0 flex-col border-r bg-surface transition-[width] duration-base",
         collapsed ? "w-16" : "w-60",
       )}
     >

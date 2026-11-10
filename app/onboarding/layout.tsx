@@ -59,8 +59,8 @@ export default async function OnboardingLayout({ children }: { children: React.R
 
   return (
     <IdiomaProvider locale={user.idioma}>
-      <div className="flex min-h-screen flex-col bg-muted/40">
-        <header className="border-b bg-background">
+      <div className="flex min-h-screen flex-col bg-bg">
+        <header>
           <div className="mx-auto flex w-full max-w-3xl items-center justify-between px-6 py-4">
             <div className="flex items-center gap-3">
               {/* O nome está escrito logo abaixo — o símbolo é reforço, não legenda. */}
@@ -76,12 +76,12 @@ export default async function OnboardingLayout({ children }: { children: React.R
                   alt=""
                   aria-hidden
                   decoding="async"
-                  className="h-9 w-9 rounded-md object-contain"
+                  className="h-9 w-9 rounded-[12px] object-contain"
                 />
               )}
               <div>
-                <p className="text-xs uppercase tracking-wider text-muted-foreground">{marcaDoIcone.nome}</p>
-                <h1 className="text-lg font-semibold tracking-tight">{activeOrg.name}</h1>
+                <p className="text-xs font-semibold uppercase tracking-wider text-text-subtle">{marcaDoIcone.nome}</p>
+                <h1 className="font-display text-xl font-extrabold tracking-[-0.02em]">{activeOrg.name}</h1>
               </div>
             </div>
             <div className="flex items-center gap-1">
@@ -103,7 +103,7 @@ export default async function OnboardingLayout({ children }: { children: React.R
             <Stepper passos={passos} />
           </div>
         </header>
-        <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8">{children}</main>
+        <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-12 pt-4">{children}</main>
       </div>
     </IdiomaProvider>
   );

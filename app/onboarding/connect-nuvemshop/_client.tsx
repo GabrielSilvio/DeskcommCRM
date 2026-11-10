@@ -23,7 +23,7 @@ export function ConnectNuvemshopClient() {
   const marca = useMarcaDaInstalacao();
 
   return (
-    <div className="space-y-4 rounded-lg border bg-background p-6">
+    <div className="space-y-4 rounded-xl border border-border bg-surface p-6">
       <p className="text-sm">
         {t("Ao clicar em")} <strong>{t("Conectar")}</strong> {t("você será redirecionado para autorizar o")}{" "}
         {marca.name} {t("na sua conta Nuvemshop.")}

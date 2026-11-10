@@ -433,7 +433,7 @@ export function InboxFilters({ value, onChange }: Props) {
             aria-pressed={value.onlyUnread}
             onClick={() => onChange({ ...value, onlyUnread: !value.onlyUnread })}
             className={cn(
-              "h-9 shrink-0 rounded-full border px-3 text-xs font-medium transition-colors",
+              "h-9 shrink-0 rounded-full border px-3 font-display text-xs font-semibold transition-colors",
               "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
               value.onlyUnread
                 ? "border-accent bg-accent text-accent-foreground"
@@ -450,7 +450,7 @@ export function InboxFilters({ value, onChange }: Props) {
             aria-pressed={value.onlyGroups ?? false}
             onClick={() => onChange({ ...value, onlyGroups: !value.onlyGroups })}
             className={cn(
-              "h-9 shrink-0 rounded-full border px-3 text-xs font-medium transition-colors",
+              "h-9 shrink-0 rounded-full border px-3 font-display text-xs font-semibold transition-colors",
               "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
               value.onlyGroups
                 ? "border-accent bg-accent text-accent-foreground"
@@ -473,7 +473,7 @@ export function InboxFilters({ value, onChange }: Props) {
                 <SelectTrigger
                   className={cn(
                     "h-8 min-w-0 flex-1 rounded-full border-transparent bg-surface-elevated px-3 text-xs shadow-none",
-                    value.channel_session_id != null && "border-accent bg-accent-soft text-accent",
+                    value.channel_session_id != null && "border-accent bg-accent-soft text-accent-text",
                   )}
                   aria-label={t("Filtrar por número de WhatsApp")}
                 >
@@ -518,7 +518,7 @@ export function InboxFilters({ value, onChange }: Props) {
                     className={cn(
                       "h-8 min-w-0 flex-1 truncate rounded-full border border-transparent bg-surface-elevated px-3 text-left text-xs shadow-none",
                       "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-                      etiquetas.length > 0 && "border-accent bg-accent-soft text-accent",
+                      etiquetas.length > 0 && "border-accent bg-accent-soft text-accent-text",
                     )}
                     aria-label={t("Filtrar por tag")}
                   >
@@ -695,7 +695,7 @@ export function InboxFilters({ value, onChange }: Props) {
                 <TabsTrigger
                   key={tab}
                   value={tab}
-                  className="shrink-0 gap-1 rounded-none border-b-2 border-transparent px-0 pb-2 pt-1 text-xs font-medium text-text-muted data-[state=active]:border-accent data-[state=active]:bg-transparent data-[state=active]:text-text data-[state=active]:shadow-none"
+                  className="shrink-0 gap-1 rounded-full px-1.5 py-1 text-xs font-semibold text-text-muted data-[state=active]:bg-accent-soft data-[state=active]:text-accent-text data-[state=active]:shadow-none"
                 >
                   {t(meta.label)}
                   {depoisDeMontar && typeof count === "number" && count > 0 && (

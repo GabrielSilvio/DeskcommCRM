@@ -199,7 +199,7 @@ export function PainelDeProvedores() {
       </header>
 
       {semChave && (
-        <Card className="mb-6 border-amber-500/40 bg-amber-500/5 p-4" data-testid="aviso-sem-chave">
+        <Card className="mb-6 border-warning/40 bg-warning-bg p-4" data-testid="aviso-sem-chave">
           <p className="text-sm">
             {t("Você ainda não cadastrou a chave da sua IA principal, a que conversa com os clientes.")}{" "}
             {/* Só é verdade quando a instalação tem chave; sem ela, a frase
@@ -493,7 +493,7 @@ function CartaoDeVoz({ podeEditar }: { podeEditar: boolean }) {
       </p>
 
       {!temCredencial && (
-        <p className="text-sm text-amber-600 dark:text-amber-500">
+        <p className="text-sm text-warning-fg">
           {t("Sem credencial do ElevenLabs validada ainda.")}{" "}
           <Link className="underline underline-offset-4" href="/app/ai/credentials">
             {t("Cadastrar em Credenciais")}
@@ -571,7 +571,7 @@ function ResumoDoGrupo({ pontos }: { pontos: Ponto[] }) {
         ))}
       </div>
       {comAviso > 0 && (
-        <p className="mt-2 text-sm text-amber-600 dark:text-amber-500" data-testid="grupo-com-aviso">
+        <p className="mt-2 text-sm text-warning-fg" data-testid="grupo-com-aviso">
           {comAviso === 1
             ? t("1 ponto deste grupo precisa da sua atenção.")
             : `${comAviso} ${t("pontos deste grupo precisam da sua atenção.")}`}
@@ -705,7 +705,7 @@ function CartaoDoPonto({
           {/* O modelo deste cartão continua valendo com o Jev ligado — como
               reserva, ou como quem decide enquanto o Jev só observa. */}
           {oJevAqui && (
-            <p className="mt-1 text-xs text-accent" data-testid={`jev-no-ponto-${ponto.id}`}>
+            <p className="mt-1 text-xs text-accent-text" data-testid={`jev-no-ponto-${ponto.id}`}>
               {oJevAqui === "observacao"
                 ? t("O Jev observa; o modelo abaixo ainda decide.")
                 : oJevAqui === "sozinho"
@@ -728,7 +728,7 @@ function CartaoDoPonto({
       {ponto.avisos.map((a) => (
         <p
           key={a}
-          className="mt-2 rounded-md bg-amber-500/10 p-2 text-xs text-amber-700 dark:text-amber-500"
+          className="mt-2 rounded-md bg-warning-bg p-2 text-xs text-warning-fg"
           data-testid={`aviso-${ponto.id}`}
         >
           {t(a)}

@@ -50,7 +50,7 @@ export function SkillsDoAgente({ skills, value, onChange, disabled = false }: Pr
   return (
     <Card className="space-y-3 p-4" data-testid="agente-skills">
       <div>
-        <h3 className="text-sm font-medium">{t("Quais skills ele usa")}</h3>
+        <h3 className="font-display text-sm font-semibold">{t("Quais skills ele usa")}</h3>
         <p className="text-xs text-muted-foreground">
           {t(
             "Skills são roteiros para situações específicas, como objeção de preço ou agendamento. Ele só carrega uma skill quando a conversa pede.",
@@ -64,7 +64,7 @@ export function SkillsDoAgente({ skills, value, onChange, disabled = false }: Pr
           id="skills-todas"
           data-testid="skills-todas"
           type="checkbox"
-          className="h-4 w-4 shrink-0 rounded-md border-border accent-primary"
+          className="h-4 w-4 shrink-0 rounded-[5px] border-border accent-primary"
           checked={todas}
           onChange={(e) => onChange(e.target.checked ? null : skills.map((s) => s.name))}
           disabled={disabled}
@@ -98,7 +98,7 @@ export function SkillsDoAgente({ skills, value, onChange, disabled = false }: Pr
                     id={`skill-${s.name}`}
                     data-testid={`skill-${s.name}`}
                     type="checkbox"
-                    className="mt-0.5 h-4 w-4 shrink-0 rounded-md border-border accent-primary"
+                    className="mt-0.5 h-4 w-4 shrink-0 rounded-[5px] border-border accent-primary"
                     checked={marcadas.has(s.name)}
                     onChange={(e) => alternar(s.name, e.target.checked)}
                     disabled={disabled}
@@ -117,7 +117,7 @@ export function SkillsDoAgente({ skills, value, onChange, disabled = false }: Pr
                     id={`skill-${nome}`}
                     data-testid={`skill-${nome}`}
                     type="checkbox"
-                    className="mt-0.5 h-4 w-4 shrink-0 rounded-md border-border accent-primary"
+                    className="mt-0.5 h-4 w-4 shrink-0 rounded-[5px] border-border accent-primary"
                     checked
                     onChange={() => alternar(nome, false)}
                     disabled={disabled}

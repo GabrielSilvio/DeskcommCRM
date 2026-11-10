@@ -55,7 +55,7 @@ export function TenantRowActions({ row }: TenantRowActionsProps) {
       <div className="flex justify-end">
         <Link
           href={`/admin/tenants/${row.id}`}
-          className="text-xs font-medium text-accent hover:underline"
+          className="text-xs font-medium text-accent-text hover:underline"
         >
           {t("Ver")}
         </Link>

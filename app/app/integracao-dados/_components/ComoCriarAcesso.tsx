@@ -17,7 +17,7 @@ export function ComoCriarAcesso({ motor }: { motor: "postgres" | "mysql" }) {
   return (
     <details className="group rounded-md border border-border bg-surface p-4" data-testid="como-criar-acesso">
       <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-medium">
-        <Info size={16} aria-hidden className="text-accent" />
+        <Info size={16} aria-hidden className="text-accent-text" />
         {t("Como criar um acesso só de leitura (guia rápido)")}
       </summary>
       <div className="mt-3 space-y-3 text-sm text-text-muted">

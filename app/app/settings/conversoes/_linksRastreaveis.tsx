@@ -202,7 +202,7 @@ export function LinksRastreaveis({
           });
         }}
       >
-        <h3 className="font-medium">{t(form.id ? "Editar link" : "Novo link")}</h3>
+        <h3 className="font-display font-medium">{t(form.id ? "Editar link" : "Novo link")}</h3>
         <div>
           <Label htmlFor="link-name">{t("Nome")}</Label>
           <Input
@@ -238,7 +238,7 @@ export function LinksRastreaveis({
           <Label htmlFor="link-use">{t("Onde será usado")}</Label>
           <select
             id="link-use"
-            className="w-full rounded-md border bg-background p-2"
+            className="w-full rounded-md border border-border-strong bg-surface p-2"
             value={form.use_case}
             onChange={(e) =>
               setForm({ ...form, use_case: e.target.value as LinkInput["use_case"] })
@@ -307,7 +307,7 @@ export function LinksRastreaveis({
           <Button variant="outline" onClick={() => copy(url)}>
             {t("Copiar link")}
           </Button>
-          <h3 className="font-medium">{t("Script para instalar no site")}</h3>
+          <h3 className="font-display font-medium">{t("Script para instalar no site")}</h3>
           <code className="block text-xs break-all">{snippet}</code>
           <Button variant="outline" onClick={() => copy(snippet)}>
             {t("Copiar script do site")}
@@ -330,7 +330,7 @@ export function LinksRastreaveis({
           <p role="status" className="text-sm">
             {verification}
           </p>
-          <h3 className="font-medium">{t("Sufixo de URL final do Google Ads")}</h3>
+          <h3 className="font-display font-medium">{t("Sufixo de URL final do Google Ads")}</h3>
           <code className="block text-xs break-all">{SUFIXO_GOOGLE}</code>
           <Button variant="outline" onClick={() => copy(SUFIXO_GOOGLE)}>
             {t("Copiar sufixo")}
