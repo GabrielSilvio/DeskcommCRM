@@ -60,13 +60,14 @@ export function LoginForm({ next, email }: { next?: string; email?: string }) {
   };
 
   return (
-    <form method="post" onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
+    <form method="post" onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
       <div className="space-y-1.5">
         <Label htmlFor="email">{t("Email")}</Label>
         <Input
           id="email"
           type="email"
           autoComplete="email"
+          className="h-12 lg:min-h-12"
           autoFocus
           aria-invalid={errors.email ? true : undefined}
           {...register("email")}
@@ -82,7 +83,7 @@ export function LoginForm({ next, email }: { next?: string; email?: string }) {
             id="password"
             type={showPassword ? "text" : "password"}
             autoComplete="current-password"
-            className="pr-12"
+            className="h-12 pr-12 lg:min-h-12"
             aria-invalid={errors.password ? true : undefined}
             {...register("password")}
           />
@@ -110,7 +111,7 @@ export function LoginForm({ next, email }: { next?: string; email?: string }) {
         </div>
       )}
       {semResposta && <AvisoSemResposta />}
-      <Button type="submit" size="lg" className="h-12 w-full text-base" disabled={isPending}>
+      <Button type="submit" size="lg" className="h-12 w-full font-display text-base tracking-[-0.01em]" disabled={isPending}>
         {isPending ? t("Entrando...") : t("Entrar")}
       </Button>
     </form>

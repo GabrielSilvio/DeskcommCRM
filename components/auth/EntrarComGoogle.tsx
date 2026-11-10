@@ -56,7 +56,7 @@ export function EntrarComGoogle({ next, convite }: { next?: string; convite?: st
     <div className="space-y-4">
       <div className="flex items-center gap-3">
         <span className="h-px flex-1 bg-border" />
-        <span className="text-xs uppercase tracking-wide text-muted-foreground">{t("ou")}</span>
+        <span className="text-xs font-semibold uppercase tracking-[0.12em] text-text-subtle">{t("ou")}</span>
         <span className="h-px flex-1 bg-border" />
       </div>
       {erro && (
@@ -70,12 +70,15 @@ export function EntrarComGoogle({ next, convite }: { next?: string; convite?: st
       {semResposta && <AvisoSemResposta />}
       <Button
         type="button"
-        variant="outline"
+        variant="secondary"
         size="lg"
-        className="h-12 w-full text-base"
+        className="h-12 w-full gap-3 font-display text-base tracking-[-0.01em]"
         disabled={isPending || saindo}
         onClick={onClick}
       >
+        {/* Marca do Google como arquivo (cores oficiais), não como cor no código. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/entrada/google.svg" alt="" aria-hidden width={20} height={20} className="size-5" />
         {isPending || saindo ? t("Abrindo o Google...") : t("Entrar com Google")}
       </Button>
     </div>

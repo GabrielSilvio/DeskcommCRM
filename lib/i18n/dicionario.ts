@@ -35,11 +35,15 @@ import { entradaDoCatalogo } from "./catalogos";
 import type { Idioma } from "./idiomas";
 import { TEXTOS_AGENDA_CONFIGURACAO } from "./agenda-configuracao";
 import { TEXTOS_AGENDA_SERVICOS } from "./agenda-servicos";
+import { TEXTOS_LANDING } from "./landing";
 
 /** `pt-BR` não aparece: é a chave. Só o que DIFERE precisa de linha. */
 type Traducoes = Record<string, Partial<Record<Exclude<Idioma, "pt-BR">, string>>>;
 
 export const DICIONARIO: Traducoes = {
+  // Landing pública primeiro: se uma frase dela já existe adiante com a tradução estabelecida da
+  // casa, a de lá vence e a landing fala igual ao resto do produto.
+  ...TEXTOS_LANDING,
   "Custo AI / dia (US$)": { es: "Costo IA / día (US$)" },
   "chamadas sem preço": { es: "llamadas sin precio" },
   "A empresa ativa mudou. Recarregue a página antes de continuar.": { es: "La empresa activa cambió. Recarga la página antes de continuar." },
@@ -19999,6 +20003,10 @@ export const DICIONARIO: Traducoes = {
   "A Meta bloqueou temporariamente o envio deste número por violação de política (código 368). Veja o motivo no Gerenciador do WhatsApp, na Meta.": { es: "Meta bloqueó temporalmente el envío de este número por infringir sus políticas (código 368). Mira el motivo en el Administrador de WhatsApp, en Meta." },
   "A Meta está recusando mensagens deste número (código {codigo}).": { es: "Meta está rechazando mensajes de este número (código {codigo})." },
   "Este aviso fecha sozinho quando uma mensagem voltar a ser entregue.": { es: "Este aviso se cierra solo cuando un mensaje vuelva a entregarse." },
+  // Telas de acesso (login, cadastro e irmãs): painel de cor e linha do login.
+  "Todo ping merece resposta.": { es: "Todo ping merece respuesta." },
+  "Seu WhatsApp atendendo na hora, a qualquer hora.": { es: "Tu WhatsApp atendiendo al instante, a cualquier hora." },
+  "Entre para continuar de onde parou.": { es: "Entra para continuar donde lo dejaste." },
 };
 
 /**

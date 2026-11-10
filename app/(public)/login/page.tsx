@@ -37,8 +37,8 @@ export default async function LoginPage({
   return (
     <div className="space-y-6">
       <div className="space-y-2">
-        <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.03em]">{t("Entrar")}</h1>
-        <p className="text-base text-text-muted">{marca.nome}</p>
+        <h1 className="font-display text-[2.5rem] font-extrabold leading-[1] tracking-[-0.035em]">{t("Entrar")}</h1>
+        <p className="text-base text-text-muted">{t("Entre para continuar de onde parou.")}</p>
       </div>
       {reset === "success" && (
         <div
@@ -146,25 +146,27 @@ export default async function LoginPage({
       )}
       <LoginForm next={next} email={convite?.email} />
       <EntrarComGoogle next={next} />
-      <div className="space-y-2 text-center text-sm">
-        <p>
-          <Link
-            href="/login/forgot"
-            className="text-muted-foreground underline underline-offset-4 hover:text-foreground"
-          >
-            {t("Esqueci minha senha")}
-          </Link>
-        </p>
-        <p className="text-muted-foreground">
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t border-border pt-5 text-sm">
+        <p className="text-text-muted">
           {t("Não tem conta?")}{" "}
           <Link
             href={convite && invite ? `/signup?invite=${encodeURIComponent(invite)}` : "/signup"}
-            className="font-medium text-foreground underline underline-offset-4"
+            className="font-semibold text-accent-text underline-offset-4 hover:underline"
           >
             {t("Criar conta")}
           </Link>
         </p>
+        <p>
+          <Link
+            href="/login/forgot"
+            className="text-text-muted underline-offset-4 hover:text-text hover:underline"
+          >
+            {t("Esqueci minha senha")}
+          </Link>
+        </p>
       </div>
+      {/* O nome da marca da instalação, discreto, no pé do cartão. */}
+      <p className="text-center text-xs text-text-subtle">{marca.nome}</p>
     </div>
   );
 }

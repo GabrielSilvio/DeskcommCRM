@@ -61,16 +61,39 @@ export default async function PublicLayout({ children }: { children: React.React
   return (
     <IdiomaProvider locale={locale}>
       {/*
-        Duas colunas só em tela larga: o formulário num bloco branco e, ao lado,
-        um painel na cor da marca com UMA frase. No celular o painel some e fica
-        só o bloco — a pessoa veio entrar, não ler. O painel usa `bg-accent`, a
-        rampa que cada instalação troca pela própria marca, e é decorativo
-        (`aria-hidden`): a frase repete o que a página inicial já afirma e sai
-        do mesmo dicionário dela (nenhum texto novo para traduzir).
+        Duas colunas só em tela larga: o formulário num cartão e, ao lado, um
+        painel na cor da marca com objetos 3D de massinha (sprites WebP geradas
+        uma vez a partir da cena da página inicial — ver `public/entrada/README.md`;
+        nenhum Three.js é carregado aqui) e UMA frase. No celular o painel some e
+        o cartão ganha só um objeto pequeno como assinatura: a pessoa veio
+        entrar, não ler.
+
+        O painel é feito sobre `bg-accent`, a rampa que cada instalação troca
+        pela própria marca. Todo escurecimento/clareamento é `color-mix` em cima
+        de `--color-accent`, então a composição acompanha a cor trocada, e o
+        texto continua no par `text-accent-foreground`. Os sprites têm cor
+        própria; o "palco" mais escuro atrás deles existe para o balão azul não
+        sumir quando a instalação (ou o tema escuro, onde o acento é claro)
+        deixa o fundo parecido com ele. Decorativo (`aria-hidden`).
       */}
+      {/* `href` + `precedence`: o React iça o bloco para o <head> e o deduplica.
+          Solto aqui dentro, ele era hidratado NO LUGAR — e qualquer <style> que
+          outro pedaço injete antes (a barra de desenvolvimento do Next faz
+          isso) desalinha a árvore e a hidratação da tela inteira falha. */}
+      <style href="entrada-animacoes" precedence="default">
+        {ANIMACOES_DA_ENTRADA}
+      </style>
       <div className="min-h-screen bg-bg p-3 sm:p-6 lg:grid lg:grid-cols-2 lg:gap-6">
-        <div className="flex items-center justify-center py-4 sm:py-10">
-          <div className="w-full max-w-md space-y-8 rounded-xl bg-surface p-6 shadow-md sm:rounded-2xl sm:p-10">
+        <div className="flex items-center justify-center py-10 lg:py-0">
+          <div className="relative w-full max-w-md animate-[entrada-cartao_520ms_var(--ease-out-slow)_both] space-y-8 rounded-xl bg-surface p-6 shadow-lg motion-reduce:animate-none sm:rounded-2xl sm:p-10 lg:space-y-5 lg:p-7">
+          {/* Assinatura do celular: sobe por cima da borda do cartão, sem ocupar linha. */}
+          <Sprite
+            nome="balao-de-conversa"
+            className="-top-9 right-3 w-24 sm:right-6 sm:w-28 lg:hidden"
+            gira="-4deg"
+            duracao="6s"
+            semSombra
+          />
           {marca.logoUrl || marca.logoDarkUrl ? (
             <div className="flex justify-start">
               {/*
@@ -132,20 +155,109 @@ export default async function PublicLayout({ children }: { children: React.React
         </div>
         <aside
           aria-hidden
-          className="relative hidden overflow-hidden rounded-2xl bg-accent p-12 text-accent-foreground lg:sticky lg:top-6 lg:flex lg:h-[calc(100vh-3rem)] lg:flex-col lg:justify-end"
+          className="relative hidden animate-[entrada-painel_700ms_var(--ease-out-slow)_160ms_both] overflow-hidden rounded-2xl bg-accent p-12 text-accent-foreground motion-reduce:animate-none lg:sticky lg:top-6 lg:flex lg:h-[calc(100vh-3rem)] lg:flex-col lg:justify-end xl:p-14"
+          style={{
+            backgroundImage: [
+              "radial-gradient(90% 60% at 100% 0%, color-mix(in oklab, var(--color-accent) 72%, white) 0%, transparent 70%)",
+              "radial-gradient(80% 50% at 0% 100%, color-mix(in oklab, var(--color-accent) 80%, black) 0%, transparent 75%)",
+            ].join(", "),
+          }}
         >
-          {/* Formas macias, só CSS: dão volume ao bloco sem imagem nem 3D. */}
-          <span className="absolute -right-24 -top-24 size-80 rounded-full bg-accent-foreground/10" />
-          <span className="absolute right-16 top-40 size-40 rounded-[40px] bg-accent-foreground/10" />
-          <span className="absolute -left-16 top-1/3 size-56 rounded-full bg-accent-foreground/[0.07]" />
-          <p className="relative max-w-md font-display text-5xl font-extrabold leading-[1.05] tracking-[-0.03em]">
-            {traduzir(
-              "Atendimento e vendas pelo WhatsApp, com agentes de inteligência artificial.",
-              locale,
-            )}
-          </p>
+          {/* Formas grandes e muito suaves: dão profundidade sem competir com os objetos. */}
+          <span
+            className="absolute -right-32 -top-32 size-[26rem] rounded-full"
+            style={{ background: "color-mix(in oklab, var(--color-accent) 88%, white)", opacity: 0.45 }}
+          />
+          <span
+            className="absolute -left-40 bottom-24 size-[24rem] rounded-full"
+            style={{ background: "color-mix(in oklab, var(--color-accent) 85%, black)", opacity: 0.35 }}
+          />
+          {/* Palco: um disco mais escuro e um anel por trás dos objetos. */}
+          <div className="absolute inset-x-0 top-0 h-[66%]">
+            <span
+              className="absolute left-1/2 top-[46%] aspect-square w-[92%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle at 50% 38%, color-mix(in oklab, var(--color-accent) 84%, black), color-mix(in oklab, var(--color-accent) 68%, black))",
+                boxShadow: "inset 0 2px 0 color-mix(in oklab, var(--color-accent) 80%, white)",
+              }}
+            />
+            <span
+              className="absolute left-1/2 top-[46%] aspect-square w-[104%] -translate-x-1/2 -translate-y-1/2 rounded-full border-2"
+              style={{ borderColor: "color-mix(in oklab, var(--color-accent) 80%, white)", opacity: 0.35 }}
+            />
+            <Sprite nome="cartoes-empilhados" className="right-[3%] top-[3%] w-[34%]" gira="5deg" duracao="7.5s" atraso="-2s" />
+            <Sprite nome="balao-de-conversa" className="left-[7%] top-[9%] w-[58%]" gira="-3deg" duracao="6.5s" />
+            <Sprite nome="faisca" className="left-[2%] top-[1%] w-[18%]" gira="8deg" duracao="5.2s" atraso="-1s" />
+            <Sprite nome="conversa-verde" className="right-[4%] top-[44%] w-[38%]" gira="-4deg" duracao="7s" atraso="-3.5s" />
+            <Sprite nome="moeda-com-check" className="left-[3%] top-[58%] w-[29%]" gira="6deg" duracao="5.8s" atraso="-2.4s" />
+            <Sprite nome="raio" className="left-[38%] top-[72%] w-[15%]" gira="-7deg" duracao="4.8s" atraso="-0.6s" />
+          </div>
+          <div className="relative space-y-3">
+            <p className="max-w-lg text-balance font-display text-5xl font-extrabold leading-[0.98] tracking-[-0.035em] xl:text-6xl">
+              {traduzir("Todo ping merece resposta.", locale)}
+            </p>
+            <p className="max-w-md text-balance text-lg font-medium leading-snug text-accent-foreground/90">
+              {traduzir("Seu WhatsApp atendendo na hora, a qualquer hora.", locale)}
+            </p>
+          </div>
         </aside>
       </div>
     </IdiomaProvider>
+  );
+}
+
+/**
+ * Entrada da página: o cartão sobe e aparece, o painel entra logo depois, e
+ * cada objeto flutua poucos pixels no próprio ritmo. As keyframes moram aqui
+ * (e não em `globals.css`) porque só estas telas as usam. Usam `translate` e
+ * `rotate` individuais, para a rotação fixa de cada objeto não brigar com a
+ * flutuação. Com movimento reduzido, o `motion-reduce:animate-none` das classes
+ * deixa tudo parado e completo.
+ */
+const ANIMACOES_DA_ENTRADA = `
+@keyframes entrada-cartao { from { opacity: 0; translate: 0 22px; } to { opacity: 1; translate: 0 0; } }
+@keyframes entrada-painel { from { opacity: 0; translate: 0 26px; scale: 0.985; } to { opacity: 1; translate: 0 0; scale: 1; } }
+@keyframes entrada-flutua { 0%, 100% { translate: 0 0; } 50% { translate: 0 -12px; } }
+`;
+
+/**
+ * Um objeto 3D do painel (ou do topo do cartão, no celular): a imagem flutua e
+ * a sombra de contato fica parada no chão, o que dá a sensação de que ele paira.
+ * Posição e largura vêm de `className`; `gira` é a inclinação fixa.
+ */
+function Sprite({
+  nome,
+  className,
+  gira,
+  duracao,
+  atraso,
+  semSombra = false,
+}: {
+  nome: string;
+  className: string;
+  gira: string;
+  duracao: string;
+  atraso?: string;
+  semSombra?: boolean;
+}) {
+  return (
+    <span aria-hidden className={`pointer-events-none absolute aspect-square select-none ${className}`}>
+      {!semSombra && (
+        <span className="absolute inset-x-[18%] bottom-[7%] h-[9%] rounded-full bg-accent-950/35 blur-md" />
+      )}
+      <span
+        className="absolute inset-0 animate-[entrada-flutua_6s_ease-in-out_infinite] motion-reduce:animate-none"
+        style={{ animationDuration: duracao, animationDelay: atraso }}
+      >
+        {/* Imagem de fundo e não <img>: é decoração, não conteúdo — e o navegador não
+            baixa fundo de elemento escondido (painel some abaixo de `lg`). A fachada
+            sem logo não pode ter `<img>` (tests/unit/marca-na-fachada-de-acesso). */}
+        <span
+          className="block size-full bg-contain bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(/entrada/${nome}.webp)`, rotate: gira }}
+        />
+      </span>
+    </span>
   );
 }

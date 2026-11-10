@@ -100,7 +100,7 @@ export default async function SignupPage({
   return (
     <div className="space-y-6">
       <div className="space-y-2">
-        <h1 className="font-display text-4xl font-extrabold leading-[1.05] tracking-[-0.03em]">{t("Criar conta")}</h1>
+        <h1 className="font-display text-[2.5rem] font-extrabold leading-[1] tracking-[-0.035em]">{t("Criar conta")}</h1>
         <p className="text-base text-text-muted">
           {convite
             ? t("Crie sua senha para entrar na empresa que te convidou")
@@ -138,7 +138,7 @@ export default async function SignupPage({
         </>
       )}
 
-      <p className="text-center text-sm text-muted-foreground">
+      <p className="border-t border-border pt-5 text-center text-sm text-text-muted">
         {t("Já tem conta?")}{" "}
         <Link
           href={
@@ -146,7 +146,7 @@ export default async function SignupPage({
               ? `/login?next=${encodeURIComponent(`/team/accept-invite/${convite.token}`)}`
               : "/login"
           }
-          className="font-medium text-foreground underline underline-offset-4"
+          className="font-semibold text-accent-text underline-offset-4 hover:underline"
         >
           {t("Entrar")}
         </Link>

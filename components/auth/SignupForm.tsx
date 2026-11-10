@@ -335,7 +335,7 @@ export function SignupForm({
         </div>
       )}
       {semResposta && <AvisoSemResposta />}
-      <Button type="submit" size="lg" className="h-12 w-full text-base" disabled={isPending}>
+      <Button type="submit" size="lg" className="h-12 w-full font-display text-base tracking-[-0.01em]" disabled={isPending}>
         {isPending ? t("Criando conta...") : t("Criar conta")}
       </Button>
     </form>
