@@ -695,7 +695,12 @@ export function InboxFilters({ value, onChange }: Props) {
                 <TabsTrigger
                   key={tab}
                   value={tab}
-                  className="shrink-0 gap-1 rounded-full px-1.5 py-1 text-xs font-semibold text-text-muted data-[state=active]:bg-accent-soft data-[state=active]:text-accent-text data-[state=active]:shadow-none"
+                  // Sublinhado e sem padding lateral, como era: esta faixa vive numa
+                  // coluna de ~270px e quebra linha (`flex-wrap` acima). Em pílula, com
+                  // 6px de cada lado, as seis abas ocuparam três linhas (visto em
+                  // produção). `font-sans` desfaz a fonte de título que o
+                  // gatilho base ganhou, que também alarga.
+                  className="shrink-0 gap-1 rounded-none border-b-2 border-transparent px-0 pb-2 pt-1 font-sans text-xs font-medium text-text-muted data-[state=active]:border-accent data-[state=active]:bg-transparent data-[state=active]:text-text data-[state=active]:shadow-none"
                 >
                   {t(meta.label)}
                   {depoisDeMontar && typeof count === "number" && count > 0 && (
