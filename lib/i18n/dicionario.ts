@@ -4246,6 +4246,27 @@ export const DICIONARIO: Traducoes = {
   "Nunca (desligado, sem apagar a configuração)": {
     es: "Nunca (desactivado, sin borrar la configuración)",
   },
+  "Dinâmico: em casos que você define": { es: "Dinámico: en casos que usted define" },
+  "O agente fala quando um destes casos acontece. Fora deles, segue o critério que você escrever. Sem critério, responde em texto.":
+    {
+      es: "El agente habla cuando ocurre uno de estos casos. Fuera de ellos, sigue el criterio que usted escriba. Sin criterio, responde en texto.",
+    },
+  "Quando o cliente mandar áudio": { es: "Cuando el cliente envíe audio" },
+  "Na primeira resposta da conversa": { es: "En la primera respuesta de la conversación" },
+  "Para falar por etapa do funil, marque um funil no escopo do agente.": {
+    es: "Para hablar por etapa del embudo, marque un embudo en el alcance del agente.",
+  },
+  "Critério para mandar áudio (o agente decide por mensagem)": {
+    es: "Criterio para enviar audio (el agente decide por mensaje)",
+  },
+  "Ex.: quando for explicar valores ou condições; quando o cliente parecer indeciso; ao se despedir depois de fechar.":
+    {
+      es: "Ej.: al explicar valores o condiciones; cuando el cliente parezca indeciso; al despedirse después de cerrar.",
+    },
+  "Deixe vazio para o agente só falar nos casos marcados acima.": {
+    es: "Déjelo vacío para que el agente solo hable en los casos marcados arriba.",
+  },
+  "Falar quando o contato estiver na etapa": { es: "Hablar cuando el contacto esté en la etapa" },
   "Voz salva:": { es: "Voz guardada:" },
   "Voz do agente": { es: "Voz del agente" },
   "Qual voz sai quando um agente responde em áudio — ligado por versão, no editor do agente. Precisa de uma credencial do ElevenLabs validada.":

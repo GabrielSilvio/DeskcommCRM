@@ -76,7 +76,12 @@ import { WahaChannelAdapter } from '../edge/channel/waha-adapter';
 // applySendOutcome é disposição de FILA (cancel/reschedule + cache de opt-out), não
 // egress de canal — o envio em si vai pelo adapter (ChannelAdapter). Ver F2-25.
 import { applySendOutcome } from '../edge/crm/send-message';
-import { blocoDaRespostaFalada, resolverVozDoTurno } from './voz-do-turno';
+import {
+  blocoDaRespostaFalada,
+  contextoDaVozDinamica,
+  resolverVozDoTurno,
+  vozParaEsteEnvio,
+} from './voz-do-turno';
 import { textoParaFalar } from '@/lib/ai/voz/texto-falavel';
 import {
   LlmBudgetExceededError,
@@ -430,6 +435,16 @@ export const AGENT_TOOL_DEFS = {
         .describe(
           'código de um produto do catálogo (o `codigo` de crm_search_products) que tem `fotos`: ' +
             'as fotos dele vão junto, e o texto vira a legenda da primeira',
+        ),
+      // Voz dinâmica (migration 9242): só vale quando o turno ofereceu a escolha
+      // ao modelo (bloco "Você PODE responder como NOTA DE VOZ"). Fora disso é
+      // ignorado — o modelo não liga a voz sozinho (`vozParaEsteEnvio`).
+      em_audio: z
+        .boolean()
+        .optional()
+        .describe(
+          'true = esta mensagem sai como NOTA DE VOZ, só quando o sistema disse que você pode escolher ' +
+            'e o critério do negócio se aplica; omita para texto',
         ),
     }),
   },
@@ -3161,6 +3176,13 @@ async function executarTurnoDoAgente(
           agentId: agentConfig.agentId,
           vozEnabled: agentConfig.vozEnabled,
           vozQuando: agentConfig.vozQuando,
+          vozRegras: agentConfig.vozRegras,
+          // Só o modo dinâmico paga as duas consultas do contexto (primeira
+          // resposta, etapa do lead); nos outros modos nem são feitas.
+          contextoDinamico:
+            agentConfig.vozQuando === 'dinamico'
+              ? await contextoDaVozDinamica(pool, { tenantId, conversationId: input.conversationId, leadId })
+              : undefined,
           voiceNote: capabilitiesOf(await loadChannelProvider(pool, tenantId, input.channelSessionId)).voiceNote,
           inboundType:
             input.inboundMessageId === undefined
@@ -4470,7 +4492,7 @@ async function executarTurnoDoAgente(
     }),
     send_message: tool({
       ...AGENT_TOOL_DEFS.send_message,
-      execute: async ({ body: corpoDoModelo, produto_codigo }) => {
+      execute: async ({ body: corpoDoModelo, produto_codigo, em_audio }) => {
         tentativasDeEnvio += 1;
         // O texto sai no formato do WhatsApp — sem `\n` literal nem
         // `**negrito**` de Markdown na tela do cliente. Antes de qualquer gate,
@@ -4718,7 +4740,9 @@ async function executarTurnoDoAgente(
           // resolvida (credencial + voice_id); `null` = toda razão de não falar, e
           // aí esta função devolve `null` e o texto segue em bolhas.
           const enviarVoz = (texto: string): Promise<ChannelSendResult> | null => {
-            const voz = vozParaEsteTurno;
+            // Voz dinâmica: quando a escolha é do modelo, só a mensagem marcada
+            // com `em_audio` vira nota de voz; nos outros modos vale o turno todo.
+            const voz = vozParaEsteEnvio(vozParaEsteTurno, em_audio);
             // Link ou resposta longa: `null` e o texto segue em bolhas (ver `textoParaFalar`).
             const falado = voz ? textoParaFalar(texto) : null;
             if (!voz || falado === null) return null;

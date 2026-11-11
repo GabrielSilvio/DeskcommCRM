@@ -107,7 +107,7 @@ describe("resolverVozDoTurno", () => {
       vozQuando: "espelhar",
       inboundType: "audio",
     });
-    expect(r).toEqual({ apiKey: "sk_elevenlabs", voiceId: "v1", modelId: "eleven_turbo_v2", formato: "mp3" });
+    expect(r).toEqual({ decisor: "regra", apiKey: "sk_elevenlabs", voiceId: "v1", modelId: "eleven_turbo_v2", formato: "mp3" });
     expect(resolveOrgLlmConfigMock).toHaveBeenCalledWith(
       expect.anything(),
       {},

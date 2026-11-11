@@ -59,6 +59,7 @@ function fakeConfig(agentId: string): PublishedAgentConfig {
     agentCreatedBy: null,
     vozEnabled: false,
     vozQuando: 'espelhar',
+    vozRegras: { espelhar_audio: true, primeira_resposta: false, etapas: [], criterio: '' },
   };
 }
 

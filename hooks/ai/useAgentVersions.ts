@@ -47,7 +47,9 @@ export interface AgentVersionRow {
     send_window?: { start: string; end: string; weekdays: number[] } | null;
   };
   voz_enabled: boolean;
-  voz_quando: "nunca" | "espelhar" | "sempre";
+  voz_quando: "nunca" | "espelhar" | "sempre" | "dinamico";
+  /** jsonb do modo dinâmico (migration 9242); quem lê é `lerVozRegras` (`lib/ai/voz/regras.ts`). */
+  voz_regras?: unknown;
   status: "draft" | "published" | "superseded" | "archived";
   published_at: string | null;
   superseded_at: string | null;

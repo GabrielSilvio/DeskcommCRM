@@ -15,6 +15,7 @@ import { VALID_TOOL_IDS } from "@/lib/mcp/tools/catalog";
 import { TETO_TOOLS_POR_AGENTE } from "@/lib/mcp/tools/selecao-por-pacote";
 import { TETO_DO_PUBLICO } from "@/lib/agent-engine/agent/publico-do-gatilho";
 import { IDS_DE_PROVEDOR } from "@/lib/ai/pontos/provedores";
+import { VOZ_REGRAS_PADRAO, vozRegrasSchema } from "@/lib/ai/voz/regras";
 
 /**
  * Derivado de `lib/ai/pontos/provedores.ts` (a lista única desde a 0127). Como
@@ -256,7 +257,11 @@ const versionShapeSchema = z
     // doutrina de `operator_enabled` logo abaixo: feature que gasta dinheiro
     // não se liga por acidente.
     voz_enabled: z.boolean().default(false),
-    voz_quando: z.enum(["nunca", "espelhar", "sempre"]).default("espelhar"),
+    voz_quando: z.enum(["nunca", "espelhar", "sempre", "dinamico"]).default("espelhar"),
+    // As regras do modo `dinamico` (migration 9242). O schema mora em
+    // `lib/ai/voz/regras.ts` — único leitor do jsonb, para tela, API e motor
+    // concordarem. Default = só o espelho do áudio, que é o comportamento de hoje.
+    voz_regras: vozRegrasSchema.default(VOZ_REGRAS_PADRAO),
     operator_enabled: z.boolean().default(false),
     // `.nullable()` e não opcional: null é o valor que SIGNIFICA "herda o modelo
     // do Conversador". Omitir seria indistinguível de "ainda não decidi".
@@ -352,6 +357,7 @@ export const versionPatchSchema = versionShapeSchema
     skill_names: versionShapeSchema.shape.skill_names.removeDefault(),
     voz_enabled: versionShapeSchema.shape.voz_enabled.removeDefault(),
     voz_quando: versionShapeSchema.shape.voz_quando.removeDefault(),
+    voz_regras: versionShapeSchema.shape.voz_regras.removeDefault(),
   })
   .partial();
 

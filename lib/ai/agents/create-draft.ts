@@ -106,7 +106,7 @@ export async function createMcpAgentDraft(
   ][];
   const columns = entries.map(([key]) => key);
   const values = entries.map(([key, value]) =>
-    ["followup", "trigger_config"].includes(key) ? JSON.stringify(value) : value,
+    ["followup", "trigger_config", "voz_regras"].includes(key) ? JSON.stringify(value) : value,
   );
   const { rows: versions } = await db.query(
     `insert into ai_agent_versions(id,organization_id,agent_id,version_number,status,created_by,${columns.join(",")})

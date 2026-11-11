@@ -23,7 +23,7 @@ import {
   type VozResolvidaDoTurno,
 } from "@/lib/agent-engine/agent/voz-do-turno";
 
-const VOZ: VozResolvidaDoTurno = { apiKey: "sk", voiceId: "v1", formato: "ogg_opus" };
+const VOZ: VozResolvidaDoTurno = { apiKey: "sk", voiceId: "v1", formato: "ogg_opus", decisor: "regra" };
 
 describe("o bloco da resposta falada", () => {
   it("só entra quando o turno vai falar", () => {

@@ -17,6 +17,7 @@ import type pg from 'pg';
 
 import { lerJanelaDeAtendimento, type JanelaDeAtendimento } from './janela-de-atendimento';
 import { lerTextoDoAvisoForaDoHorario } from './aviso-fora-do-horario';
+import { lerVozRegras, type VozRegras } from '@/lib/ai/voz/regras';
 import { lerFiltroDePalavraChave } from './palavra-chave-do-gatilho';
 import { lerModoDeConhecimento } from './modo-de-conhecimento';
 import {
@@ -171,8 +172,10 @@ export interface PublishedAgentConfig {
    * não existe — Fase 7).
    */
   vozEnabled: boolean;
-  /** `'nunca' | 'espelhar' | 'sempre'` — decidido em `voz-do-turno.ts`. */
-  vozQuando: 'nunca' | 'espelhar' | 'sempre';
+  /** `'nunca' | 'espelhar' | 'sempre' | 'dinamico'` — decidido em `voz-do-turno.ts`. */
+  vozQuando: 'nunca' | 'espelhar' | 'sempre' | 'dinamico';
+  /** As regras do modo `dinamico` (migration 9242), já lidas pelo schema central. */
+  vozRegras: VozRegras;
 }
 
 interface Row {
@@ -215,6 +218,7 @@ interface Row {
   agent_created_by: string | null;
   voz_enabled: boolean | null;
   voz_quando: string | null;
+  voz_regras: unknown;
 }
 
 const SELECT_AGENT_CONFIG_COLUMNS = `a.operation_mode,a.paused_at,a.operation_revision::text,a.id as agent_id,
@@ -250,6 +254,7 @@ const SELECT_AGENT_CONFIG_COLUMNS = `a.operation_mode,a.paused_at,a.operation_re
             v.skill_names,
             v.voz_enabled,
             v.voz_quando,
+            v.voz_regras,
             v.trigger_config,
             v.created_by as version_created_by,
             a.created_by as agent_created_by`;
@@ -349,7 +354,11 @@ function mapAgentConfigRow(r: Row): PublishedAgentConfig {
     // valor fora do vocabulário (CHECK do banco impede, mas TS não confia
     // cegamente num texto livre) cai no mesmo default seguro.
     vozQuando:
-      r.voz_quando === 'nunca' || r.voz_quando === 'sempre' ? r.voz_quando : 'espelhar',
+      r.voz_quando === 'nunca' || r.voz_quando === 'sempre' || r.voz_quando === 'dinamico'
+        ? r.voz_quando
+        : 'espelhar',
+    // Ilegível vale o padrão (só o espelho do áudio): a direção segura da voz.
+    vozRegras: lerVozRegras(r.voz_regras),
   };
 }
 

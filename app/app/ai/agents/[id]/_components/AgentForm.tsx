@@ -33,6 +33,7 @@ import {
 import { TokenCounter } from "@/lib/ui/TokenCounter";
 import { Info } from "@/lib/ui/icons";
 import { useT } from "@/hooks/i18n/useT";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 import { TETO_TOOLS_POR_AGENTE } from "@/lib/mcp/tools/selecao-por-pacote";
@@ -86,7 +87,9 @@ import type { AgentVersionRow } from "@/hooks/ai/useAgentVersions";
 import type { CredentialRow, Provider } from "@/hooks/ai/useCredentials";
 import { credentialStatus } from "@/hooks/ai/useCredentials";
 import type { FunilDaResposta } from "@/hooks/pipelines/usePipelines";
+import { useAgentMapping } from "@/hooks/pipelines/useAgentMapping";
 import { callbacksHabilitados } from "@/lib/followup/callback-policy";
+import { lerVozRegras, TETO_DO_CRITERIO, type VozRegras } from "@/lib/ai/voz/regras";
 
 /**
  * O canal oferecido no seletor é exatamente o que `listSelectableChannels`
@@ -229,7 +232,9 @@ interface FormState {
   reply_min_interval_ms: number | null;
   followup: FollowupValue;
   voz_enabled: boolean;
-  voz_quando: "nunca" | "espelhar" | "sempre";
+  voz_quando: "nunca" | "espelhar" | "sempre" | "dinamico";
+  /** As regras do modo dinâmico (migration 9242); o schema é o de `lib/ai/voz/regras.ts`. */
+  voz_regras: VozRegras;
   // Papel OPERADOR (spec 16 §3.2) — o que mexe no sistema depois da conversa.
   operator_enabled: boolean;
   /** "" = herda o modelo do Conversador (vira null no payload). */
@@ -353,6 +358,7 @@ export function buildState(args: {
       : DEFAULT_FOLLOWUP,
     voz_enabled: version?.voz_enabled ?? false,
     voz_quando: version?.voz_quando ?? "espelhar",
+    voz_regras: lerVozRegras(version?.voz_regras),
     operator_enabled: version?.operator_enabled ?? false,
     // O form usa "" onde o banco usa null — Select controlado não aceita null.
     // A conversão de volta acontece em `toVersionPayload`, num ponto só.
@@ -418,6 +424,7 @@ function toVersionPayload(s: FormState) {
     followup: s.followup,
     voz_enabled: s.voz_enabled,
     voz_quando: s.voz_quando,
+    voz_regras: s.voz_regras,
     operator_enabled: s.operator_enabled,
     // "" (não escolheu) → null (herda o do Conversador). São o mesmo conceito em
     // camadas diferentes, e o mapeamento vive AQUI para não se espalhar.
@@ -1519,12 +1526,23 @@ export function AgentForm(props: Props) {
                       {t("Só quando o cliente mandar áudio")}
                     </SelectItem>
                     <SelectItem value="sempre">{t("Sempre")}</SelectItem>
+                    <SelectItem value="dinamico">
+                      {t("Dinâmico: em casos que você define")}
+                    </SelectItem>
                     <SelectItem value="nunca">
                       {t("Nunca (desligado, sem apagar a configuração)")}
                     </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
+            ) : null}
+            {form.voz_enabled && form.voz_quando === "dinamico" ? (
+              <RegrasDaVozDinamica
+                value={form.voz_regras}
+                pipelineIds={form.pipeline_ids}
+                disabled={disabled}
+                onChange={(voz_regras) => patch({ voz_regras })}
+              />
             ) : null}
           </Card>
 
@@ -1806,6 +1824,123 @@ export function AgentForm(props: Props) {
           isPending={publishing}
         />
       ) : null}
+    </div>
+  );
+}
+
+/**
+ * AS REGRAS DO MODO DINÂMICO DA VOZ (migration 9242).
+ *
+ * Três gatilhos que não custam nada (áudio do cliente, primeira resposta,
+ * etapa do funil) e um critério em linguagem natural que o modelo aplica
+ * mensagem a mensagem. O schema é o de `lib/ai/voz/regras.ts` — esta tela
+ * nunca inventa chave: `patch({ voz_regras })` grava o objeto inteiro.
+ */
+function RegrasDaVozDinamica(props: {
+  value: VozRegras;
+  pipelineIds: string[];
+  disabled: boolean;
+  onChange: (regras: VozRegras) => void;
+}) {
+  const t = useT();
+  const { value, onChange } = props;
+  const set = (parcial: Partial<VozRegras>) => onChange({ ...value, ...parcial });
+  return (
+    <div className="space-y-3 rounded-md border border-border bg-muted/30 p-3" data-testid="regras-da-voz-dinamica">
+      <p className="text-xs text-muted-foreground">
+        {t("O agente fala quando um destes casos acontece. Fora deles, segue o critério que você escrever. Sem critério, responde em texto.")}
+      </p>
+      <div className="flex items-center gap-2">
+        <Switch
+          id="voz_espelhar_audio"
+          checked={value.espelhar_audio}
+          onCheckedChange={(v) => set({ espelhar_audio: v })}
+          disabled={props.disabled}
+        />
+        <Label htmlFor="voz_espelhar_audio">{t("Quando o cliente mandar áudio")}</Label>
+      </div>
+      <div className="flex items-center gap-2">
+        <Switch
+          id="voz_primeira_resposta"
+          checked={value.primeira_resposta}
+          onCheckedChange={(v) => set({ primeira_resposta: v })}
+          disabled={props.disabled}
+        />
+        <Label htmlFor="voz_primeira_resposta">{t("Na primeira resposta da conversa")}</Label>
+      </div>
+      {props.pipelineIds.map((pipelineId) => (
+        <EtapasDaVozDinamica
+          key={pipelineId}
+          pipelineId={pipelineId}
+          selecionadas={value.etapas}
+          disabled={props.disabled}
+          onToggle={(stageId, ligada) =>
+            set({
+              etapas: ligada
+                ? [...value.etapas.filter((id) => id !== stageId), stageId]
+                : value.etapas.filter((id) => id !== stageId),
+            })
+          }
+        />
+      ))}
+      {props.pipelineIds.length === 0 ? (
+        <p className="text-xs text-muted-foreground">
+          {t("Para falar por etapa do funil, marque um funil no escopo do agente.")}
+        </p>
+      ) : null}
+      <div className="space-y-1">
+        <Label htmlFor="voz_criterio">{t("Critério para mandar áudio (o agente decide por mensagem)")}</Label>
+        <Textarea
+          id="voz_criterio"
+          value={value.criterio}
+          maxLength={TETO_DO_CRITERIO}
+          rows={3}
+          placeholder={t("Ex.: quando for explicar valores ou condições; quando o cliente parecer indeciso; ao se despedir depois de fechar.")}
+          onChange={(e) => set({ criterio: e.target.value })}
+          disabled={props.disabled}
+        />
+        <p className="text-xs text-muted-foreground">
+          {t("Deixe vazio para o agente só falar nos casos marcados acima.")}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/** As etapas de UM funil do escopo, como botões de marcar — a mesma leitura da tela de etapas. */
+function EtapasDaVozDinamica(props: {
+  pipelineId: string;
+  selecionadas: string[];
+  disabled: boolean;
+  onToggle: (stageId: string, ligada: boolean) => void;
+}) {
+  const t = useT();
+  const { data } = useAgentMapping(props.pipelineId);
+  const etapas = data?.etapas ?? [];
+  if (etapas.length === 0) return null;
+  return (
+    <div className="space-y-1">
+      <p className="text-xs font-medium">{t("Falar quando o contato estiver na etapa")}</p>
+      <div className="flex flex-wrap gap-2">
+        {etapas.map((etapa) => {
+          const ligada = props.selecionadas.includes(etapa.id);
+          return (
+            <button
+              key={etapa.id}
+              type="button"
+              disabled={props.disabled}
+              aria-pressed={ligada}
+              onClick={() => props.onToggle(etapa.id, !ligada)}
+              className={cn(
+                "rounded-full border px-3 py-1 text-xs transition-colors",
+                ligada ? "border-primary bg-primary/10 text-primary" : "border-border text-muted-foreground hover:bg-muted",
+              )}
+            >
+              {etapa.name}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }

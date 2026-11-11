@@ -20,14 +20,33 @@ import { chaveDeOrcamentoDaInstalacao } from '@/lib/instalacao/comportamento';
 import { logger } from '@/lib/logger';
 import type { ChannelCapabilities } from '@/lib/channels/types';
 import { formatoDaVozParaCanal, type FormatoDaVoz } from '@/lib/ai/voz/formato';
+import {
+  blocoDaVozDinamica,
+  decidirVozDinamica,
+  VOZ_REGRAS_PADRAO,
+  type ContextoDaVozDinamica,
+  type VozRegras,
+} from '@/lib/ai/voz/regras';
 
-export type VozQuando = 'nunca' | 'espelhar' | 'sempre';
+export type VozQuando = 'nunca' | 'espelhar' | 'sempre' | 'dinamico';
 
 export interface ResolverVozDoTurnoInput {
   pool: pg.Pool;
   tenantId: string;
   vozEnabled: boolean;
   vozQuando: VozQuando;
+  /**
+   * As regras do modo `dinamico` (`lib/ai/voz/regras.ts`). Ignoradas nos
+   * outros modos; ausentes valem o padrão (só o espelho do áudio).
+   */
+  vozRegras?: VozRegras;
+  /**
+   * O que o modo `dinamico` precisa saber além do `inboundType`: se é a
+   * primeira resposta do agente nesta conversa e em que etapa o lead está.
+   * Quem chama só precisa resolver isto quando `vozQuando === 'dinamico'`
+   * (`contextoDaVozDinamica`); nos outros modos é ignorado.
+   */
+  contextoDinamico?: Pick<ContextoDaVozDinamica, 'primeiraResposta' | 'stageId'>;
   /**
    * O que o canal da conversa faz com áudio — e daí o FORMATO da síntese: mp3
    * para quem converte, ogg/opus para o canal oficial, que exige opus e não
@@ -57,6 +76,15 @@ export interface VozResolvidaDoTurno {
   modelId?: string;
   /** O formato que ESTE canal entrega como nota de voz. */
   formato: FormatoDaVoz;
+  /**
+   * Quem decidiu falar. `regra`: a resposta SAI em voz (nunca/espelhar/sempre
+   * e os gatilhos do dinâmico). `modelo`: a credencial está pronta, mas só
+   * vira voz a mensagem que o modelo marcar com `em_audio` no `send_message`
+   * — é o critério do operador (`voz_regras.criterio`) aplicado por mensagem.
+   */
+  decisor: 'regra' | 'modelo';
+  /** O critério que o modelo aplica, só quando `decisor === 'modelo'`. */
+  criterio?: string;
 }
 
 /** `organizations.settings->'voz'` — mesmo padrão jsonb de `settings->'llm'`. */
@@ -65,11 +93,59 @@ interface VozSettings {
   model_id?: string;
 }
 
-function deveFalar(vozQuando: VozQuando, inboundType: string | null): boolean {
-  if (vozQuando === 'nunca') return false;
-  if (vozQuando === 'sempre') return true;
+type Decisao = 'falar' | 'modelo_decide' | 'texto';
+
+function deveFalar(input: ResolverVozDoTurnoInput): Decisao {
+  if (input.vozQuando === 'nunca') return 'texto';
+  if (input.vozQuando === 'sempre') return 'falar';
+  if (input.vozQuando === 'dinamico') {
+    return decidirVozDinamica(input.vozRegras ?? VOZ_REGRAS_PADRAO, {
+      inboundType: input.inboundType,
+      primeiraResposta: input.contextoDinamico?.primeiraResposta ?? false,
+      stageId: input.contextoDinamico?.stageId ?? null,
+    });
+  }
   // 'espelhar': só quando o CLIENTE mandou áudio nesta mensagem.
-  return inboundType === 'audio';
+  return input.inboundType === 'audio' ? 'falar' : 'texto';
+}
+
+/**
+ * O que o modo `dinamico` precisa saber além da mensagem recebida — resolvido
+ * SÓ nesse modo (duas consultas que os outros modos não pagam). Falha para
+ * "não é a primeira resposta, etapa desconhecida": a direção segura, que só
+ * deixa de disparar um gatilho, nunca dispara voz por engano.
+ */
+export async function contextoDaVozDinamica(
+  pool: pg.Pool,
+  input: { tenantId: string; conversationId: string; leadId: string | null },
+): Promise<Pick<ContextoDaVozDinamica, 'primeiraResposta' | 'stageId'>> {
+  try {
+    const [saidas, lead] = await Promise.all([
+      pool.query<{ existe: boolean }>(
+        `select exists(
+           select 1 from messages
+            where organization_id = $1 and conversation_id = $2 and direction = 'outbound'
+         ) as existe`,
+        [input.tenantId, input.conversationId],
+      ),
+      input.leadId
+        ? pool.query<{ stage_id: string | null }>(
+            'select stage_id from crm_leads where organization_id = $1 and id = $2',
+            [input.tenantId, input.leadId],
+          )
+        : Promise.resolve({ rows: [] as { stage_id: string | null }[] }),
+    ]);
+    return {
+      primeiraResposta: !(saidas.rows[0]?.existe ?? true),
+      stageId: lead.rows[0]?.stage_id ?? null,
+    };
+  } catch (err) {
+    logger.warn('[voz-do-turno] contexto da voz dinâmica indisponível — só o espelho do áudio vale neste turno', {
+      organization_id: input.tenantId,
+      error: err instanceof Error ? err.message : String(err),
+    });
+    return { primeiraResposta: false, stageId: null };
+  }
 }
 
 /**
@@ -97,16 +173,35 @@ export const BLOCO_DA_RESPOSTA_FALADA =
   '- se fizer sentido, termine com UMA pergunta.\n' +
   'Link, endereço longo ou dado para copiar não cabem em áudio: se precisar mandar, mande por escrito.';
 
-/** O bloco da resposta falada, ou `null` quando este turno sai em texto. */
+/**
+ * O bloco da resposta falada, ou `null` quando este turno sai em texto. No
+ * modo dinâmico com a escolha no modelo, é o bloco que ensina a escolher.
+ */
 export function blocoDaRespostaFalada(voz: VozResolvidaDoTurno | null): string | null {
-  return voz ? BLOCO_DA_RESPOSTA_FALADA : null;
+  if (!voz) return null;
+  if (voz.decisor === 'modelo') return blocoDaVozDinamica(voz.criterio ?? '');
+  return BLOCO_DA_RESPOSTA_FALADA;
+}
+
+/**
+ * A voz que vale para ESTE envio: no decisor `regra` toda mensagem do turno
+ * sai em voz; no decisor `modelo` só a que ele marcou com `em_audio`.
+ */
+export function vozParaEsteEnvio(
+  voz: VozResolvidaDoTurno | null,
+  emAudio: boolean | undefined,
+): VozResolvidaDoTurno | null {
+  if (!voz) return null;
+  if (voz.decisor === 'modelo') return emAudio === true ? voz : null;
+  return voz;
 }
 
 export async function resolverVozDoTurno(
   input: ResolverVozDoTurnoInput,
 ): Promise<VozResolvidaDoTurno | null> {
   if (!input.vozEnabled) return null;
-  if (!deveFalar(input.vozQuando, input.inboundType)) return null;
+  const decisao = deveFalar(input);
+  if (decisao === 'texto') return null;
 
   try {
     const { rows } = await input.pool.query<{ settings: Record<string, unknown> | null }>(
@@ -165,6 +260,9 @@ export async function resolverVozDoTurno(
       voiceId: voz.voice_id,
       modelId,
       formato: formatoDaVozParaCanal(input.voiceNote),
+      ...(decisao === 'modelo_decide'
+        ? { decisor: 'modelo' as const, criterio: (input.vozRegras ?? VOZ_REGRAS_PADRAO).criterio }
+        : { decisor: 'regra' as const }),
     };
   } catch (err) {
     if (err instanceof LlmBudgetExceededError) {

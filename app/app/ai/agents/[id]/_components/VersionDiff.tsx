@@ -97,6 +97,8 @@ function buildFieldChanges(a: AgentVersionRow, b: AgentVersionRow): FieldChange[
     ["reply_min_interval_ms", "reply_min_interval_ms"],
     ["voz_enabled", "voz_enabled"],
     ["voz_quando", "voz_quando"],
+    // `voz_regras` é jsonb e fica de fora desta lista pelo mesmo motivo de
+    // `followup`: o `!==` compararia referência e acusaria mudança sempre.
   ];
   return fields
     .filter(([k]) => a[k] !== b[k])
