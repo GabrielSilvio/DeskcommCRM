@@ -66639,16 +66639,10 @@ alter table public.ai_agent_versions
 alter table public.ai_agent_versions
   add column if not exists voz_quando text not null default 'espelhar';
 
-do $$
-begin
-  if not exists (
-    select 1 from pg_constraint where conname = 'ai_agent_versions_voz_quando_check'
-  ) then
-    alter table public.ai_agent_versions
-      add constraint ai_agent_versions_voz_quando_check
-      check (voz_quando in ('nunca', 'espelhar', 'sempre'));
-  end if;
-end $$;
+-- O CHECK de `voz_quando` (ai_agent_versions_voz_quando_check) deixou de ser
+-- criado aqui: o bloco da 9242, mais abaixo, recria a constraint com o
+-- vocabulário final (nunca / espelhar / sempre / dinamico). Uma constraint, um
+-- bloco — a régua de tests/unit/baseline-constraint-reconstruida.test.ts.
 
 comment on column public.ai_agent_versions.voz_enabled is
   'Migration 9052. A resposta do agente pode saír como nota de voz nesta versão. '
